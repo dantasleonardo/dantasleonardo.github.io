@@ -64,11 +64,7 @@ iframe {
   max-height: 315px !important;
 }
 
-.bs-icon-circle.bs-icon-primary.bs-icon {
-  cursor: pointer;
-}
-
-div {
+svg {
   cursor: pointer;
 }
 
