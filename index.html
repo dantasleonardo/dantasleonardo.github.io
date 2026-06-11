@@ -36,7 +36,7 @@
   a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(183,128,255,0.5); }
   a:hover { border-bottom-style: solid; }
 
-  html { scrollbar-color: rgba(183,128,255,0.35) var(--bg); scrollbar-width: thin; }
+  html { scrollbar-color: rgba(183,128,255,0.35) var(--bg); scrollbar-width: thin; overflow-y: scroll; }
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb {
@@ -51,6 +51,8 @@
   html[data-lang="pt"] [lang="en"] { display: none; }
 
   .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+  @media (max-width: 680px) { .wrap { padding: 0 22px; } }
+  @media (max-width: 420px) { .wrap { padding: 0 18px; } }
 
   .top {
     padding: 18px 0;
@@ -586,14 +588,8 @@
     transition: opacity 160ms ease, transform 160ms ease;
   }
   .modal-play:hover { opacity: 0.9; transform: translateY(-1px); border-bottom: none; color: #100a18; }
-  /* Jogo fora do ar — vira um selo discreto, não clicável */
-  .modal-play.is-offline {
-    background: transparent;
-    color: var(--quiet);
-    border: 1px dashed rgba(255,255,255,0.18);
-    cursor: default;
-    pointer-events: none;
-  }
+  /* O display:inline-flex acima vence o [hidden] do navegador; esta regra devolve a vitória */
+  .modal-play[hidden] { display: none !important; }
 
   .proj-detail { display: none; }
 
@@ -807,7 +803,7 @@
           <span lang="en">Blumhouse Horrorverse is an asymmetric game for up to 8 players, inspired by Blumhouse films. Players take on the roles of Victims or the Villain. As a Victim, your goal is to escape before the Villain catches you. As the Villain, you must hunt down and eliminate the victims. After the lockdown ends, explore themed activities like challenges and mini-games.</span>
           <span lang="pt">Blumhouse Horrorverse é um jogo assimétrico para até 8 jogadores, inspirado nos filmes da Blumhouse. Os jogadores assumem os papéis de Vítimas ou do Vilão. Como Vítima, seu objetivo é escapar antes que o Vilão te capture. Como Vilão, você deve caçar e eliminar as vítimas. Depois que o lockdown termina, explore atividades temáticas como desafios e minigames.</span>
         </div>
-        <div class="meta">Meta Quest · Asymmetric Gameplay (1–8 players) · VR/Mobile/UGC</div>
+        <div class="meta">Horizon Worlds · Asymmetric Gameplay (1–8 players) · UGC</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -844,22 +840,22 @@
             <span lang="pt">Dei suporte ao Live Ops colaborando com diferentes disciplinas para entregar updates, trabalhando em novos modos, minigames, eventos e novas experiências de gameplay</span>
           </li>
         </ul>
-        <div data-platforms="">Meta Quest, Mobile, Web</div>
+        <div data-platforms="">VR, Mobile, Web</div>
         <div data-link="https://horizon.meta.com/world/632338729966053/" data-link-status="offline" data-link-en="Play it on Meta Horizon" data-link-pt="Jogar no Meta Horizon"></div>
         <div data-media="">
           <div data-kind="video" data-label="Reveal trailer" data-src="https://www.youtube.com/watch?v=bJniOsY9kAY"></div>
-          <div data-kind="image" data-label="Safe-room beat"></div><div data-kind="image" data-label="Hunter POV" data-src="images/hunter-pov.jpg"></div>
+          <div data-kind="video" data-label="8-player chase" data-src="https://youtu.be/GLKt6EpByJc?si=Ey3xc7aMrF94dooc"></div><div data-kind="image" data-label="Hunter POV" data-src="images/hunter-pov.jpg"></div>
           
-          <div data-kind="video" data-label="8-player chase" data-src="https://youtu.be/GLKt6EpByJc?si=Ey3xc7aMrF94dooc"></div>
-          <div data-kind="image" data-label="Map overview"></div>
+          
+          <div data-kind="image" data-label="Map overview" data-src="images/map-overview.jpg"></div>
         </div>
       </template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><span class="ph">COFFEE FEST</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/coffee-fest-cover.jpg"><span class="ph">COFFEE FEST</span></div>
       <div>
-        <h3>Coffee Fest <span class="yr">2025</span></h3>
+        <h3>Coffee Fest <span class="yr">2026</span></h3>
         <div class="where">@ ARVORE</div>
         <div class="desc">
           <span lang="en">Coffee Fest is a coffee-making world in Horizon Worlds: brew and customize drinks, chase high scores and please Cricríticornus, the resident critic. Live events, daily missions and magic coffees keep the world moving.</span>
@@ -902,7 +898,7 @@
             <span lang="pt">Cuidei da tematização dos eventos, em que cada bebida e ingrediente é renomeado, mantendo cada celebração única</span>
           </li>
         </ul>
-        <div data-platforms="">Meta Quest, Mobile, Web</div>
+        <div data-platforms="">VR, Mobile, Web</div>
         <div data-link="https://horizon.meta.com/world/820800191123018/" data-link-en="Play it on Meta Horizon" data-link-pt="Jogar no Meta Horizon"></div>
         <div data-media="">
           <div data-kind="video" data-label="Trailer"></div>
@@ -920,7 +916,7 @@
           <span lang="en">Rise from the grave and stumble through the streets of Casca Dura, a city buzzing with mysteries, wacky gossip and some good ol' chaos thanks to the "HolyHex Curse". Flying rats, a vengeful ghost bride and, oh boy, the skinwalkers... Save Casca Dura from its doom and become a legend!</span>
           <span lang="pt">Tire o pé da cova e saia pelas ruas de Casca Dura, uma cidadezinha cheia de mistérios e fofocas, que está ameaçada pela “Maldição dos Cruzcredos”. Combata ratos-com-asas, uma noiva fantasma vingativa, chupa-cabras insaciáveis e muito mais. Vem virar uma lenda!</span>
         </div>
-        <div class="meta">Steam · Action/Adventure · PC</div>
+        <div class="meta">PC · Action/Adventure · Steam</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -961,7 +957,7 @@
             <span lang="pt">Colaboração próxima com Direção e Produção, integrando uma equipe multidisciplinar</span>
           </li>
         </ul>
-        <div data-platforms="">PC, Steam</div>
+        <div data-platforms="">PC</div>
         <div data-link="https://store.steampowered.com/app/3401730/Cruzcredo_Tornese_uma_Lenda/" data-link-en="Wishlist on Steam" data-link-pt="Lista de desejos na Steam"></div>
         <div data-media="">
           <div data-kind="video" data-label="Teaser"></div>
@@ -971,7 +967,7 @@
         </div>
       </template>
     </article><article class="proj">
-      <div class="proj-img"><span class="ph">MONSTERS</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/universal-monsters-arena-cover.png"><span class="ph">MONSTERS</span></div>
       <div>
         <h3>Universal Monsters Arena <span class="yr">2024</span></h3>
         <div class="where">@ ARVORE</div>
@@ -979,12 +975,16 @@
           <span lang="en">Universal Monsters Arena is a team deathmatch multiplayer game where two teams compete against each other in arenas for a team-victory, becoming one of 6 iconic movie monsters.</span>
           <span lang="pt">Universal Monsters Arena é um jogo multiplayer de team deathmatch em que dois times competem em arenas pela vitória, encarnando um de 6 monstros icônicos do cinema.</span>
         </div>
-        <div class="meta">Meta Quest · 2–8 players · combat</div>
+        <div class="meta">Horizon Worlds · 2–8 players · combat</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
           <span lang="en">Game Designer / Level Designer</span>
           <span lang="pt">Game Designer / Level Designer</span>
+        </div>
+        <div data-facts="">
+          <span lang="en">Meta Horizon Worlds · UGC</span>
+          <span lang="pt">Meta Horizon Worlds · UGC</span>
         </div>
         <div data-desc="">
           <span lang="en">I contributed directly to the evolution of mechanics and player experience, taking responsibility for features such as combat systems and dynamic gameplay. Working with senior designers throughout all phases of development deepened my understanding of how design decisions shape the overall project. My contributions supported the team's goals, and the project was also an important learning experience that accelerated my growth as a designer.</span>
@@ -1008,7 +1008,7 @@
             <span lang="pt">Produzi e mantive documentação detalhada (GDD) para manter o time alinhado em sistemas, mecânicas e objetivos de design</span>
           </li>
         </ul>
-        <div data-platforms="">Meta Quest</div>
+        <div data-platforms="">VR</div>
         <div data-link="" data-link-status="offline"></div>
         <div data-media="">
           <div data-kind="video" data-label="Trailer"></div>
@@ -1018,7 +1018,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><span class="ph">OFFICE</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/the-office-world-cover.jpg"><span class="ph">OFFICE</span></div>
       <div>
         <h3>The Office World <span class="yr">2024</span></h3>
         <div class="where">@ ARVORE</div>
@@ -1026,12 +1026,16 @@
           <span lang="en">Players take on unique roles within Dunder Mifflin, tackling challenges in minigames such as selling paper, wrangling cats, or hunting moles.</span>
           <span lang="pt">Os jogadores assumem papéis únicos dentro da Dunder Mifflin, encarando desafios em minigames como vender papel, capturar gatos ou caçar toupeiras.</span>
         </div>
-        <div class="meta">Meta Quest · 1–6 players · party</div>
+        <div class="meta">Horizon Worlds · 1–6 players · party</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
           <span lang="en">Game Designer</span>
           <span lang="pt">Game Designer</span>
+        </div>
+        <div data-facts="">
+          <span lang="en">Meta Horizon Worlds · UGC · Live Ops</span>
+          <span lang="pt">Meta Horizon Worlds · UGC · Live Ops</span>
         </div>
         <div data-desc="">
           <span lang="en">The Office World needed flexible support across different areas of the project. I collaborated with both UX and Game Design teams to improve specific features and ensure smooth delivery during Live Ops. While my role was more complementary here, that flexibility let me add value where the team needed most: from achievements to UX improvements and new gameplay experiences.</span>
@@ -1051,7 +1055,7 @@
             <span lang="pt">Auxiliei o time de Game Design durante um mês de Live Ops, contribuindo como level designer em um novo minigame</span>
           </li>
         </ul>
-        <div data-platforms="">Meta Quest</div>
+        <div data-platforms="">VR</div>
         <div data-link="" data-link-status="offline"></div>
         <div data-media="">
           <div data-kind="video" data-label="Trailer"></div>
@@ -1069,7 +1073,7 @@
     
 
   <article class="proj">
-    <div class="proj-img"><span class="ph">YUKI</span></div>
+    <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/yuki-mrcade-cover.png"><span class="ph">YUKI</span></div>
     <div>
       <h3>YUKI MRcade <span class="yr">2023</span></h3>
       <div class="where">@ ARVORE</div>
@@ -1098,7 +1102,7 @@
           <span lang="pt">Trabalhei próximo ao game designer sênior para balancear o gameplay e garantir uma experiência justa e envolvente para o jogador</span>
         </li>
       </ul>
-      <div data-platforms="">Meta Quest</div>
+      <div data-platforms="">VR</div>
       <div data-link="https://www.meta.com/experiences/yuki-space-ranger/2886115781495034/" data-link-en="Get it on the Meta Quest Store" data-link-pt="Ver na Meta Quest Store"></div>
       <div data-media="">
         <div data-kind="video" data-label="Trailer"></div>
@@ -1108,7 +1112,7 @@
   </article>
 
   <article class="proj">
-    <div class="proj-img"><span class="ph">PIXEL RIPPED</span></div>
+    <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/pixel-ripped-1995-on-the-road-cover.png"><span class="ph">PIXEL RIPPED</span></div>
     <div>
       <h3>Pixel Ripped 1995: On the Road <span class="yr">2022</span></h3>
       <div class="where">@ ARVORE</div>
@@ -1145,7 +1149,7 @@
           <span lang="pt">Produzi e mantive documentação para alinhar as decisões de design com o resto do time</span>
         </li>
       </ul>
-      <div data-platforms="">Holoride</div>
+      <div data-platforms="">VR</div>
       <div data-link="" data-link-status="offline"></div>
       <div data-media="">
         <div data-kind="video" data-label="Trailer"></div>
@@ -1175,7 +1179,7 @@
   <div class="proj-list" id="perList">
 
     <article class="proj">
-      <div class="proj-img"><span class="ph">MAGIC</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/magic-realm-cover.png"><span class="ph">MAGIC</span></div>
       <div>
         <h3>Magic Realm <span class="yr">2021</span></h3>
         <div class="desc">
@@ -1225,14 +1229,14 @@
         </ul>
         <div data-platforms="">PC</div>
         <div data-media="">
-          <div data-kind="video" data-label="Trailer"></div>
+          <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=S-PvEYTEAC8"></div>
           <div data-kind="image" data-label="Gameplay"></div>
         </div>
-      </template>
+      <div data-link="https://leodantas.itch.io/magic-realm-tcc"></div></template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><span class="ph">JELLO</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/jello-quest-cover.png"><span class="ph">JELLO</span></div>
       <div>
         <h3>Jello Quest <span class="yr">2023</span></h3>
         <div class="desc">
@@ -1276,17 +1280,17 @@
             <span lang="pt">HUD para entregar informações essenciais de forma eficaz</span>
           </li>
         </ul>
-        <div data-platforms="">PC, Steam</div>
+        <div data-platforms="">PC</div>
         <div data-media="">
-          <div data-kind="video" data-label="Launch trailer"></div>
+          <div data-kind="video" data-label="Launch trailer" data-src="https://youtu.be/Q98YWXrKC4Q?si=p2VIyUqJ6Upi4mp_"></div>
           <div data-kind="image" data-label="Boss melt"></div>
           <div data-kind="image" data-label="Jam transformation"></div>
         </div>
-      </template>
+      <div data-link="https://leodantas.itch.io/jello-quest-blob-war"></div></template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><span class="ph">TAMAGOTCHI</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/tamagotchi-hell-cover.png"><span class="ph">TAMAGOTCHI</span></div>
       <div>
         <h3>Tamagotchi Hell <span class="yr">2022</span></h3>
         <div class="desc">
@@ -1320,20 +1324,20 @@
         </ul>
         <div data-platforms="">PC</div>
         <div data-media="">
-          <div data-kind="image" data-label="Gameplay"></div>
+          <div data-kind="video" data-label="Gameplay" data-src="https://www.youtube.com/watch?v=m5zW1DFpR0c"></div>
         </div>
-      </template>
+      <div data-link="https://sollarium-studio.itch.io/tamagotchi-hell"></div></template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><span class="ph">KITTY</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/kitty-cubes-cover.png"><span class="ph">KITTY</span></div>
       <div>
         <h3>Kitty Cubes <span class="yr">2022</span></h3>
         <div class="desc">
           <span lang="en">Help the cat to push his box into the right place and go to the next level. Take on these challenges in a simple and relaxing way.</span>
           <span lang="pt">Ajude o gato a empurrar a caixa para o lugar certo e avançar de nível. Encare esses desafios de um jeito simples e relaxante.</span>
         </div>
-        <div class="meta">mobile · puzzle · casual</div>
+        <div class="meta">PC · puzzle · casual</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -1362,12 +1366,12 @@
             <span lang="pt">Design de UX/UI para garantir clareza e acessibilidade</span>
           </li>
         </ul>
-        <div data-platforms="">Mobile</div>
+        <div data-platforms="">PC</div>
         <div data-media="">
-          <div data-kind="video" data-label="Trailer"></div>
+          
           <div data-kind="image" data-label="Gameplay"></div>
         </div>
-      </template>
+      <div data-link="https://sollarium-studio.itch.io/kitty-cubes"></div></template>
     </article>
 
   </div>
@@ -1425,7 +1429,7 @@
         <span lang="pt" data-singular="Plataforma" data-plural="Plataformas">Plataformas</span>
       </h4>
       <div class="platforms" id="modalPlatforms"></div>
-      <div class="modal-actions"><a id="modalPlay" class="modal-play" target="_blank" rel="noopener" hidden></a></div>
+      <div class="modal-actions"><a id="modalPlay" class="modal-play" target="_blank" rel="noopener" hidden=""></a></div>
     </div>
   </div>
 </div>
@@ -1493,6 +1497,8 @@
   let galleryState = { items: [], idx: 0 };
 
   const PLATFORM_ICONS = {
+    vr:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5A2.5 2.5 0 0 1 5.5 7h13A2.5 2.5 0 0 1 21 9.5v4a2.5 2.5 0 0 1-2.5 2.5h-2.6l-1.9-2a2 2 0 0 0-3 0l-1.9 2H5.5A2.5 2.5 0 0 1 3 13.5z"/></svg>',
     metaquest:
       '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 8.5C3.5 7 4.7 6 6.3 6c1.7 0 3 .9 4.6 2.5l.6.6.6-.6C13.7 6.9 15 6 16.7 6c1.6 0 2.8 1 2.8 2.5v6.4c0 1-.7 1.6-1.6 1.6-1.4 0-2.6-1-4.4-2.8l-1-1c-.3-.3-.3-.5 0-.8l.7-.7c1-1 1.7-1.5 2.4-1.5.5 0 .9.3.9.9 0 .4-.3.7-.8 1l-1.1.6c-.2.1-.2.3 0 .4 1.4.9 2.4 1.4 3.2 1.4.7 0 1.1-.4 1.1-1.1V8.7c0-.7-.4-1.1-1.1-1.1-1 0-2.1.6-3.6 2.1L13.4 11c-.3.3-.7.3-1 0l-1.9-1.9C9 7.7 7.9 7.6 6.9 7.6c-.7 0-1.1.4-1.1 1.1v5.7c0 .7.4 1.1 1.1 1.1.8 0 1.7-.5 3.1-1.4.2-.1.2-.3 0-.4l-1-.6c-.5-.3-.8-.6-.8-1 0-.6.3-.9.9-.9.7 0 1.4.5 2.4 1.5l.7.7c.3.3.3.5 0 .8l-1 1c-1.8 1.8-3 2.8-4.4 2.8-1 0-1.6-.6-1.6-1.6V8.5z"/></svg>',
     pc:
@@ -1650,20 +1656,13 @@
     factsOut.innerHTML = factsEl ? factsEl.innerHTML : '';
     factsOut.style.display = (factsEl && factsEl.textContent.trim()) ? '' : 'none';
 
-    // Link do jogo (opcional) — botão "Jogar / Ver na loja" ou selo "fora do ar"
+    // Link do jogo (opcional) — botão "Jogar / Ver na loja".
+    // Status "offline" simplesmente NÃO mostra botão: a ausência já comunica.
     const linkEl = detail.querySelector('[data-link]');
     const play = document.getElementById('modalPlay');
     const playUrl = linkEl ? (linkEl.getAttribute('data-link') || '').trim() : '';
     const linkStatus = linkEl ? (linkEl.getAttribute('data-link-status') || '') : '';
-    play.classList.remove('is-offline');
-    if (linkStatus === 'offline') {
-      play.removeAttribute('href');
-      play.classList.add('is-offline');
-      const offEn = linkEl.getAttribute('data-offline-en') || 'No longer available';
-      const offPt = linkEl.getAttribute('data-offline-pt') || 'Não está mais disponível';
-      play.innerHTML = '<span aria-hidden="true">⏻</span><span lang="en">' + offEn + '</span><span lang="pt">' + offPt + '</span>';
-      play.hidden = false;
-    } else if (playUrl) {
+    if (playUrl && linkStatus !== 'offline') {
       play.href = playUrl;
       const linkEn = linkEl.getAttribute('data-link-en') || 'Play it';
       const linkPt = linkEl.getAttribute('data-link-pt') || 'Jogar';

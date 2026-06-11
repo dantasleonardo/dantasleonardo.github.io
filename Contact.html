@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
-<head>
+<html lang="en" data-lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Leonardo Dantas</title>
@@ -10,8 +9,8 @@
 <meta property="og:description" content="Game Designer — always open to talk about games, design and ideas worth building.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23100a18'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23b780ff' text-anchor='middle' letter-spacing='-1'%3ELD%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
   /* ─────────────────────────────────────────────────────────
      Tokens — iguais ao index.html e About.html
@@ -45,7 +44,7 @@
   html[data-lang="pt"] [lang="en"] { display: none; }
 
   /* Custom scrollbar — igual ao site */
-  html { scrollbar-width: thin; scrollbar-color: rgba(183,128,255,0.35) transparent; }
+  html { scrollbar-width: thin; scrollbar-color: rgba(183,128,255,0.35) transparent; overflow-y: scroll; }
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: rgba(183,128,255,0.22); border: 2px solid var(--bg); border-radius: 999px; }
@@ -214,6 +213,7 @@
 
   /* ───── Responsive ───── */
   @media (max-width: 720px) {
+    .wrap { padding: 0 22px; }
     .contact {
       grid-template-columns: 1fr;
       gap: 36px;
@@ -224,7 +224,7 @@
     .contact-intro h1 { font-size: 40px; }
   }
   @media (max-width: 420px) {
-    .wrap { padding: 0 22px; }
+    .wrap { padding: 0 18px; }
     .contact-intro h1 { font-size: 33px; letter-spacing: -0.02em; }
     .connect-card { padding: 24px 22px 24px; }
   }
@@ -313,7 +313,7 @@
         <!-- LinkedIn -->
         <a class="channel" href="https://www.linkedin.com/in/leonardo-dantass" target="_blank" rel="noopener">
           <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path></svg>
           </span>
           <span class="meta">
             <div class="name">LinkedIn</div>
@@ -346,9 +346,9 @@
 
       <!-- CV em PDF: escondido até você subir o arquivo pelo Editor
            (seção Contact.html → Card de conexão → Currículo) -->
-      <a class="channel cv" id="cvChannel" href="#" download style="display: none;">
+      <a class="channel cv" id="cvChannel" href="#" download="" style="display: none;">
         <span class="ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a1.5 1.5 0 0 0-1.5 1.5v15A1.5 1.5 0 0 0 7 21h10a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h4.5"/><path d="M9 13h6M9 16.5h6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a1.5 1.5 0 0 0-1.5 1.5v15A1.5 1.5 0 0 0 7 21h10a1.5 1.5 0 0 0 1.5-1.5V8z"></path><path d="M14 3v5h4.5"></path><path d="M9 13h6M9 16.5h6"></path></svg>
         </span>
         <span class="meta">
           <div class="name">
@@ -407,5 +407,6 @@
   })();
 </script>
 
-</body>
-</html>
+
+
+</body></html>
