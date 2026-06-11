@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Leonardo Dantas</title>
+<meta name="description" content="Contact Leonardo Dantas — Game Designer. Always open to talk about games, design and ideas worth building.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact — Leonardo Dantas">
+<meta property="og:description" content="Game Designer — always open to talk about games, design and ideas worth building.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23100a18'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23b780ff' text-anchor='middle' letter-spacing='-1'%3ELD%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ─────────────────────────────────────────────────────────
+     Tokens — iguais ao index.html e About.html
+     ───────────────────────────────────────────────────────── */
+  :root {
+    --bg: #100a18;
+    --bg-2: #18112a;
+    --ink: #ece6ff;
+    --dim: #9890b0;
+    --quiet: #6c6480;
+    --accent: #b780ff;
+    --accent-soft: rgba(183,128,255,0.14);
+    --rule: rgba(255,255,255,0.07);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(183,128,255,0.5); }
+  a:hover { border-bottom-style: solid; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  /* Bilingual toggle */
+  html[data-lang="en"] [lang="pt"] { display: none; }
+  html[data-lang="pt"] [lang="en"] { display: none; }
+
+  /* Custom scrollbar — igual ao site */
+  html { scrollbar-width: thin; scrollbar-color: rgba(183,128,255,0.35) transparent; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(183,128,255,0.22); border: 2px solid var(--bg); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(183,128,255,0.45); }
+
+  /* ───── Top — igual ao About.html ───── */
+  .top {
+    padding: 18px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px;
+  }
+  .top .home {
+    color: var(--ink); border: none; font-weight: 600; letter-spacing: -0.01em;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .top .home .arrow { color: var(--quiet); font-weight: 400; }
+  .top .home:hover .arrow { color: var(--accent); }
+  .top .top-nav {
+    margin-left: auto; margin-right: 18px;
+    display: flex; gap: 20px;
+  }
+  .top .top-nav a {
+    color: var(--dim); border: none;
+    font-size: 13px; font-weight: 500;
+    transition: color 140ms ease;
+  }
+  .top .top-nav a:hover { color: var(--accent); }
+  .top .lang {
+    background: transparent; border: 1px solid var(--rule); cursor: pointer;
+    color: var(--dim); font-family: inherit; font-size: 11.5px;
+    padding: 5px 11px; border-radius: 999px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .top .lang:hover { color: var(--accent); border-color: rgba(183,128,255,0.4); }
+
+  /* ───── Contact layout ───── */
+  .contact {
+    padding: 84px 0 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    min-height: 60vh;
+  }
+  .contact-intro h1 {
+    font-size: 52px; font-weight: 700; letter-spacing: -0.028em; line-height: 1.02;
+  }
+  .contact-intro .lede {
+    margin-top: 22px;
+    font-size: 16.5px; color: var(--dim); line-height: 1.7;
+    max-width: 440px;
+  }
+  .contact-intro .lede em { color: var(--ink); font-style: normal; font-weight: 500; }
+
+  /* Availability status (bolinha pulsante igual ao "Right now" do index) */
+  .avail {
+    margin-top: 30px;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 14px 8px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-size: 13px; color: var(--dim);
+  }
+  .avail b { color: var(--ink); font-weight: 600; }
+  .avail .live {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(183,128,255,0.6);
+    animation: live-pulse 1.8s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes live-pulse {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.18); }
+  }
+
+  /* ───── Connect card ───── */
+  .connect-card {
+    background: var(--bg-2);
+    border: 1px solid rgba(183,128,255,0.18);
+    border-radius: 10px;
+    padding: 30px 30px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* glow sutil no canto, dá vida sem fugir do estilo */
+  .connect-card::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(183,128,255,0.18), transparent 70%);
+    pointer-events: none;
+  }
+  .connect-card > * { position: relative; }
+  .connect-card h2 {
+    font-size: 23px; font-weight: 700; letter-spacing: -0.018em;
+  }
+  .connect-card .card-sub {
+    margin-top: 5px;
+    font-size: 13.5px; color: var(--quiet);
+  }
+
+  .channels {
+    margin-top: 26px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .channel {
+    display: flex; align-items: center; gap: 15px;
+    padding: 16px 18px;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    color: inherit;
+    transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+  }
+  .channel:hover {
+    border-color: rgba(183,128,255,0.5);
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+  }
+  .channel .ico {
+    width: 46px; height: 46px; flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+  }
+  .channel:hover .ico { background: rgba(183,128,255,0.22); }
+  .channel .ico svg { width: 23px; height: 23px; display: block; }
+  .channel .meta { min-width: 0; }
+  .channel .meta .name {
+    font-size: 15.5px; font-weight: 600; color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .channel .meta .handle {
+    font-size: 13px; color: var(--dim);
+    margin-top: 2px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .channel .arrow {
+    margin-left: auto;
+    color: var(--quiet);
+    font-size: 16px;
+    transition: color 160ms ease, transform 160ms ease;
+  }
+  .channel:hover .arrow { color: var(--accent); transform: translate(2px, -2px); }
+
+  /* Botão de CV: mesmo estilo dos canais, fora da lista (gerenciado à parte no editor) */
+  .channel.cv { margin-top: 10px; }
+
+  .connect-note {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-size: 13.5px; color: var(--dim); line-height: 1.65;
+  }
+
+  /* ───── Footer — igual ao site ───── */
+  .foot {
+    margin-top: 40px; padding: 24px 0 32px;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--quiet); flex-wrap: wrap; gap: 12px;
+  }
+  .foot .links { display: flex; gap: 14px; flex-wrap: wrap; }
+  .foot .links a { color: var(--dim); border: none; }
+  .foot .links a:hover { color: var(--accent); }
+
+  /* ───── Responsive ───── */
+  @media (max-width: 720px) {
+    .contact {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding: 48px 0 40px;
+      align-items: start;
+      min-height: 0;
+    }
+    .contact-intro h1 { font-size: 40px; }
+  }
+  @media (max-width: 420px) {
+    .wrap { padding: 0 22px; }
+    .contact-intro h1 { font-size: 33px; letter-spacing: -0.02em; }
+    .connect-card { padding: 24px 22px 24px; }
+  }
+
+  /* ───── Juice: micro-animações ─────
+     Só transform/opacity (GPU). Bloco inteiro desliga com "reduzir movimento". */
+  @media (prefers-reduced-motion: no-preference) {
+
+    /* Entrada em cascata: intro pela esquerda, card chega junto com leve atraso */
+    .contact-intro h1, .contact-intro .lede, .avail, .connect-card {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise-in 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .contact-intro .lede { animation-delay: 120ms; }
+    .avail { animation-delay: 240ms; }
+    .connect-card { animation-delay: 200ms; }
+    @keyframes rise-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Glow do card respirando (eco do hero do index) */
+    .connect-card::before { animation: glow-breathe 8s ease-in-out infinite; }
+    @keyframes glow-breathe {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.08); }
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <a href="index.html" class="home">
+      <span class="arrow">←</span>
+      <span lang="en">Portfolio</span>
+      <span lang="pt">Portfolio</span>
+    </a>
+    <nav class="top-nav">
+      <a href="About.html">
+        <span lang="en">About</span>
+        <span lang="pt">Sobre</span>
+      </a>
+    </nav>
+    <button class="lang" id="langBtn" aria-label="Switch language">
+      <span lang="en">Switch to PT</span>
+      <span lang="pt">Mudar para EN</span>
+    </button>
+  </header>
+
+  <!-- ───── CONTACT ───── -->
+  <section class="contact">
+
+    <!-- Intro (esquerda) -->
+    <div class="contact-intro">
+      <h1>
+        <span lang="en">Contact Me</span>
+        <span lang="pt">Contato</span>
+      </h1>
+      <p class="lede">
+        <span lang="en">I'm not actively looking for work. But if you like what I do, I'm always up for talking <em>games, design, and ideas worth building</em>.</span>
+        <span lang="pt">Não tô procurando trabalho ativamente. Mas se você curtir o que eu faço, tô sempre afim de trocar ideia sobre <em>jogos, design e coisas que valham a pena construir</em>.</span>
+      </p>
+      <div class="avail">
+        <span class="live"></span>
+        <span lang="en"><b>Always open to talk</b></span>
+        <span lang="pt"><b>Sempre aberto a conversar</b></span>
+      </div>
+    </div>
+
+    <!-- Connect card (direita) -->
+    <div class="connect-card">
+      <h2>
+        <span lang="en">Connect With Me</span>
+        <span lang="pt">Vamos conversar</span>
+      </h2>
+      <div class="card-sub">
+        <span lang="en">The best way to reach me</span>
+        <span lang="pt">O melhor jeito de me encontrar</span>
+      </div>
+
+      <div class="channels">
+
+        <!-- LinkedIn -->
+        <a class="channel" href="https://www.linkedin.com/in/leonardo-dantass" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </span>
+          <span class="meta">
+            <div class="name">LinkedIn</div>
+            <div class="handle">linkedin.com/in/leonardo-dantass</div>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <!-- ─────────────────────────────────────────────────────────
+             OPCIONAL — Email anti-spam.
+             O email NÃO fica no HTML (robôs de spam não acham).
+             É montado por JavaScript só quando a página abre.
+             Pra ATIVAR: remova os comentários deste bloco
+             e ajuste user/domain no <script> lá embaixo.
+        ────────────────────────────────────────────────────────── -->
+        <!--
+        <a class="channel" id="emailChannel" href="#">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 6 9-6"/></svg>
+          </span>
+          <span class="meta">
+            <div class="name">Email</div>
+            <div class="handle" id="emailText">—</div>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        -->
+
+      </div>
+
+      <!-- CV em PDF: escondido até você subir o arquivo pelo Editor
+           (seção Contact.html → Card de conexão → Currículo) -->
+      <a class="channel cv" id="cvChannel" href="#" download style="display: none;">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a1.5 1.5 0 0 0-1.5 1.5v15A1.5 1.5 0 0 0 7 21h10a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h4.5"/><path d="M9 13h6M9 16.5h6"/></svg>
+        </span>
+        <span class="meta">
+          <div class="name">
+            <span lang="en">Resume / CV</span>
+            <span lang="pt">Currículo</span>
+          </div>
+          <div class="handle">
+            <span lang="en">Download PDF</span>
+            <span lang="pt">Baixar PDF</span>
+          </div>
+        </span>
+        <span class="arrow" aria-hidden="true">↓</span>
+      </a>
+
+      <p class="connect-note">
+        <span lang="en">LinkedIn is the best way to reach me. I'm not job-hunting, but if something genuinely clicks (a project, a collaboration, a good idea), I'd love to hear about it.</span>
+        <span lang="pt">O LinkedIn é o melhor jeito de falar comigo. Não tô atrás de vaga, mas se rolar uma conexão de verdade (um projeto, uma colaboração, uma boa ideia), vou adorar saber.</span>
+      </p>
+    </div>
+
+  </section>
+
+  <footer class="foot">
+    <span>© Leonardo Dantas, 2026</span>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/leonardo-dantass" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://leodantas.itch.io" target="_blank" rel="noopener">itch.io</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Idioma — mesma lógica do resto do site
+  document.documentElement.setAttribute('data-lang', 'en');
+  document.getElementById('langBtn').addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-lang');
+    const next = cur === 'en' ? 'pt' : 'en';
+    document.documentElement.setAttribute('data-lang', next);
+    document.title = next === 'en' ? 'Contact — Leonardo Dantas' : 'Contato — Leonardo Dantas';
+  });
+
+  // ─────────────────────────────────────────────────────────
+  // OPCIONAL — Email anti-spam. Só funciona se você descomentar
+  // o bloco do email lá em cima. Ajuste user/domain abaixo.
+  // ─────────────────────────────────────────────────────────
+  (function () {
+    var ch = document.getElementById('emailChannel');
+    if (!ch) return; // bloco do email está comentado → ignora
+    var user = 'leonardo';          // <- parte antes do @
+    var domain = 'exemplo.com';     // <- parte depois do @
+    var addr = user + '@' + domain;
+    ch.setAttribute('href', 'mailto:' + addr);
+    var txt = document.getElementById('emailText');
+    if (txt) txt.textContent = addr;
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Leonardo Dantas</title>
+<meta name="description" content="About Leonardo Dantas — Game Designer creating games across VR, MR, UGC and Mobile. Bio, timeline, education and skills.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About — Leonardo Dantas">
+<meta property="og:description" content="Game Designer creating games across VR, MR, UGC and Mobile. Bio, timeline, education and skills.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23100a18'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23b780ff' text-anchor='middle' letter-spacing='-1'%3ELD%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ─────────────────────────────────────────────────────────
+     Tokens — kept identical to the main portfolio page
+     ───────────────────────────────────────────────────────── */
+  :root {
+    --bg: #100a18;
+    --bg-2: #18112a;
+    --ink: #ece6ff;
+    --dim: #9890b0;
+    --quiet: #6c6480;
+    --accent: #b780ff;
+    --accent-soft: rgba(183,128,255,0.14);
+    --rule: rgba(255,255,255,0.07);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(183,128,255,0.5); }
+  a:hover { border-bottom-style: solid; }
+
+  /* Same wrap as the main portfolio so margins match exactly. */
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  /* ───── Bilingual toggle ───── */
+  html[data-lang="en"] [lang="pt"] { display: none; }
+  html[data-lang="pt"] [lang="en"] { display: none; }
+
+  /* ───── Top — same as main page ───── */
+  .top {
+    padding: 18px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px;
+  }
+  .top .home {
+    color: var(--ink); border: none; font-weight: 600; letter-spacing: -0.01em;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .top .home .arrow { color: var(--quiet); font-weight: 400; }
+  .top .home:hover .arrow { color: var(--accent); }
+  .top .top-nav {
+    margin-left: auto; margin-right: 18px;
+    display: flex; gap: 20px;
+  }
+  .top .top-nav a {
+    color: var(--dim); border: none;
+    font-size: 13px; font-weight: 500;
+    transition: color 140ms ease;
+  }
+  .top .top-nav a:hover { color: var(--accent); }
+  .top .lang {
+    background: transparent; border: 1px solid var(--rule); cursor: pointer;
+    color: var(--dim); font-family: inherit; font-size: 11.5px;
+    padding: 5px 11px; border-radius: 999px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .top .lang:hover { color: var(--accent); border-color: rgba(183,128,255,0.4); }
+
+  /* ───── Hero — portrait + intro side-by-side, same wrap as main page ───── */
+  .hero {
+    padding: 64px 0 48px;
+    display: grid; grid-template-columns: 220px 1fr;
+    gap: 44px; align-items: flex-start;
+  }
+  .hero h1 { font-size: 44px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
+  .hero .role { margin-top: 10px; font-size: 17px; color: var(--accent); font-weight: 500; }
+  .hero .lede { margin-top: 22px; font-size: 15.5px; color: var(--dim); line-height: 1.7; }
+  .hero .lede em { color: var(--ink); font-style: normal; font-weight: 500; }
+
+  .portrait {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #1f1530, #3a2056);
+    border-radius: 4px;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(183,128,255,0.14);
+  }
+  /* Quando a foto real substitui o placeholder: limita ao tamanho da coluna
+     (sem isso, a foto renderiza no tamanho natural e estoura o grid) */
+  img.portrait {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .portrait::after {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 8px);
+  }
+  .portrait .ph {
+    position: absolute; bottom: 8px; left: 10px; z-index: 1;
+    font-size: 9px; letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.5);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  /* Inline contact strip (sits under intro, left-aligned with text) */
+  .contact-strip {
+    margin-top: 22px;
+    display: flex; flex-wrap: wrap; gap: 8px 10px;
+    font-size: 12.5px;
+  }
+  .contact-strip a {
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 6px 12px;
+    color: var(--ink);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: border-color 0.18s, background 0.18s, color 0.18s;
+  }
+  .contact-strip a:hover {
+    border-color: rgba(183,128,255,0.4);
+    background: rgba(183,128,255,0.06);
+    color: var(--accent);
+  }
+  .contact-strip a .label {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--quiet);
+  }
+  .contact-strip a:hover .label { color: var(--accent); }
+
+  /* CTA pro Contact page (mesmo estilo do botão secundário do index) */
+  .about-cta {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 22px; border-radius: 999px;
+    background: transparent; color: var(--accent);
+    border: 1px solid rgba(183,128,255,0.4);
+    font-size: 13px; font-weight: 600;
+    font-family: inherit; text-decoration: none;
+    transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+  }
+  .about-cta:hover {
+    background: rgba(183,128,255,0.12);
+    border-color: var(--accent); color: var(--ink);
+  }
+
+  /* ───── Section heading — same as main page ───── */
+  h2.sec {
+    font-size: 17px; font-weight: 700;
+    margin: 44px 0 18px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+
+  /* ───── Bio prose — fills the same content column as main-page sections ───── */
+  .bio-prose p {
+    color: var(--dim); font-size: 14.5px; line-height: 1.8;
+  }
+  .bio-prose p + p { margin-top: 14px; }
+  .bio-prose b { color: var(--ink); font-weight: 500; }
+  .bio-prose em { color: var(--accent); font-style: normal; font-weight: 500; }
+
+  /* ───── Timeline ───── */
+  .timeline {
+    margin-top: 8px;
+    border-left: 1px solid var(--rule);
+    padding-left: 22px;
+    margin-left: 6px;
+  }
+  .tl-item {
+    position: relative;
+    padding: 16px 0;
+  }
+  .tl-item + .tl-item { border-top: 1px solid var(--rule); }
+  .tl-item::before {
+    content: ''; position: absolute; left: -27px; top: 24px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--accent);
+  }
+  .tl-item.live::before {
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(183,128,255,0.6);
+  }
+  .tl-item .yr {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 12px; color: var(--quiet); letter-spacing: 0.04em;
+  }
+  .tl-item h3 {
+    margin-top: 4px;
+    font-size: 16px; font-weight: 600; letter-spacing: -0.01em;
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  }
+  .tl-item h3 .at {
+    color: var(--accent); font-weight: 500; font-size: 14px;
+    border: none;
+  }
+  .tl-item h3 a.at { border-bottom: 1px dotted rgba(183,128,255,0.4); }
+  .tl-item h3 a.at:hover { border-bottom-style: solid; }
+  .tl-item p {
+    margin-top: 6px; color: var(--dim); font-size: 13.5px; line-height: 1.7;
+  }
+  .tl-item p b { color: var(--ink); font-weight: 500; }
+
+  /* ───── Talks & Writing list ───── */
+  .talks-list { display: flex; flex-direction: column; }
+  .talk {
+    display: grid; grid-template-columns: 90px 1fr auto;
+    gap: 18px; align-items: baseline;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .talk:first-child { border-top: none; }
+  .talk .kind {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 10.5px; color: var(--accent);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding-top: 3px;
+  }
+  .talk h3 {
+    font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .talk .where { color: var(--dim); font-size: 13px; margin-top: 3px; }
+  .talk .where b { color: var(--ink); font-weight: 500; }
+  .talk .yr {
+    color: var(--quiet); font-size: 12px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .talk a.title-link { color: var(--ink); border: none; }
+  .talk a.title-link:hover { color: var(--accent); }
+  @media (max-width: 600px) {
+    .talk { grid-template-columns: 1fr auto; gap: 8px 14px; }
+    .talk .kind { grid-column: 1 / -1; padding-top: 0; }
+    .talk .yr { grid-column: 2; grid-row: 2; }
+  }
+
+  /* ───── Education ───── */
+  .edu-list { display: flex; flex-direction: column; }
+  .edu-item {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: baseline;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .edu-item:first-child { border-top: none; }
+  .edu-school {
+    font-size: 16px; font-weight: 600; color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .edu-yr {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 12.5px; color: var(--quiet);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .edu-degree {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+    font-size: 14px; color: var(--dim);
+    line-height: 1.6;
+  }
+
+  /* ───── Skills (2 columns: Design / Technical) ───── */
+  .skills-cols {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding-top: 4px;
+  }
+  .skills-col h3 {
+    font-size: 15px; font-weight: 600;
+    color: var(--ink); letter-spacing: -0.005em;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .skills-col ul {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column;
+    gap: 6px;
+  }
+  .skills-col li {
+    color: var(--dim);
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding-left: 16px;
+    position: relative;
+  }
+  .skills-col li::before {
+    content: '•';
+    position: absolute;
+    left: 2px;
+    color: var(--quiet);
+  }
+  @media (max-width: 600px) {
+    .skills-cols { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* ───── Footer — same as main page ───── */
+  .foot {
+    margin-top: 56px; padding: 24px 0 32px;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--quiet); flex-wrap: wrap; gap: 12px;
+  }
+  .foot .links { display: flex; gap: 14px; flex-wrap: wrap; }
+  .foot .links a { color: var(--dim); border: none; }
+  .foot .links a:hover { color: var(--accent); }
+
+  /* ───── Custom scrollbar ───── */
+  html { scrollbar-width: thin; scrollbar-color: rgba(183,128,255,0.35) transparent; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(183,128,255,0.22);
+    border: 2px solid var(--bg);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(183,128,255,0.45); }
+
+  /* ───── Responsive ───── */
+  @media (max-width: 680px) {
+    .wrap { padding: 0 22px; }
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 24px; padding: 36px 0 32px;
+    }
+    .portrait { max-width: 180px; }
+    .hero h1 { font-size: 38px; }
+    .hero .role { font-size: 16px; }
+    h2.sec { margin: 36px 0 14px; }
+    .timeline { padding-left: 18px; margin-left: 4px; }
+    .tl-item::before { left: -23px; top: 22px; }
+  }
+  @media (max-width: 420px) {
+    .wrap { padding: 0 18px; }
+    .hero h1 { font-size: 32px; letter-spacing: -0.02em; }
+    .contact-strip { gap: 6px 8px; }
+    .contact-strip a { padding: 5px 10px; font-size: 12px; }
+  }
+
+  /* ───── Juice: micro-animações ─────
+     Só transform/opacity (GPU). Bloco inteiro desliga com "reduzir movimento". */
+  @media (prefers-reduced-motion: no-preference) {
+
+    /* Entrada do hero em cascata (uma vez, no load) */
+    .hero .portrait, .hero h1, .hero .role, .hero .lede, .contact-strip, .about-cta {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise-in 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero h1 { animation-delay: 80ms; }
+    .hero .role { animation-delay: 180ms; }
+    .hero .lede { animation-delay: 280ms; }
+    .contact-strip { animation-delay: 380ms; }
+    .about-cta { animation-delay: 460ms; }
+    @keyframes rise-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll-reveal das seções (classes via JS; sem JS, nada fica escondido) */
+    .reveal-init { opacity: 0; transform: translateY(16px); }
+    .reveal-in {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <a href="index.html" class="home">
+      <span class="arrow">←</span>
+      <span lang="en">Portfolio</span>
+      <span lang="pt">Portfolio</span>
+    </a>
+    <nav class="top-nav">
+      <a href="Contact.html">
+        <span lang="en">Contact</span>
+        <span lang="pt">Contato</span>
+      </a>
+    </nav>
+    <button class="lang" id="langBtn" aria-label="Switch language">
+      <span lang="en">Switch to PT</span>
+      <span lang="pt">Mudar para EN</span>
+    </button>
+  </header>
+
+  <!-- ───── HERO ───── -->
+  <section class="hero">
+    <div class="portrait">
+      <span class="ph">PORTRAIT / 4:5</span>
+    </div>
+    <div>
+    <h1>Leonardo Dantas</h1>
+    <div class="role">Game Designer</div>
+    <p class="lede">
+      <span lang="en">I make games where <em>gameplay, systems and setting work as one thing</em>, so each mechanic reinforces the game world and the player's experience. My approach is practical and iterative: prototype, playtest, adjust, repeat. Most of my work lives in <em>XR, UGC and multiplayer</em>, from development to Live Ops.</span>
+      <span lang="pt">Faço jogos em que <em>gameplay, sistemas e ambientação funcionam como uma coisa só</em>, em que cada mecânica reforça o mundo do jogo e a experiência do jogador. Minha abordagem é prática e iterativa: prototipar, playtestar, ajustar, repetir. A maior parte do meu trabalho vive em <em>XR, UGC e multiplayer</em>, do desenvolvimento ao Live Ops.</span>
+    </p>
+
+    <!-- Inline contact strip — keeps contacts visible without a hidden footer section -->
+    <div class="contact-strip">
+      <a href="https://www.linkedin.com/in/leonardo-dantass/" target="_blank" rel="noopener">
+        <span class="label">LinkedIn</span>
+        <span>/in/leonardo-dantass</span>
+      </a>
+      <a href="https://leodantas.itch.io" target="_blank" rel="noopener">
+        <span class="label">itch.io</span>
+        <span>leodantas</span>
+      </a>
+    </div>
+    <a class="about-cta" href="Contact.html">
+      <span lang="en">Contact →</span>
+      <span lang="pt">Contato →</span>
+    </a>
+    </div>
+  </section>
+
+  <!-- ───── Bio ───── -->
+  <h2 class="sec">
+    <span lang="en">Bio</span>
+    <span lang="pt">Bio</span>
+  </h2>
+  <div class="bio-prose">
+    <p>
+      <span lang="en">I've been making games professionally since 2022. I joined <b><a href="https://www.arvore.io/" target="_blank" rel="noopener">ARVORE</a></b> in 2021 as IT Tech Support and made the transition into Game Design from inside the studio, shipping multiplayer titles for Meta Quest: <b>Blumhouse Horrorverse</b> (as Lead Game/Level Designer), <b>The Office World</b>, <b>Universal Monsters Arena</b>, <b>YUKI MRcade</b>, <b>Pixel Ripped 1995: On the Road</b> and <b>Coffee Fest</b> (as Lead Game Designer). The work spans initial concepts, level design, balancing, documentation (GDD, LDD) and Live Ops.</span>
+      <span lang="pt">Faço jogos profissionalmente desde 2022. Entrei na <b><a href="https://www.arvore.io/" target="_blank" rel="noopener">ARVORE</a></b> em 2021 como IT Tech Support e fiz a transição para o Game Design de dentro do estúdio, lançando títulos multiplayer para Meta Quest: <b>Blumhouse Horrorverse</b> (como Lead Game/Level Designer), <b>The Office World</b>, <b>Universal Monsters Arena</b>, <b>YUKI MRcade</b>, <b>Pixel Ripped 1995: On the Road</b> e <b>Coffee Fest</b> (como Lead Game Designer). O trabalho cobre conceitos iniciais, level design, balanceamento, documentação (GDD, LDD) e Live Ops.</span>
+    </p>
+    <p>
+      <span lang="en">I hold a Tech Degree in Digital Games from <b>FATEC Americana</b>. During college, I researched serious games as a Scientific Initiation student and founded <em>GAMINP</em>, a study and incentive group for game development.</span>
+      <span lang="pt">Sou formado em Tecnologia em Jogos Digitais pela <b>FATEC Americana</b>. Durante a faculdade, pesquisei serious games como aluno de Iniciação Científica e fundei o <em>GAMINP</em>, um grupo de estudo e incentivo ao desenvolvimento de jogos.</span>
+    </p>
+    <p>
+      <span lang="en">I love game jams (most of my personal projects were born in one) and I'm always learning: game and level design, UI tech art, production and beyond. I'm based in <b>São Paulo, Brazil</b> and work in English and Portuguese. Off the clock, you'll usually find me playing games, going out to eat with friends, reading or watching series.</span>
+      <span lang="pt">Adoro game jams (a maioria dos meus projetos pessoais nasceu em uma) e estou sempre aprendendo: game e level design, UI tech art, produção e além. Moro em <b>São Paulo</b> e trabalho em inglês e português. Fora do expediente, é provável que eu esteja jogando, comendo fora com os amigos, lendo ou maratonando séries.</span>
+    </p>
+  </div>
+
+  <!-- ───── Timeline (work only) ───── -->
+  <h2 class="sec">
+    <span lang="en">Timeline</span>
+    <span lang="pt">Linha do tempo</span>
+  </h2>
+  <div class="timeline">
+
+    <div class="tl-item live">
+      <span class="yr"><span lang="en">Sep 2025 – now</span><span lang="pt">set 2025 – hoje</span></span>
+      <h3>
+        <span><span lang="en">Game Designer</span><span lang="pt">Game Designer</span></span>
+        <a class="at" href="https://www.arvore.io/" target="_blank" rel="noopener">@ ARVORE</a>
+      </h3>
+      <p>
+        <span lang="en">Development and Live Ops of multiplayer UGC games (Horizon Worlds) and immersive VR/MR experiences, working closely with art, engineering and production teams.</span>
+        <span lang="pt">Desenvolvimento e Live Ops de jogos multiplayer UGC (Horizon Worlds) e experiências imersivas VR/MR, atuando de forma colaborativa com as equipes de arte, engenharia e produção.</span>
+      </p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr"><span lang="en">Mar 2023 – Aug 2025</span><span lang="pt">mar 2023 – ago 2025</span></span>
+      <h3>
+        <span><span lang="en">Jr Game Designer</span><span lang="pt">Jr Game Designer</span></span>
+        <a class="at" href="https://www.arvore.io/" target="_blank" rel="noopener">@ ARVORE</a>
+      </h3>
+      <p>
+        <span lang="en">Shipped and supported <b>Blumhouse Horrorverse</b>, <b>The Office World</b>, <b>Universal Monsters Arena</b>, <b>YUKI MRcade</b> and <b>Coffee Fest</b>: from combat features and level design to playtests and Live Ops.</span>
+        <span lang="pt">Lancei e dei suporte a <b>Blumhouse Horrorverse</b>, <b>The Office World</b>, <b>Universal Monsters Arena</b>, <b>YUKI MRcade</b> e <b>Coffee Fest</b>: de features de combate e level design a playtests e Live Ops.</span>
+      </p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr"><span lang="en">Apr 2021 – Feb 2023</span><span lang="pt">abr 2021 – fev 2023</span></span>
+      <h3>
+        <span><span lang="en">IT Tech Support</span><span lang="pt">IT Tech Support</span></span>
+        <a class="at" href="https://www.arvore.io/" target="_blank" rel="noopener">@ ARVORE</a>
+      </h3>
+      <p>
+        <span lang="en">Kept the studio running while making my transition into design, taking my first design steps on <b>Pixel Ripped 1995: On the Road</b>.</span>
+        <span lang="pt">Mantive o estúdio rodando enquanto fazia minha transição para o design, dando meus primeiros passos de design em <b>Pixel Ripped 1995: On the Road</b>.</span>
+      </p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr"><span lang="en">Jan 2019 – Apr 2021</span><span lang="pt">jan 2019 – abr 2021</span></span>
+      <h3>
+        <span><span lang="en">IT Analyst</span><span lang="pt">Analista de TI</span></span>
+        <span class="at">@ KaBuM!</span>
+      </h3>
+      <p>
+        <span lang="en">Hardware, networking and internal support at one of Brazil's largest tech e-commerce companies.</span>
+        <span lang="pt">Hardware, redes e suporte interno em um dos maiores e-commerces de tecnologia do Brasil.</span>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- ───── Education ───── -->
+  <h2 class="sec">
+    <span lang="en">Education</span>
+    <span lang="pt">Educação</span>
+  </h2>
+  <div class="edu-list">
+
+    <div class="edu-item">
+      <span class="edu-school">FATEC Americana</span>
+      <span class="edu-yr">2017 – 2020</span>
+      <span class="edu-degree">
+        <span lang="en">Tech Degree in Digital Games · Scientific Initiation on serious games · founder of GAMINP</span>
+        <span lang="pt">Tecnólogo em Jogos Digitais · Iniciação Científica em serious games · fundador do GAMINP</span>
+      </span>
+    </div>
+
+    <div class="edu-item">
+      <span class="edu-school">ETEC</span>
+      <span class="edu-yr">2014 – 2016</span>
+      <span class="edu-degree">
+        <span lang="en">Secondary Technical Education in IT</span>
+        <span lang="pt">Ensino Técnico em Informática</span>
+      </span>
+    </div>
+
+  </div>
+
+  <!-- ───── Skills (two columns) ───── -->
+  <h2 class="sec">
+    <span lang="en">Skills</span>
+    <span lang="pt">Skills</span>
+  </h2>
+  <div class="skills-cols">
+    <div class="skills-col">
+      <h3>
+        <span lang="en">Design Skills</span>
+        <span lang="pt">Design</span>
+      </h3>
+      <ul>
+        <li><span lang="en">Systems Design</span><span lang="pt">Systems Design</span></li>
+        <li><span lang="en">Level Design</span><span lang="pt">Level Design</span></li>
+        <li><span lang="en">Multiplayer &amp; Live Ops</span><span lang="pt">Multiplayer &amp; Live Ops</span></li>
+        <li><span lang="en">UX: personas, playtests &amp; flows</span><span lang="pt">UX: personas, playtests e fluxos</span></li>
+        <li><span lang="en">VR / MR / UGC experience design</span><span lang="pt">Design de experiência VR / MR / UGC</span></li>
+      </ul>
+    </div>
+    <div class="skills-col">
+      <h3>
+        <span lang="en">Technical Skills</span>
+        <span lang="pt">Skills Técnicas</span>
+      </h3>
+      <ul>
+        <li><span lang="en">Unity (Technical Design)</span><span lang="pt">Unity (Technical Design)</span></li>
+        <li><span lang="en">Meta Horizon Worlds (UGC)</span><span lang="pt">Meta Horizon Worlds (UGC)</span></li>
+        <li><span lang="en">UI Tech Art</span><span lang="pt">UI Tech Art</span></li>
+        <li><span lang="en">AI-assisted prototyping</span><span lang="pt">Prototipagem assistida por IA</span></li>
+        <li><span lang="en">Documentation: GDD, LDD, Miro</span><span lang="pt">Documentação: GDD, LDD, Miro</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ───── Talks & Writing ─────
+       Lista vazia de propósito: popule pelo Editor
+       (About.html → Talks & Writing → + Adicionar talk/post). -->
+  <h2 class="sec">
+    <span lang="en">Talks &amp; Presentations</span>
+    <span lang="pt">Palestras &amp; Apresentações</span>
+  </h2>
+  <div class="talks-list">
+
+  </div>
+
+  <footer class="foot">
+    <span>© Leonardo Dantas, 2026</span>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/leonardo-dantass/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://leodantas.itch.io" target="_blank" rel="noopener">itch.io</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.documentElement.setAttribute('data-lang', 'en');
+  document.getElementById('langBtn').addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-lang');
+    const next = cur === 'en' ? 'pt' : 'en';
+    document.documentElement.setAttribute('data-lang', next);
+    document.title = next === 'en' ? 'About — Leonardo Dantas' : 'Sobre — Leonardo Dantas';
+  });
+
+  // ─── Scroll-reveal das seções ───
+  // Mesmas regras do index: classes só via JS (sem JS nada some), observer
+  // descartado após cada reveal, stagger de 70ms, limpeza do estado no fim.
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
+    const revealables = document.querySelectorAll('h2.sec, .bio-prose p, .tl-item, .edu-item, .skills-col, .talk');
+    revealables.forEach(el => el.classList.add('reveal-init'));
+    const io = new IntersectionObserver((entries) => {
+      entries.filter(en => en.isIntersecting).forEach((en, k) => {
+        const el = en.target;
+        const delay = Math.min(k * 70, 350);
+        el.style.transitionDelay = delay + 'ms';
+        el.classList.add('reveal-in');
+        io.unobserve(el);
+        setTimeout(() => {
+          el.classList.remove('reveal-init', 'reveal-in');
+          el.style.transitionDelay = '';
+        }, 600 + delay);
+      });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+    revealables.forEach(el => io.observe(el));
+  }
+</script>
+
+</body>
+</html>

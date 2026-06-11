@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leonardo Dantas — Game Designer</title>
+<meta name="description" content="Leonardo Dantas — Game Designer creating games across VR, MR, UGC and Mobile. Blumhouse Horrorverse, The Office World, Universal Monsters Arena and more.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Leonardo Dantas — Game Designer">
+<meta property="og:description" content="Game Designer creating games across VR, MR, UGC and Mobile. XR titles for Meta Quest at ARVORE.">
+<!-- Quando o site tiver domínio, descomente e troque pela URL absoluta de uma imagem 1200x630: -->
+<!-- <meta property="og:image" content="https://SEU-DOMINIO/images/og-cover.jpg"> -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23100a18'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23b780ff' text-anchor='middle' letter-spacing='-1'%3ELD%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #100a18;
+    --bg-2: #18112a;
+    --ink: #ece6ff;
+    --dim: #9890b0;
+    --quiet: #6c6480;
+    --accent: #b780ff;
+    --accent-soft: rgba(183,128,255,0.14);
+    --rule: rgba(255,255,255,0.07);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(183,128,255,0.5); }
+  a:hover { border-bottom-style: solid; }
+
+  html { scrollbar-color: rgba(183,128,255,0.35) var(--bg); scrollbar-width: thin; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(183,128,255,0.22);
+    border: 2px solid var(--bg);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(183,128,255,0.45); }
+  ::-webkit-scrollbar-corner { background: var(--bg); }
+
+  html[data-lang="en"] [lang="pt"] { display: none; }
+  html[data-lang="pt"] [lang="en"] { display: none; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  .top {
+    padding: 18px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px;
+  }
+  .top .home { color: var(--ink); border: none; font-weight: 600; letter-spacing: -0.01em; }
+  .top .top-nav {
+    margin-left: auto; margin-right: 18px;
+    display: flex; gap: 20px;
+  }
+  .top .top-nav a {
+    color: var(--dim); border: none;
+    font-size: 13px; font-weight: 500;
+    transition: color 140ms ease;
+  }
+  .top .top-nav a:hover { color: var(--accent); }
+  .top .lang {
+    background: transparent; border: 1px solid var(--rule); cursor: pointer;
+    color: var(--dim); font-family: inherit; font-size: 11.5px;
+    padding: 5px 11px; border-radius: 999px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .top .lang:hover { color: var(--accent); border-color: rgba(183,128,255,0.4); }
+
+  .hero { padding: 80px 0 70px; text-align: center; position: relative; }
+  /* Glow sutil atrás do nome — dá presença sem mudar a estrutura */
+  .hero::before {
+    content: ''; position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 640px; height: 420px; max-width: 100vw;
+    background: radial-gradient(ellipse, rgba(183,128,255,0.13) 0%, transparent 65%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero h1 { font-size: 56px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
+  .hero .role { margin-top: 14px; font-size: 18px; color: var(--accent); font-weight: 500; }
+  .hero .bio { margin: 22px auto 0; font-size: 15.5px; color: var(--dim); line-height: 1.7; max-width: 520px; }
+  .hero .bio em { color: var(--ink); font-style: normal; font-weight: 500; }
+  .hero .cta-row {
+    margin-top: 28px;
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  }
+  .hero .cta {
+    display: inline-block;
+    padding: 11px 24px; border-radius: 999px;
+    background: var(--accent); color: #100a18;
+    font-size: 13.5px; font-weight: 600; cursor: pointer;
+    border: 1px solid var(--accent); font-family: inherit; text-decoration: none;
+    transition: opacity 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
+  }
+  .hero .cta:hover { opacity: 0.9; }
+  .hero .cta.secondary {
+    background: transparent; color: var(--accent);
+    border: 1px solid rgba(183,128,255,0.4);
+  }
+  .hero .cta.secondary:hover {
+    opacity: 1; background: var(--accent-soft);
+    border-color: var(--accent); color: var(--ink);
+  }
+  .now-block {
+    margin-top: 36px;
+    padding: 4px 0 4px 14px;
+    border-left: 2px solid var(--accent);
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--dim);
+    max-width: 520px; margin-left: auto; margin-right: auto; text-align: left;
+  }
+  .now-block b { color: var(--ink); font-weight: 600; }
+  .now-block .live {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: #6fff9a; margin-right: 8px; vertical-align: middle;
+    box-shadow: 0 0 8px rgba(111,255,154,0.55);
+    animation: live-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes live-pulse {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.15); }
+  }
+
+  h2.sec {
+    font-size: 17px; font-weight: 700;
+    margin: 44px 0 18px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  h2.sec .count {
+    margin-left: auto; font-weight: 400; font-size: 12px;
+    color: var(--quiet); letter-spacing: 0.04em;
+  }
+
+  .proj-list { display: flex; flex-direction: column; }
+  .proj-list.compact .proj { grid-template-columns: 120px 1fr; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
+  .proj-list.compact .proj h3 { font-size: 15px; }
+  .proj-list.compact .proj .desc { font-size: 12.5px; margin-top: 4px; }
+  .proj-list.compact .proj .meta { font-size: 11.5px; margin-top: 4px; }
+  .proj-list.compact .proj .where { font-size: 12px; }
+  .proj {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 22px; align-items: flex-start;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+    cursor: pointer;
+    transition: background 0.18s;
+    margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 4px;
+  }
+  .proj:first-child { border-top: none; }
+  .proj:hover { background: rgba(183,128,255,0.05); }
+  .proj-img {
+    aspect-ratio: 16/10; position: relative; overflow: hidden;
+    border-radius: 4px; background: linear-gradient(135deg, #1f1530, #3a2056);
+  }
+  .proj-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 8px);
+  }
+  .proj-img .ph {
+    position: absolute; bottom: 6px; left: 8px;
+    font-size: 9px; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.5);
+  }
+  .proj h3 {
+    font-size: 17px; font-weight: 600; letter-spacing: -0.01em;
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  }
+  .proj h3 .yr {
+    margin-left: auto; font-weight: 400; font-size: 12px;
+    color: var(--quiet); letter-spacing: 0.04em;
+  }
+  .proj .where { color: var(--accent); font-weight: 500; font-size: 13px; margin-top: 2px; }
+  /* Coluna de texto vira flex: título no topo, meta SEMPRE no rodapé,
+     independente do tamanho da descrição */
+  .proj > div:not(.proj-img) {
+    display: flex; flex-direction: column;
+    min-width: 0; align-self: stretch;
+  }
+  .proj .desc {
+    margin-top: 6px; color: var(--dim); font-size: 13.5px; line-height: 1.6;
+    /* Vitrine mostra até 3 linhas com "…"; o texto completo vive no modal */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .proj .meta { margin-top: auto; padding-top: 10px; font-size: 12px; color: var(--quiet); letter-spacing: 0.02em; }
+  .proj .meta b { color: var(--ink); font-weight: 500; }
+
+  @media (max-width: 560px) {
+    .proj { grid-template-columns: 1fr; gap: 14px; }
+    .proj-list.compact .proj { grid-template-columns: 1fr; gap: 12px; }
+    .proj-img { max-width: 320px; }
+  }
+  @media (max-width: 480px) {
+    .hero { padding: 56px 0 48px; }
+    .hero h1 { font-size: 40px; }
+    .hero .role { font-size: 16px; }
+  }
+
+  .also-list { display: flex; flex-direction: column; }
+  .also {
+    padding: 14px 12px;
+    margin: 0 -12px;
+    border-top: 1px solid var(--rule);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+    align-items: baseline;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
+    transition: background 140ms ease;
+  }
+  .also:hover { background: var(--accent-soft); }
+  .also:first-child { border-top: none; }
+  .also h3 {
+    font-size: 16px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--ink);
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: color 140ms ease;
+  }
+  .also h3 .ext {
+    font-size: 12px; font-weight: 400;
+    color: var(--quiet);
+    transition: color 140ms ease, transform 140ms ease;
+  }
+  .also:hover h3 { color: var(--accent); }
+  .also:hover h3 .ext { color: var(--accent); transform: translate(2px, -2px); }
+  .also .yr {
+    font-size: 12px; color: var(--quiet); letter-spacing: 0.04em;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    white-space: nowrap;
+  }
+  .also .where {
+    color: var(--accent); font-weight: 500; font-size: 13px;
+    grid-column: 1 / -1;
+  }
+  .also .desc {
+    color: var(--dim); font-size: 13px; line-height: 1.6;
+    grid-column: 1 / -1;
+  }
+  .also .meta {
+    font-size: 11.5px; color: var(--quiet); letter-spacing: 0.02em;
+    grid-column: 1 / -1;
+  }
+  .also .meta b { color: var(--ink); font-weight: 500; }
+  @media (max-width: 480px) {
+    .also { grid-template-columns: 1fr; }
+    .also .yr { grid-column: 1 / -1; order: -1; }
+  }
+
+  .slash-list { columns: 2; column-gap: 32px; font-size: 13.5px; line-height: 1.85; }
+  @media (max-width: 600px) { .slash-list { columns: 1; } }
+  .slash-list p { break-inside: avoid; color: var(--dim); }
+  .slash-list b { color: var(--ink); font-weight: 600; }
+  .slash-list .yr { color: var(--quiet); font-size: 12px; }
+
+  .skills-grid { display: flex; flex-direction: column; font-size: 14px; }
+  .skill-row {
+    display: grid; grid-template-columns: 110px 1fr;
+    gap: 24px; align-items: flex-start;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .skill-row:first-child { border-top: none; }
+  .skill-row h4 {
+    font-size: 13px; color: var(--accent); font-weight: 600;
+    letter-spacing: 0.02em; padding-top: 2px;
+  }
+  .skill-row p { color: var(--dim); line-height: 1.7; }
+  .skill-row p b { color: var(--ink); font-weight: 500; }
+  @media (max-width: 600px) { .skill-row { grid-template-columns: 1fr; gap: 4px; } }
+
+  .foot {
+    margin-top: 56px; padding: 24px 0 32px;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--quiet); flex-wrap: wrap; gap: 12px;
+  }
+  .foot .links { display: flex; gap: 14px; flex-wrap: wrap; }
+  .foot .links a { color: var(--dim); border: none; }
+  .foot .links a:hover { color: var(--accent); }
+
+  .modal-bg {
+    position: fixed; inset: 0; background: rgba(8,5,16,0.85);
+    backdrop-filter: blur(6px); z-index: 50;
+    display: none; align-items: center; justify-content: center; padding: 24px;
+  }
+  .modal-bg.open { display: flex; }
+  .modal {
+    background: var(--bg-2); border: 1px solid rgba(183,128,255,0.18);
+    max-width: 1040px; width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+    padding: 44px 48px 36px; position: relative; border-radius: 6px;
+    text-align: center;
+    display: flex; flex-direction: column;
+  }
+  @media (min-width: 821px) {
+    .modal { height: 85vh; max-height: 85vh; }
+  }
+  .modal h3 {
+    font-size: 30px; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--ink); flex-shrink: 0;
+  }
+  .modal-body {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 28px;
+    text-align: left;
+  }
+  .modal-col-media { min-width: 0; }
+  .modal-col-text { min-width: 0; }
+  .modal-footer { flex-shrink: 0; }
+  @media (min-width: 821px) {
+    .modal { overflow: hidden; }
+    .modal-body {
+      overflow: hidden;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+    .modal-col-text {
+      overflow-y: auto;
+      min-height: 0;
+      padding-right: 10px;
+      padding-bottom: 24px;
+    }
+  }
+  @media (max-width: 820px) {
+    .modal { padding: 40px 32px 32px; }
+    .modal-body { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  .modal-gallery { margin: 0; }
+  .modal-hero {
+    aspect-ratio: 16/9; width: 100%;
+    background: linear-gradient(135deg, #1a1228, #2a1845);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 8px);
+    pointer-events: none;
+  }
+  .modal-hero.has-media::before { display: none; }
+  .modal-hero .hero-media {
+    position: absolute; inset: 0; z-index: 0;
+    width: 100%; height: 100%;
+    border: none; background: #000;
+    display: block;
+  }
+  img.hero-media { object-fit: contain; }
+  .modal-hero.has-media .hero-label { display: none; }
+  .modal-hero .hero-label {
+    position: relative; z-index: 1; color: var(--quiet); font-size: 11px;
+    letter-spacing: 0.18em; text-align: center;
+  }
+  .modal-hero .hero-label .kind {
+    display: block; margin-bottom: 6px; color: var(--accent); font-weight: 600;
+  }
+  .modal-hero .hero-counter {
+    position: absolute; top: 10px; right: 12px; z-index: 2;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 11px; letter-spacing: 0.08em;
+    color: var(--ink);
+    background: rgba(8,5,16,0.6); backdrop-filter: blur(4px);
+    padding: 4px 8px; border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+  }
+  .modal-hero .hero-fs {
+    position: absolute; top: 10px; left: 12px; z-index: 2;
+    background: rgba(8,5,16,0.6); backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--ink);
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border-radius: 3px;
+    transition: background 140ms, border-color 140ms;
+  }
+  .modal-hero .hero-fs:hover {
+    background: rgba(183,128,255,0.3);
+    border-color: rgba(183,128,255,0.5);
+  }
+  .modal-hero .hero-fs svg { width: 13px; height: 13px; display: block; }
+  .modal-hero .hero-fs .ic-exit { display: none; }
+
+  .modal-gallery.is-fullscreen {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(8,5,16,0.96);
+    backdrop-filter: blur(8px);
+    margin: 0;
+    padding: 56px 48px 24px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 16px;
+  }
+  .modal-gallery.is-fullscreen .modal-hero {
+    width: 100%;
+    aspect-ratio: 16/9;
+    max-width: calc((100vh - 200px) * 16 / 9);
+    flex: 0 1 auto;
+  }
+  .modal-gallery.is-fullscreen .modal-thumbs {
+    margin-top: 0;
+    justify-content: center;
+    max-width: 100%;
+    overflow-x: auto;
+    flex-shrink: 0;
+  }
+  .modal-gallery.is-fullscreen .modal-thumbs.is-scrollable {
+    mask-image: linear-gradient(to right, transparent 0, #000 18px, #000 calc(100% - 18px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 18px, #000 calc(100% - 18px), transparent 100%);
+  }
+  .modal-gallery.is-fullscreen .modal-thumb { width: 100px; }
+  .modal-gallery.is-fullscreen .hero-fs .ic-enter { display: none; }
+  .modal-gallery.is-fullscreen .hero-fs .ic-exit { display: block; }
+  .modal-gallery.is-fullscreen .hero-fs {
+    top: 16px; left: 20px;
+    width: 32px; height: 32px;
+  }
+  .modal-gallery.is-fullscreen .hero-fs svg { width: 15px; height: 15px; }
+  .modal-gallery.is-fullscreen .hero-counter {
+    top: 16px; right: 20px;
+    font-size: 12px; padding: 6px 10px;
+  }
+  .modal-gallery.is-fullscreen .hero-nav {
+    width: 48px; height: 48px;
+  }
+  .modal-gallery.is-fullscreen .hero-nav.prev { left: 24px; }
+  .modal-gallery.is-fullscreen .hero-nav.next { right: 24px; }
+  .modal-hero .hero-nav {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(8,5,16,0.55); backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--ink); font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background 140ms, border-color 140ms;
+    user-select: none;
+  }
+  .modal-hero .hero-nav:hover {
+    background: rgba(183,128,255,0.25);
+    border-color: rgba(183,128,255,0.5);
+  }
+  .modal-hero .hero-nav.prev { left: 10px; }
+  .modal-hero .hero-nav.next { right: 10px; }
+  .modal-hero .hero-nav[hidden] { display: none; }
+
+  .modal-thumbs {
+    margin-top: 10px;
+    display: flex; gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 18px;
+    scrollbar-width: thin;
+    scroll-padding-inline: 18px;
+  }
+  .modal-thumbs.is-scrollable {
+    mask-image: linear-gradient(to right, transparent 0, #000 18px, #000 calc(100% - 18px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 18px, #000 calc(100% - 18px), transparent 100%);
+  }
+  .modal-thumbs::-webkit-scrollbar { height: 4px; }
+  .modal-thumb {
+    flex: 0 0 auto;
+    width: 84px; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #1a1228, #2a1845);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px; position: relative; overflow: hidden;
+    cursor: pointer; padding: 0;
+    transition: border-color 140ms, transform 140ms;
+  }
+  .modal-thumb::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 6px);
+  }
+  .modal-thumb:hover { border-color: rgba(183,128,255,0.4); }
+  .modal-thumb.is-active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px rgba(183,128,255,0.4);
+  }
+  .modal-thumb .thumb-play {
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink); opacity: 0.85;
+  }
+  .modal-thumb .thumb-play svg { width: 16px; height: 16px; }
+  .modal-thumb .thumb-kind {
+    position: absolute; bottom: 3px; left: 4px; z-index: 1;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 8.5px; letter-spacing: 0.1em;
+    color: var(--ink); opacity: 0.7;
+    text-transform: uppercase;
+  }
+  @media (max-width: 560px) {
+    .modal-thumb { width: 64px; }
+  }
+  .modal .role-h {
+    margin-top: 0; font-size: 18px; font-weight: 700;
+    color: var(--accent); letter-spacing: 0.02em; text-align: left;
+    text-transform: uppercase;
+  }
+  .modal .desc {
+    margin-top: 12px; color: var(--ink); font-size: 14.5px; line-height: 1.7;
+    text-align: left;
+  }
+  .modal ul {
+    margin-top: 12px; padding: 0; list-style: none; text-align: left;
+  }
+  .modal ul li {
+    color: var(--ink); font-size: 14.5px; line-height: 1.7;
+    padding: 4px 0 4px 18px; position: relative;
+  }
+  .modal ul li::before {
+    content: '•'; position: absolute; left: 2px; color: var(--accent);
+  }
+  .modal .platforms-h {
+    margin-top: 28px; font-size: 13px; font-weight: 600;
+    color: var(--quiet); text-align: center;
+    text-transform: uppercase; letter-spacing: 0.14em;
+  }
+  .modal .platforms {
+    margin-top: 12px; display: flex; justify-content: center; gap: 28px;
+    color: var(--dim); font-size: 13px;
+    flex-wrap: wrap;
+  }
+  .modal .plat-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--dim);
+  }
+  .modal .plat-chip svg {
+    width: 18px; height: 18px;
+    color: var(--ink); opacity: 0.85;
+    flex-shrink: 0;
+  }
+  .modal-close {
+    position: absolute; top: 12px; right: 14px;
+    background: none; border: none; color: var(--dim);
+    font-size: 22px; cursor: pointer; line-height: 1;
+  }
+  .modal-close:hover { color: var(--accent); }
+  @media (max-width: 560px) {
+    .modal { padding: 36px 22px 28px; }
+    .modal h3 { font-size: 24px; }
+    .modal .role-h { font-size: 15px; }
+    .modal .platforms-h { font-size: 12px; margin-top: 24px; }
+  }
+
+  /* Ficha técnica (engine · duração · time) abaixo do role no modal */
+  .modal .facts {
+    margin-top: 8px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 11.5px;
+    color: var(--quiet);
+    letter-spacing: 0.05em;
+  }
+
+  /* Botão "Jogar / Ver na loja" no rodapé do modal */
+  .modal-actions { margin-top: 22px; text-align: center; }
+  .modal-play {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 26px; border-radius: 999px;
+    background: var(--accent); color: #100a18;
+    font-size: 13.5px; font-weight: 600;
+    text-decoration: none; border: none;
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+  .modal-play:hover { opacity: 0.9; transform: translateY(-1px); border-bottom: none; color: #100a18; }
+  /* Jogo fora do ar — vira um selo discreto, não clicável */
+  .modal-play.is-offline {
+    background: transparent;
+    color: var(--quiet);
+    border: 1px dashed rgba(255,255,255,0.18);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .proj-detail { display: none; }
+
+  /* ───── Show more (progressive disclosure) ───── */
+  .show-more-row {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+  }
+  .show-more-btn {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--dim);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 9px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 140ms, color 140ms, border-color 140ms;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .show-more-btn:hover {
+    border-color: rgba(183,128,255,0.5);
+    color: var(--ink);
+    background: rgba(183,128,255,0.05);
+  }
+  .show-more-btn .count {
+    color: var(--quiet);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 11px;
+  }
+  .show-more-btn:hover .count { color: var(--accent); }
+  .proj.is-collapsed { display: none; }
+
+  /* ───── Tabs (Professional / Personal / Resume) ───── */
+  .tabs {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    justify-content: center;
+    margin: 56px 0 8px;
+    padding-bottom: 4px;
+  }
+  .tab {
+    background: rgba(255,255,255,0.03);
+    color: var(--dim);
+    border: 1px solid var(--rule);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+  .tab:hover {
+    color: var(--ink);
+    border-color: rgba(183,128,255,0.45);
+    background: rgba(183,128,255,0.06);
+  }
+  .tab.is-active {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .tab.is-active:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .tab-panel { display: none; }
+  .tab-panel.is-active { display: block; }
+  /* The first h2 inside a panel has no top margin to avoid double-space below the tabs */
+  .tab-panel > h2.sec:first-child { margin-top: 28px; }
+  @media (max-width: 480px) {
+    .tabs { gap: 6px; }
+    .tab { padding: 9px 14px; font-size: 12px; }
+  }
+
+  /* ───── Juice: micro-animações ─────
+     Só transform/opacity (GPU, sem reflow). Quem usa "reduzir movimento"
+     no sistema vê tudo estático — por isso o bloco inteiro fica nesta media query. */
+  @media (prefers-reduced-motion: no-preference) {
+
+    /* B · Entrada do hero em cascata (uma vez, no load) */
+    .hero h1, .hero .role, .hero .bio, .hero .cta-row {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise-in 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero .role { animation-delay: 120ms; }
+    .hero .bio { animation-delay: 240ms; }
+    .hero .cta-row { animation-delay: 360ms; }
+    @keyframes rise-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* A · Scroll-reveal (classes aplicadas por JS; sem JS, nada fica escondido) */
+    .reveal-init { opacity: 0; transform: translateY(16px); }
+    .reveal-in {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* C · Hover dos cards: lift + zoom sutil na capa */
+    .proj { transition: background 0.18s, transform 0.18s ease; }
+    .proj:hover { transform: translateY(-2px); }
+    .proj-img img { transition: transform 320ms ease; }
+    .proj:hover .proj-img img { transform: scale(1.03); }
+
+    /* D · Entrada do modal */
+    .modal-bg.open .modal { animation: modal-in 200ms cubic-bezier(0.22, 1, 0.36, 1); }
+    @keyframes modal-in {
+      from { opacity: 0; transform: scale(0.97) translateY(6px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* E · Glow respirando (eco da bolinha "live") */
+    .hero::before { animation: glow-breathe 8s ease-in-out infinite; }
+    @keyframes glow-breathe {
+      0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+      50%      { opacity: 1;   transform: translateX(-50%) scale(1.06); }
+    }
+
+    /* F · Fade ao trocar de aba */
+    .tab-panel.is-active { animation: panel-in 240ms ease; }
+    @keyframes panel-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  }
+</style>
+<style id="hide-cover-labels">.proj-img .ph{display:none!important;}</style></head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <a href="#" class="home">Portfolio</a>
+    <nav class="top-nav">
+      <a href="About.html">
+        <span lang="en">About</span>
+        <span lang="pt">Sobre</span>
+      </a>
+      <a href="Contact.html">
+        <span lang="en">Contact</span>
+        <span lang="pt">Contato</span>
+      </a>
+    </nav>
+    <button class="lang" id="langBtn" aria-label="Switch language">
+      <span lang="en">Switch to PT</span>
+      <span lang="pt">Mudar para EN</span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <h1>Leonardo Dantas</h1>
+    <div class="role">Game Designer</div>
+    <p class="bio">
+      <span lang="en"><em>Game Designer</em> creating games across <em>VR, MR, UGC and Mobile</em>, where gameplay, systems and setting work as one.</span>
+      <span lang="pt"><em>Game Designer</em> criando jogos em <em>VR, MR, UGC e mobile</em>, em que gameplay, sistemas e ambientação funcionam como uma coisa só.</span>
+    </p>
+    <div class="cta-row">
+      <a class="cta" href="About.html">
+        <span lang="en">About me →</span>
+        <span lang="pt">Sobre mim →</span>
+      </a>
+      <a class="cta secondary" href="Contact.html">
+        <span lang="en">Contact →</span>
+        <span lang="pt">Contato →</span>
+      </a>
+    </div>
+    <div class="now-block" style="display: none;">
+      <span class="live"></span>
+      <span lang="en"><b>Right now:</b> designing and shipping live updates at ARVORE.</span>
+      <span lang="pt"><b>Agora:</b> desenhando e lançando updates live na ARVORE.</span>
+    </div>
+  </section>
+
+  <!-- ───── TABS ───── -->
+  <div class="tabs" role="tablist" aria-label="Portfolio sections">
+    <button class="tab is-active" role="tab" data-tab="professional" aria-selected="true">
+      <span lang="en">Professional Projects</span>
+      <span lang="pt">Projetos Profissionais</span>
+    </button>
+    <button class="tab" role="tab" data-tab="personal" aria-selected="false">
+      <span lang="en">Personal Projects</span>
+      <span lang="pt">Projetos Pessoais</span>
+    </button>
+  </div>
+
+  <!-- ───── PROFESSIONAL PANEL ───── -->
+  <div class="tab-panel is-active" data-panel="professional" role="tabpanel">
+
+  <h2 class="sec">
+    <span lang="en">Professional projects</span>
+    <span lang="pt">Projetos profissionais</span>
+    <span class="count" data-count-for="pro"></span>
+  </h2>
+  <div class="proj-list" id="proList">
+
+    <article class="proj">
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/blumhouse-horrorverse-cover.jpg"><span class="ph">HORRORVERSE</span></div>
+      <div>
+        <h3>Blumhouse Horrorverse <span class="yr">2025</span></h3>
+        <div class="where">@ ARVORE</div>
+        <div class="desc">
+          <span lang="en">Blumhouse Horrorverse is an asymmetric game for up to 8 players, inspired by Blumhouse films. Players take on the roles of Victims or the Villain. As a Victim, your goal is to escape before the Villain catches you. As the Villain, you must hunt down and eliminate the victims. After the lockdown ends, explore themed activities like challenges and mini-games.</span>
+          <span lang="pt">Blumhouse Horrorverse é um jogo assimétrico para até 8 jogadores, inspirado nos filmes da Blumhouse. Os jogadores assumem os papéis de Vítimas ou do Vilão. Como Vítima, seu objetivo é escapar antes que o Vilão te capture. Como Vilão, você deve caçar e eliminar as vítimas. Depois que o lockdown termina, explore atividades temáticas como desafios e minigames.</span>
+        </div>
+        <div class="meta">Meta Quest · Asymmetric Gameplay (1–8 players) · VR/Mobile/UGC</div>
+      </div>
+      <template class="proj-detail">
+        <div data-role="">
+          <span lang="en">Lead Game Designer / Level Designer</span>
+          <span lang="pt">Lead Game Designer / Level Designer</span>
+        </div>
+        <div data-facts="">
+          <span lang="en">Meta Horizon Worlds · Live release May 2025 · Live Ops</span>
+          <span lang="pt">Meta Horizon Worlds · Lançado em mai 2025 · Live Ops</span>
+        </div>
+        <div data-desc="">
+          <span lang="en">My contribution played an important role in guiding the project from concept to live release. I worked closely with designers, artists, and other team members to ensure the vision was clear and achievable. Through collaboration, we refined gameplay, optimized level flow, and responded to player feedback during Live Ops. This teamwork was key to maintaining consistency and delivering a polished, engaging experience for players.</span>
+          <span lang="pt">Minha contribuição teve um papel importante em guiar o projeto do conceito ao lançamento live. Trabalhei lado a lado com designers, artistas e outros membros do time para garantir que a visão fosse clara e alcançável. Com essa colaboração, refinamos o gameplay, otimizamos o fluxo dos níveis e respondemos ao feedback dos jogadores durante o Live Ops. Esse trabalho em equipe foi essencial para manter a consistência e entregar uma experiência polida e envolvente para os jogadores.</span>
+        </div>
+        <ul data-bullets="">
+          <li>
+            <span lang="en">Created the initial game design that was approved in the proposal and served as the foundation for the project</span>
+            <span lang="pt">Criei o game design inicial que foi aprovado na proposta e serviu de fundação para o projeto</span>
+          </li>
+          <li>
+            <span lang="en">Collaborated with the art team to design and refine the Level Design of the house after the blockout phase</span>
+            <span lang="pt">Colaborei com o time de arte para desenhar e refinar o Level Design da casa após a fase de blockout</span>
+          </li>
+          <li>
+            <span lang="en">Conducted extensive playtests and worked with the team to balance gameplay, ensuring a fair and engaging experience</span>
+            <span lang="pt">Conduzi playtests extensivos e trabalhei com o time no balanceamento do gameplay, garantindo uma experiência justa e envolvente</span>
+          </li>
+          <li>
+            <span lang="en">Produced and maintained project documentation (GDD) to align the entire team on vision and features</span>
+            <span lang="pt">Produzi e mantive a documentação do projeto (GDD) para alinhar todo o time em torno da visão e das features</span>
+          </li>
+          <li>
+            <span lang="en">Supported Live Ops by collaborating with different disciplines to deliver updates, working on new modes, minigames, events, and fresh gameplay experiences</span>
+            <span lang="pt">Dei suporte ao Live Ops colaborando com diferentes disciplinas para entregar updates, trabalhando em novos modos, minigames, eventos e novas experiências de gameplay</span>
+          </li>
+        </ul>
+        <div data-platforms="">Meta Quest, Mobile, Web</div>
+        <div data-link="https://horizon.meta.com/world/632338729966053/" data-link-status="offline" data-link-en="Play it on Meta Horizon" data-link-pt="Jogar no Meta Horizon"></div>
+        <div data-media="">
+          <div data-kind="video" data-label="Reveal trailer" data-src="https://www.youtube.com/watch?v=bJniOsY9kAY"></div>
+          <div data-kind="image" data-label="Safe-room beat"></div><div data-kind="image" data-label="Hunter POV" data-src="images/hunter-pov.jpg"></div>
+          
+          <div data-kind="video" data-label="8-player chase" data-src="https://youtu.be/GLKt6EpByJc?si=Ey3xc7aMrF94dooc"></div>
+          <div data-kind="image" data-label="Map overview"></div>
+        </div>
+      </template>
+    </article>
+
+    <article class="proj">
+      <div class="proj-img"><span class="ph">COFFEE FEST</span></div>
+      <div>
+        <h3>Coffee Fest <span class="yr">2025</span></h3>
+        <div class="where">@ ARVORE</div>
+        <div class="desc">
+          <span lang="en">Coffee Fest is a coffee-making world in Horizon Worlds: brew and customize drinks, chase high scores and please Cricríticornus, the resident critic. Live events, daily missions and magic coffees keep the world moving.</span>
+          <span lang="pt">Coffee Fest é um mundo de fazer café no Horizon Worlds: prepare e customize bebidas, busque a maior pontuação e agrade o Cricríticornus, o crítico residente. Eventos live, missões diárias e cafés mágicos mantêm o mundo em movimento.</span>
+        </div>
+        <div class="meta">Horizon Worlds · UGC · Live Ops</div>
+      </div>
+      <template class="proj-detail">
+        <div data-role="">
+          <span lang="en">Lead Game Designer</span>
+          <span lang="pt">Lead Game Designer</span>
+        </div>
+        <div data-facts="">
+          <span lang="en">Meta Horizon Worlds · UGC · Live Ops</span>
+          <span lang="pt">Meta Horizon Worlds · UGC · Live Ops</span>
+        </div>
+        <div data-desc="">
+          <span lang="en">Coffee Fest is my deepest dive into UGC Live Ops so far. I design and ship updates that keep the world fresh: seasonal events, new mechanics, monetization improvements and daily missions, all built directly in Horizon Worlds. The best part of the loop is watching playtests turn into players racing for the critic's stars: design, release, observe, adjust.</span>
+          <span lang="pt">O Coffee Fest é meu mergulho mais fundo em Live Ops de UGC até agora. Desenho e lanço updates que mantêm o mundo vivo: eventos sazonais, novas mecânicas, melhorias de monetização e missões diárias, tudo construído diretamente no Horizon Worlds. A melhor parte do loop é ver playtests virarem jogadores correndo pelas estrelas do crítico: desenhar, lançar, observar, ajustar.</span>
+        </div>
+        <ul data-bullets="">
+          <li>
+            <span lang="en">Designed the critic event, where players chase the highest score and star rating to please Cricríticornus and win him as a temporary companion</span>
+            <span lang="pt">Desenhei o evento do crítico, em que os jogadores buscam a maior pontuação e avaliação em estrelas para agradar o Cricríticornus e ganhá-lo como companion temporário</span>
+          </li>
+          <li>
+            <span lang="en">Created Jumping Clouds, turning the clouds into bounce pads that open the whole map up for exploration</span>
+            <span lang="pt">Criei as Jumping Clouds, transformando as nuvens em bounce pads que abrem o mapa inteiro para exploração</span>
+          </li>
+          <li>
+            <span lang="en">Designed Magic Coffees with unique effects, from shrinking or growing players to letting them fly</span>
+            <span lang="pt">Desenhei os Magic Coffees com efeitos únicos, de encolher ou aumentar os jogadores até fazê-los voar</span>
+          </li>
+          <li>
+            <span lang="en">Improved in-game monetization, working with bundles and daily missions directly in UGC</span>
+            <span lang="pt">Melhorei a monetização in-game, trabalhando com bundles e missões diárias diretamente no UGC</span>
+          </li>
+          <li>
+            <span lang="en">Supported event theming where every drink and ingredient gets renamed, keeping each celebration distinct</span>
+            <span lang="pt">Cuidei da tematização dos eventos, em que cada bebida e ingrediente é renomeado, mantendo cada celebração única</span>
+          </li>
+        </ul>
+        <div data-platforms="">Meta Quest, Mobile, Web</div>
+        <div data-link="https://horizon.meta.com/world/820800191123018/" data-link-en="Play it on Meta Horizon" data-link-pt="Jogar no Meta Horizon"></div>
+        <div data-media="">
+          <div data-kind="video" data-label="Trailer"></div>
+          <div data-kind="image" data-label="Gameplay"></div>
+        </div>
+      </template>
+    </article>
+
+    <article class="proj">
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/cruzcredo-cover.png"><span class="ph">CRUZCREDO</span></div>
+      <div>
+        <h3>Cruzcredo! Torne-se uma Lenda <span class="yr">TBD</span></h3>
+        <div class="where">@ Ginga Studios</div>
+        <div class="desc">
+          <span lang="en">Rise from the grave and stumble through the streets of Casca Dura, a city buzzing with mysteries, wacky gossip and some good ol' chaos thanks to the "HolyHex Curse". Flying rats, a vengeful ghost bride and, oh boy, the skinwalkers... Save Casca Dura from its doom and become a legend!</span>
+          <span lang="pt">Tire o pé da cova e saia pelas ruas de Casca Dura, uma cidadezinha cheia de mistérios e fofocas, que está ameaçada pela “Maldição dos Cruzcredos”. Combata ratos-com-asas, uma noiva fantasma vingativa, chupa-cabras insaciáveis e muito mais. Vem virar uma lenda!</span>
+        </div>
+        <div class="meta">Steam · Action/Adventure · PC</div>
+      </div>
+      <template class="proj-detail">
+        <div data-role="">
+          <span lang="en">Game Designer &amp; Co-Director</span>
+          <span lang="pt">Game Designer e Co-Diretor</span>
+        </div>
+        <div data-facts="">
+          <span lang="en">Unity · In development · Part-time</span>
+          <span lang="pt">Unity · Em desenvolvimento · Part-time</span>
+        </div>
+        <div data-desc="">
+          <span lang="en">As Game Designer and Co-Director, I own the game's design end to end, from rules and enemy balancing to mechanics and gameplay systems. I work directly in Unity, building and iterating levels, and act as the bridge between design and programming, side by side with the developer to implement and tune systems. I also collaborate closely with Direction and Production in a multidisciplinary team, and develop the pitch for stakeholders and events.</span>
+          <span lang="pt">Como Game Designer e Co-Diretor, cuido do design do jogo de ponta a ponta, das regras e balanceamento de inimigos às mecânicas e sistemas de gameplay. Trabalho diretamente na Unity, criando e iterando níveis, e atuo como ponte entre design e programação, lado a lado com o desenvolvedor para implementar e ajustar sistemas. Também colaboro de perto com Direção e Produção em uma equipe multidisciplinar, e desenvolvo o pitch para stakeholders e eventos.</span>
+        </div>
+        <ul data-bullets="">
+          <li>
+            <span lang="en">Responsible for the game's complete design: rules, enemy creation and balancing, mechanics and gameplay systems</span>
+            <span lang="pt">Responsável pelo design completo do jogo: definição de regras, criação e balanceamento de inimigos, mecânicas e sistemas de gameplay</span>
+          </li>
+          <li>
+            <span lang="en">Hands-on work in the engine (Unity), creating and iterating levels and mechanics</span>
+            <span lang="pt">Atuação direta na engine (Unity), criando e iterando níveis e mecânicas</span>
+          </li>
+          <li>
+            <span lang="en">Level &amp; Environment Design</span>
+            <span lang="pt">Level &amp; Environment Design</span>
+          </li>
+          <li>
+            <span lang="en">Bridge between design and programming, working side by side with the developer to implement and tune systems</span>
+            <span lang="pt">Ponte entre design e programação, trabalhando lado a lado com o desenvolvedor para implementar e ajustar sistemas</span>
+          </li>
+          <li>
+            <span lang="en">Developed the pitch for stakeholders and events</span>
+            <span lang="pt">Desenvolvimento de pitch para stakeholders e eventos</span>
+          </li>
+          <li>
+            <span lang="en">Close collaboration with Direction and Production as part of a multidisciplinary team</span>
+            <span lang="pt">Colaboração próxima com Direção e Produção, integrando uma equipe multidisciplinar</span>
+          </li>
+        </ul>
+        <div data-platforms="">PC, Steam</div>
+        <div data-link="https://store.steampowered.com/app/3401730/Cruzcredo_Tornese_uma_Lenda/" data-link-en="Wishlist on Steam" data-link-pt="Lista de desejos na Steam"></div>
+        <div data-media="">
+          <div data-kind="video" data-label="Teaser"></div>
+          <div data-kind="image" data-label="Key art"></div>
+          <div data-kind="image" data-label="Sketch"></div>
+          <div data-kind="image" data-label="Process board"></div>
+        </div>
+      </template>
+    </article><article class="proj">
+      <div class="proj-img"><span class="ph">MONSTERS</span></div>
+      <div>
+        <h3>Universal Monsters Arena <span class="yr">2024</span></h3>
+        <div class="where">@ ARVORE</div>
+        <div class="desc">
+          <span lang="en">Universal Monsters Arena is a team deathmatch multiplayer game where two teams compete against each other in arenas for a team-victory, becoming one of 6 iconic movie monsters.</span>
+          <span lang="pt">Universal Monsters Arena é um jogo multiplayer de team deathmatch em que dois times competem em arenas pela vitória, encarnando um de 6 monstros icônicos do cinema.</span>
+        </div>
+        <div class="meta">Meta Quest · 2–8 players · combat</div>
+      </div>
+      <template class="proj-detail">
+        <div data-role="">
+          <span lang="en">Game Designer / Level Designer</span>
+          <span lang="pt">Game Designer / Level Designer</span>
+        </div>
+        <div data-desc="">
+          <span lang="en">I contributed directly to the evolution of mechanics and player experience, taking responsibility for features such as combat systems and dynamic gameplay. Working with senior designers throughout all phases of development deepened my understanding of how design decisions shape the overall project. My contributions supported the team's goals, and the project was also an important learning experience that accelerated my growth as a designer.</span>
+          <span lang="pt">Contribuí diretamente para a evolução das mecânicas e da experiência do jogador, assumindo a responsabilidade por features como sistemas de combate e gameplay dinâmico. Trabalhar com designers sêniores em todas as fases do desenvolvimento aprofundou meu entendimento de como decisões de design moldam o projeto como um todo. Minhas contribuições apoiaram os objetivos do time, e o projeto também foi uma experiência de aprendizado importante, que acelerou meu crescimento como designer.</span>
+        </div>
+        <ul data-bullets="">
+          <li>
+            <span lang="en">Created and implemented core gameplay features, including Monsters Skills, Status effects, Levolution and Ancient Power</span>
+            <span lang="pt">Criei e implementei features centrais de gameplay, incluindo Monsters Skills, Status Effects, Levolution e Ancient Power</span>
+          </li>
+          <li>
+            <span lang="en">Worked closely with senior designers across all stages of development, from early game design to level design, refining systems and enhancing player experience</span>
+            <span lang="pt">Trabalhei lado a lado com designers sêniores em todas as etapas do desenvolvimento, do game design inicial ao level design, refinando sistemas e aprimorando a experiência do jogador</span>
+          </li>
+          <li>
+            <span lang="en">Balanced gameplay and character abilities to ensure fair, competitive and engaging matches</span>
+            <span lang="pt">Balanceei o gameplay e as habilidades dos personagens para garantir partidas justas, competitivas e envolventes</span>
+          </li>
+          <li>
+            <span lang="en">Produced and maintained detailed documentation (GDD) to keep the team aligned on systems, mechanics and design goals</span>
+            <span lang="pt">Produzi e mantive documentação detalhada (GDD) para manter o time alinhado em sistemas, mecânicas e objetivos de design</span>
+          </li>
+        </ul>
+        <div data-platforms="">Meta Quest</div>
+        <div data-link="" data-link-status="offline"></div>
+        <div data-media="">
+          <div data-kind="video" data-label="Trailer"></div>
+          <div data-kind="image" data-label="Gameplay"></div>
+        </div>
+      </template>
+    </article>
+
+    <article class="proj">
+      <div class="proj-img"><span class="ph">OFFICE</span></div>
+      <div>
+        <h3>The Office World <span class="yr">2024</span></h3>
+        <div class="where">@ ARVORE</div>
+        <div class="desc">
+          <span lang="en">Players take on unique roles within Dunder Mifflin, tackling challenges in minigames such as selling paper, wrangling cats, or hunting moles.</span>
+          <span lang="pt">Os jogadores assumem papéis únicos dentro da Dunder Mifflin, encarando desafios em minigames como vender papel, capturar gatos ou caçar toupeiras.</span>
+        </div>
+        <div class="meta">Meta Quest · 1–6 players · party</div>
+      </div>
+      <template class="proj-detail">
+        <div data-role="">
+          <span lang="en">Game Designer</span>
+          <span lang="pt">Game Designer</span>
+        </div>
+        <div data-desc="">
+          <span lang="en">The Office World needed flexible support across different areas of the project. I collaborated with both UX and Game Design teams to improve specific features and ensure smooth delivery during Live Ops. While my role was more complementary here, that flexibility let me add value where the team needed most: from achievements to UX improvements and new gameplay experiences.</span>
+          <span lang="pt">The Office World pedia um suporte flexível em diferentes áreas do projeto. Colaborei com os times de UX e Game Design para melhorar features específicas e garantir uma entrega fluida durante o Live Ops. Embora meu papel tenha sido mais complementar aqui, essa flexibilidade me permitiu agregar valor onde o time mais precisava: de conquistas a melhorias de UX e novas experiências de gameplay.</span>
+        </div>
+        <ul data-bullets="">
+          <li>
+            <span lang="en">Worked on the design and implementation of the achievements system</span>
+            <span lang="pt">Trabalhei no design e na implementação do sistema de conquistas</span>
+          </li>
+          <li>
+            <span lang="en">Supported the UX team by improving the opt-in flow through refined pop-up interactions</span>
+            <span lang="pt">Dei suporte ao time de UX melhorando o fluxo de opt-in com interações de pop-up refinadas</span>
+          </li>
+          <li>
+            <span lang="en">Assisted the Game Design team during one month of Live Ops, contributing as a level designer on a new mini-game</span>
+            <span lang="pt">Auxiliei o time de Game Design durante um mês de Live Ops, contribuindo como level designer em um novo minigame</span>
+          </li>
+        </ul>
+        <div data-platforms="">Meta Quest</div>
+        <div data-link="" data-link-status="offline"></div>
+        <div data-media="">
+          <div data-kind="video" data-label="Trailer"></div>
+          <div data-kind="image" data-label="Gameplay"></div>
+        </div>
+      </template>
+    </article>
+
+    
+
+    
+
+    
+
+    
+
+  <article class="proj">
+    <div class="proj-img"><span class="ph">YUKI</span></div>
+    <div>
+      <h3>YUKI MRcade <span class="yr">2023</span></h3>
+      <div class="where">@ ARVORE</div>
+      <div class="desc">
+        <span lang="en">YUKI is an upbeat mix of the bullet-hell and roguelike game genres in VR, set in an incredible anime universe.</span>
+        <span lang="pt">YUKI é uma mistura vibrante dos gêneros bullet-hell e roguelike em VR, ambientada em um incrível universo anime.</span>
+      </div>
+      <div class="meta">Meta Quest · bullet-hell roguelike · MR</div>
+    </div>
+    <template class="proj-detail">
+      <div data-role="">
+        <span lang="en">Game Designer</span>
+        <span lang="pt">Game Designer</span>
+      </div>
+      <div data-desc="">
+        <span lang="en">In a small, focused team alongside a senior game designer, I built multiple core features hands-on, iterating constantly so the gameplay systems worked together cohesively and delivered a polished final result. That close collaboration deepened my understanding of balancing and its impact on the overall experience.</span>
+        <span lang="pt">Em um time pequeno e focado, lado a lado com um game designer sênior, construí várias features centrais na prática, iterando constantemente para que os sistemas de gameplay funcionassem de forma coesa e entregassem um resultado final polido. Essa colaboração próxima aprofundou meu entendimento de balanceamento e seu impacto na experiência como um todo.</span>
+      </div>
+      <ul data-bullets="">
+        <li>
+          <span lang="en">Designed and implemented several gameplay features, including Portals, Enemy Bullets, Pod Punch, Bonus Wave and Power-Up Systems</span>
+          <span lang="pt">Desenhei e implementei várias features de gameplay, incluindo Portals, Enemy Bullets, Pod Punch, Bonus Wave e sistemas de Power-Up</span>
+        </li>
+        <li>
+          <span lang="en">Worked closely with the senior game designer to balance gameplay and ensure a fair and engaging player experience</span>
+          <span lang="pt">Trabalhei próximo ao game designer sênior para balancear o gameplay e garantir uma experiência justa e envolvente para o jogador</span>
+        </li>
+      </ul>
+      <div data-platforms="">Meta Quest</div>
+      <div data-link="https://www.meta.com/experiences/yuki-space-ranger/2886115781495034/" data-link-en="Get it on the Meta Quest Store" data-link-pt="Ver na Meta Quest Store"></div>
+      <div data-media="">
+        <div data-kind="video" data-label="Trailer"></div>
+        <div data-kind="image" data-label="Gameplay"></div>
+      </div>
+    </template>
+  </article>
+
+  <article class="proj">
+    <div class="proj-img"><span class="ph">PIXEL RIPPED</span></div>
+    <div>
+      <h3>Pixel Ripped 1995: On the Road <span class="yr">2022</span></h3>
+      <div class="where">@ ARVORE</div>
+      <div class="desc">
+        <span lang="en">Dot needs David's help again, this time to save her friends from Cyblin Lord's suspicious birthday party, maleficently planned by himself. A brand new and unique adventure made for the Holoride platform.</span>
+        <span lang="pt">Dot precisa da ajuda de David mais uma vez, agora para salvar seus amigos da suspeita festa de aniversário do Cyblin Lord, maleficamente planejada por ele mesmo. Uma aventura nova e única feita para a plataforma Holoride.</span>
+      </div>
+      <div class="meta">Holoride · adventure · in-car VR</div>
+    </div>
+    <template class="proj-detail">
+      <div data-role="">
+        <span lang="en">Game Designer</span>
+        <span lang="pt">Game Designer</span>
+      </div>
+      <div data-desc="">
+        <span lang="en">This project was an important step in my transition from IT to Game Design, giving me the opportunity to apply my skills in a new discipline. My role involved refining level designs, improving overall juiciness and polish, and ensuring the experience was presentation-ready for Gamescom. I also supported the team by creating documentation that clarified design decisions and streamlined collaboration. These contributions demonstrated my ability to adapt quickly and add value across multiple areas of the development process.</span>
+        <span lang="pt">Este projeto foi um passo importante na minha transição de TI para Game Design, me dando a oportunidade de aplicar minhas habilidades em uma nova disciplina. Meu papel envolveu refinar level designs, melhorar a juiciness e o polimento geral, e garantir que a experiência estivesse pronta para apresentação na Gamescom. Também apoiei o time criando documentação que esclarecia decisões de design e facilitava a colaboração. Essas contribuições demonstraram minha capacidade de me adaptar rápido e agregar valor em múltiplas áreas do processo de desenvolvimento.</span>
+      </div>
+      <ul data-bullets="">
+        <li>
+          <span lang="en">Reviewed existing Level Designs and proposed new layouts to improve player flow and engagement</span>
+          <span lang="pt">Revisei os Level Designs existentes e propus novos layouts para melhorar o fluxo e o engajamento dos jogadores</span>
+        </li>
+        <li>
+          <span lang="en">Focused on juiciness and polish, ensuring interactions felt satisfying and visually appealing</span>
+          <span lang="pt">Foquei em juiciness e polimento, garantindo que as interações fossem satisfatórias e visualmente atraentes</span>
+        </li>
+        <li>
+          <span lang="en">Created a demo version for Gamescom, helping the team showcase the project at an industry event</span>
+          <span lang="pt">Criei uma versão demo para a Gamescom, ajudando o time a apresentar o projeto em um evento da indústria</span>
+        </li>
+        <li>
+          <span lang="en">Produced and maintained documentation to align design decisions with the rest of the team</span>
+          <span lang="pt">Produzi e mantive documentação para alinhar as decisões de design com o resto do time</span>
+        </li>
+      </ul>
+      <div data-platforms="">Holoride</div>
+      <div data-link="" data-link-status="offline"></div>
+      <div data-media="">
+        <div data-kind="video" data-label="Trailer"></div>
+        <div data-kind="image" data-label="Gameplay"></div>
+      </div>
+    </template>
+  </article></div>
+
+  <div class="show-more-row" data-show-more="#proList">
+    <button class="show-more-btn" type="button">
+      <span lang="en">Show more</span>
+      <span lang="pt">Ver mais</span>
+      <span class="count"></span>
+    </button>
+  </div>
+
+  </div>
+
+  <!-- ───── PERSONAL PANEL ───── -->
+  <div class="tab-panel" data-panel="personal" role="tabpanel" hidden="">
+
+  <h2 class="sec">
+    <span lang="en">Personal projects</span>
+    <span lang="pt">Projetos pessoais</span>
+    <span class="count" data-count-for="per"></span>
+  </h2>
+  <div class="proj-list" id="perList">
+
+    <article class="proj">
+      <div class="proj-img"><span class="ph">MAGIC</span></div>
+      <div>
+        <h3>Magic Realm <span class="yr">2021</span></h3>
+        <div class="desc">
+          <span lang="en">Magic Realm is a 3D RTS, with low poly graphics, where you control all strategies in your battle against magic. Produced as the conclusion project of the Digital Games course at FATEC Americana.</span>
+          <span lang="pt">Magic Realm é um RTS 3D com gráficos low poly, em que você controla todas as estratégias na sua batalha contra a magia. Produzido como projeto de conclusão do curso de Jogos Digitais da FATEC Americana.</span>
+        </div>
+        <div class="meta">PC · 3D RTS · low-poly</div>
+      </div>
+      <template class="proj-detail">
+        <div data-role="">
+          <span lang="en">Game Designer / Producer</span>
+          <span lang="pt">Game Designer / Produtor</span>
+        </div>
+        <div data-desc="">
+          <span lang="en">Magic Realm is a 3D RTS, with low poly graphics, where you control all strategies in your battle against magic. This game was produced as a project to conclude the Digital Games course for FATEC Americana.</span>
+          <span lang="pt">Magic Realm é um RTS 3D com gráficos low poly, em que você controla todas as estratégias na sua batalha contra a magia. Este jogo foi produzido como projeto de conclusão do curso de Jogos Digitais da FATEC Americana.</span>
+        </div>
+        <ul data-bullets="">
+          <li>
+            <span lang="en">Game design of mechanics, enemies, troops and builds</span>
+            <span lang="pt">Game design de mecânicas, inimigos, tropas e construções</span>
+          </li>
+          <li>
+            <span lang="en">Task organization and production support for the team</span>
+            <span lang="pt">Organização de tarefas e suporte de produção para o time</span>
+          </li>
+          <li>
+            <span lang="en">Level design with focus on flow and gameplay experience</span>
+            <span lang="pt">Level design com foco em fluxo e experiência de gameplay</span>
+          </li>
+          <li>
+            <span lang="en">Documentation to register systems and design decisions</span>
+            <span lang="pt">Documentação para registrar sistemas e decisões de design</span>
+          </li>
+          <li>
+            <span lang="en">Menu implementation to improve navigation</span>
+            <span lang="pt">Implementação de menus para melhorar a navegação</span>
+          </li>
+          <li>
+            <span lang="en">UX/UI design for usability and clarity</span>
+            <span lang="pt">Design de UX/UI para usabilidade e clareza</span>
+          </li>
+          <li>
+            <span lang="en">Created VFX using Unity's node-based tools to enhance feedback and visual appeal</span>
+            <span lang="pt">Criei VFX usando as ferramentas node-based da Unity para reforçar o feedback e o apelo visual</span>
+          </li>
+        </ul>
+        <div data-platforms="">PC</div>
+        <div data-media="">
+          <div data-kind="video" data-label="Trailer"></div>
+          <div data-kind="image" data-label="Gameplay"></div>
+        </div>
+      </template>
+    </article>
+
+    <article class="proj">
+      <div class="proj-img"><span class="ph">JELLO</span></div>
+      <div>
+        <h3>Jello Quest <span class="yr">2023</span></h3>
+        <div class="desc">
+          <span lang="en">A mysterious infection is transforming the jellies into hideous creatures. Adventure through the universe of Jello Quest and save your gelatinous companions.</span>
+          <span lang="pt">Uma infecção misteriosa está transformando as gelatinas em criaturas horrendas. Aventure-se pelo universo de Jello Quest e salve seus companheiros gelatinosos.</span>
+        </div>
+        <div class="meta">PC · 2D · adventure</div>
+      </div>
+      <template class="proj-detail">
+        <div data-role="">
+          <span lang="en">Game Designer / Tech Artist</span>
+          <span lang="pt">Game Designer / Tech Artist</span>
+        </div>
+        <div data-desc="">
+          <span lang="en">A mysterious infection is transforming the jellies into hideous creatures. Adventure through the universe of Jello Quest and save your gelatinous companions as you try to discover what is happening with the sweet kingdom.</span>
+          <span lang="pt">Uma infecção misteriosa está transformando as gelatinas em criaturas horrendas. Aventure-se pelo universo de Jello Quest e salve seus companheiros gelatinosos enquanto tenta descobrir o que está acontecendo com o doce reino.</span>
+        </div>
+        <ul data-bullets="">
+          <li>
+            <span lang="en">Core gameplay design, covering mechanics, power-ups and enemy behaviors</span>
+            <span lang="pt">Game design do core, cobrindo mecânicas, power-ups e comportamentos dos inimigos</span>
+          </li>
+          <li>
+            <span lang="en">Level design focused on pacing, flow and engagement</span>
+            <span lang="pt">Level design focado em ritmo, fluxo e engajamento</span>
+          </li>
+          <li>
+            <span lang="en">Minimal documentation on Miro to align the team during the jam</span>
+            <span lang="pt">Documentação enxuta no Miro para alinhar o time durante a jam</span>
+          </li>
+          <li>
+            <span lang="en">Menu system to support smooth navigation</span>
+            <span lang="pt">Sistema de menus para uma navegação fluida</span>
+          </li>
+          <li>
+            <span lang="en">UX improvements for clearer and more accessible interactions</span>
+            <span lang="pt">Melhorias de UX para interações mais claras e acessíveis</span>
+          </li>
+          <li>
+            <span lang="en">HUD to deliver essential information effectively</span>
+            <span lang="pt">HUD para entregar informações essenciais de forma eficaz</span>
+          </li>
+        </ul>
+        <div data-platforms="">PC, Steam</div>
+        <div data-media="">
+          <div data-kind="video" data-label="Launch trailer"></div>
+          <div data-kind="image" data-label="Boss melt"></div>
+          <div data-kind="image" data-label="Jam transformation"></div>
+        </div>
+      </template>
+    </article>
+
+    <article class="proj">
+      <div class="proj-img"><span class="ph">TAMAGOTCHI</span></div>
+      <div>
+        <h3>Tamagotchi Hell <span class="yr">2022</span></h3>
+        <div class="desc">
+          <span lang="en">Remember the good old bullet hells you played on a tamagotchi? Well, neither did I. But what about being locked inside one while you try to keep yourself alive?</span>
+          <span lang="pt">Lembra dos bons e velhos bullet hells que você jogava num tamagotchi? Pois é, nem eu. Mas que tal ficar preso dentro de um enquanto tenta se manter vivo?</span>
+        </div>
+        <div class="meta">PC · bullet hell · jam</div>
+      </div>
+      <template class="proj-detail">
+        <div data-role="">
+          <span lang="en">Game Designer</span>
+          <span lang="pt">Game Designer</span>
+        </div>
+        <div data-desc="">
+          <span lang="en">Remember the time when you couldn't stop thinking about the good old bullet hells you played on a tamagotchi?... Well, neither did I. But what about being locked inside one while you try to keep yourself alive? This game was developed for Bullet Hell Jam 2022.</span>
+          <span lang="pt">Lembra da época em que você não conseguia parar de pensar nos bons e velhos bullet hells que jogava num tamagotchi?... Pois é, nem eu. Mas que tal ficar preso dentro de um enquanto tenta se manter vivo? Este jogo foi desenvolvido para a Bullet Hell Jam 2022.</span>
+        </div>
+        <ul data-bullets="">
+          <li>
+            <span lang="en">Game design of mechanics, power-ups and enemies</span>
+            <span lang="pt">Game design de mecânicas, power-ups e inimigos</span>
+          </li>
+          <li>
+            <span lang="en">Balanced wave progression to ensure engaging gameplay</span>
+            <span lang="pt">Balanceei a progressão das waves para garantir um gameplay envolvente</span>
+          </li>
+          <li>
+            <span lang="en">Implemented menu system for smooth navigation</span>
+            <span lang="pt">Implementei o sistema de menus para uma navegação fluida</span>
+          </li>
+        </ul>
+        <div data-platforms="">PC</div>
+        <div data-media="">
+          <div data-kind="image" data-label="Gameplay"></div>
+        </div>
+      </template>
+    </article>
+
+    <article class="proj">
+      <div class="proj-img"><span class="ph">KITTY</span></div>
+      <div>
+        <h3>Kitty Cubes <span class="yr">2022</span></h3>
+        <div class="desc">
+          <span lang="en">Help the cat to push his box into the right place and go to the next level. Take on these challenges in a simple and relaxing way.</span>
+          <span lang="pt">Ajude o gato a empurrar a caixa para o lugar certo e avançar de nível. Encare esses desafios de um jeito simples e relaxante.</span>
+        </div>
+        <div class="meta">mobile · puzzle · casual</div>
+      </div>
+      <template class="proj-detail">
+        <div data-role="">
+          <span lang="en">Game Designer</span>
+          <span lang="pt">Game Designer</span>
+        </div>
+        <div data-desc="">
+          <span lang="en">Help the cat to push his box into the right place and go to the next level. Take on these challenges in a simple and relaxing way. You can change the music and also choose the skin you prefer for your cat.</span>
+          <span lang="pt">Ajude o gato a empurrar a caixa para o lugar certo e avançar de nível. Encare esses desafios de um jeito simples e relaxante. Você pode trocar a música e escolher a skin que preferir para o seu gato.</span>
+        </div>
+        <ul data-bullets="">
+          <li>
+            <span lang="en">Game design of puzzles, focusing on challenge and player progression</span>
+            <span lang="pt">Game design dos puzzles, com foco em desafio e progressão do jogador</span>
+          </li>
+          <li>
+            <span lang="en">Level design to support puzzle integration and flow</span>
+            <span lang="pt">Level design para apoiar a integração dos puzzles e o fluxo</span>
+          </li>
+          <li>
+            <span lang="en">Menu implementation for smooth navigation</span>
+            <span lang="pt">Implementação de menus para uma navegação fluida</span>
+          </li>
+          <li>
+            <span lang="en">UX/UI design to ensure clarity and accessibility</span>
+            <span lang="pt">Design de UX/UI para garantir clareza e acessibilidade</span>
+          </li>
+        </ul>
+        <div data-platforms="">Mobile</div>
+        <div data-media="">
+          <div data-kind="video" data-label="Trailer"></div>
+          <div data-kind="image" data-label="Gameplay"></div>
+        </div>
+      </template>
+    </article>
+
+  </div>
+
+  <div class="show-more-row">
+    <a class="show-more-btn" href="https://leodantas.itch.io" target="_blank" rel="noopener">
+      <span lang="en">See all on itch.io</span>
+      <span lang="pt">Ver tudo no itch.io</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  </div>
+
+  <footer class="foot">
+    <span>© Leonardo Dantas, 2026</span>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/leonardo-dantass/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://leodantas.itch.io" target="_blank" rel="noopener">itch.io</a>
+    </div>
+  </footer>
+
+</div>
+
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h3 id="modalTitle"></h3>
+    <div class="modal-body">
+      <div class="modal-col-media">
+        <div class="modal-gallery" id="modalGallery">
+          <div class="modal-hero" id="modalHero">
+            <button class="hero-fs" id="heroFs" aria-label="Toggle fullscreen" title="Fullscreen (F)">
+              <svg class="ic-enter" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"></path></svg>
+              <svg class="ic-exit" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v4H2M10 2v4h4M6 14v-4H2M10 14v-4h4"></path></svg>
+            </button>
+            <button class="hero-nav prev" id="heroPrev" aria-label="Previous">‹</button>
+            <button class="hero-nav next" id="heroNext" aria-label="Next">›</button>
+            <span class="hero-counter" id="heroCounter"></span>
+            <span class="hero-label" id="heroLabel"></span>
+          </div>
+          <div class="modal-thumbs" id="modalThumbs"></div>
+        </div>
+      </div>
+      <div class="modal-col-text">
+        <h4 class="role-h" id="modalRole"></h4>
+        <div class="facts" id="modalFacts"></div>
+        <div class="desc" id="modalDesc"></div>
+        <ul id="modalBullets"></ul>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <h4 class="platforms-h" id="platformsH">
+        <span lang="en" data-singular="Platform" data-plural="Platforms">Platforms</span>
+        <span lang="pt" data-singular="Plataforma" data-plural="Plataformas">Plataformas</span>
+      </h4>
+      <div class="platforms" id="modalPlatforms"></div>
+      <div class="modal-actions"><a id="modalPlay" class="modal-play" target="_blank" rel="noopener" hidden></a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('langBtn').addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-lang') || 'en';
+    document.documentElement.setAttribute('data-lang', cur === 'en' ? 'pt' : 'en');
+  });
+
+  // ─── Tabs ────────────────────────────────────────────
+  const tabs = document.querySelectorAll('.tab[data-tab]');
+  const panels = document.querySelectorAll('.tab-panel[data-panel]');
+  function activateTab(name) {
+    tabs.forEach(t => {
+      const active = t.dataset.tab === name;
+      t.classList.toggle('is-active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    panels.forEach(p => {
+      const active = p.dataset.panel === name;
+      p.classList.toggle('is-active', active);
+      if (active) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
+    });
+  }
+  tabs.forEach(t => t.addEventListener('click', () => activateTab(t.dataset.tab)));
+
+  // ─── Show more (progressive disclosure) ──────────────────────
+  const INITIAL_VISIBLE = 4;
+  document.querySelectorAll('.show-more-row[data-show-more]').forEach(row => {
+    const target = document.querySelector(row.dataset.showMore);
+    if (!target) { row.style.display = 'none'; return; }
+    const projects = target.querySelectorAll('.proj');
+    if (projects.length <= INITIAL_VISIBLE) {
+      row.style.display = 'none';
+      return;
+    }
+    projects.forEach((p, i) => {
+      if (i >= INITIAL_VISIBLE) p.classList.add('is-collapsed');
+    });
+    const btn = row.querySelector('.show-more-btn');
+    const countEl = btn.querySelector('.count');
+    if (countEl) countEl.textContent = '+' + (projects.length - INITIAL_VISIBLE);
+    btn.addEventListener('click', () => {
+      projects.forEach(p => p.classList.remove('is-collapsed'));
+      row.style.display = 'none';
+    });
+  });
+
+  document.querySelector('[data-count-for="pro"]').textContent = `(${document.querySelectorAll('#proList .proj').length})`;
+  document.querySelector('[data-count-for="per"]').textContent = `(${document.querySelectorAll('#perList .proj').length})`;
+
+  function normalizeMediaSrc(kind, src) {
+    if (!src) return null;
+    if (kind === 'image') return { tag: 'img', src };
+    const yt = src.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+    // youtube-nocookie: player oficial em modo privacidade (sem cookie de rastreio até dar play)
+    if (yt) return { tag: 'iframe', src: 'https://www.youtube-nocookie.com/embed/' + yt[1] + '?rel=0', watch: 'https://youtu.be/' + yt[1], provider: 'YouTube' };
+    const vm = src.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (vm) return { tag: 'iframe', src: 'https://player.vimeo.com/video/' + vm[1], watch: 'https://vimeo.com/' + vm[1], provider: 'Vimeo' };
+    if (/\.(mp4|webm|mov)(\?|$)/i.test(src)) return { tag: 'video', src };
+    return { tag: 'iframe', src, watch: src, provider: 'link' };
+  }
+
+  let galleryState = { items: [], idx: 0 };
+
+  const PLATFORM_ICONS = {
+    metaquest:
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 8.5C3.5 7 4.7 6 6.3 6c1.7 0 3 .9 4.6 2.5l.6.6.6-.6C13.7 6.9 15 6 16.7 6c1.6 0 2.8 1 2.8 2.5v6.4c0 1-.7 1.6-1.6 1.6-1.4 0-2.6-1-4.4-2.8l-1-1c-.3-.3-.3-.5 0-.8l.7-.7c1-1 1.7-1.5 2.4-1.5.5 0 .9.3.9.9 0 .4-.3.7-.8 1l-1.1.6c-.2.1-.2.3 0 .4 1.4.9 2.4 1.4 3.2 1.4.7 0 1.1-.4 1.1-1.1V8.7c0-.7-.4-1.1-1.1-1.1-1 0-2.1.6-3.6 2.1L13.4 11c-.3.3-.7.3-1 0l-1.9-1.9C9 7.7 7.9 7.6 6.9 7.6c-.7 0-1.1.4-1.1 1.1v5.7c0 .7.4 1.1 1.1 1.1.8 0 1.7-.5 3.1-1.4.2-.1.2-.3 0-.4l-1-.6c-.5-.3-.8-.6-.8-1 0-.6.3-.9.9-.9.7 0 1.4.5 2.4 1.5l.7.7c.3.3.3.5 0 .8l-1 1c-1.8 1.8-3 2.8-4.4 2.8-1 0-1.6-.6-1.6-1.6V8.5z"/></svg>',
+    pc:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/></svg>',
+    steam:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="16" cy="9" r="2.2"/><circle cx="8.5" cy="15" r="1.8"/><path d="M14.2 10.5l-5 4"/></svg>',
+    mobile:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="1.8"/><line x1="11" y1="18" x2="13" y2="18"/></svg>',
+    web:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>',
+    switch:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/><circle cx="6.5" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="17.5" cy="16" r="1" fill="currentColor" stroke="none"/></svg>',
+    playstation:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 14c-1.5 0-2 .8-2 1.6 0 .9 1 1.6 3 2 2.6.5 6 .5 9.5 0"/><path d="M19 11c1.3 0 2 .6 2 1.4 0 .9-.7 1.6-2.6 2"/><path d="M8 8a4 4 0 1 1 8 0v8"/></svg>',
+    generic:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><line x1="8" y1="12" x2="10" y2="12"/><line x1="9" y1="11" x2="9" y2="13"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="16.5" cy="13" r="1" fill="currentColor" stroke="none"/></svg>'
+  };
+
+  function renderGallery() {
+    const { items, idx } = galleryState;
+    const hero = document.getElementById('modalHero');
+    const label = document.getElementById('heroLabel');
+    const counter = document.getElementById('heroCounter');
+    const thumbs = document.getElementById('modalThumbs');
+    const prev = document.getElementById('heroPrev');
+    const next = document.getElementById('heroNext');
+
+    hero.querySelectorAll('.hero-media').forEach(n => n.remove());
+    hero.classList.remove('has-media');
+
+    if (!items.length) {
+      const lang = document.documentElement.getAttribute('data-lang') || 'en';
+      label.innerHTML = '<span class="kind">' + (lang === 'pt' ? 'VÍDEO / TRAILER' : 'VIDEO / TRAILER') + '</span>';
+      counter.textContent = '';
+      thumbs.innerHTML = '';
+      prev.hidden = true; next.hidden = true;
+      return;
+    }
+
+    const cur = items[idx];
+    const kindTxt = cur.kind === 'video' ? 'VIDEO' : 'IMAGE';
+    label.innerHTML =
+      '<span class="kind">' + kindTxt + '</span>' +
+      (cur.label || '[placeholder]');
+    counter.textContent = (idx + 1) + ' / ' + items.length;
+
+    const media = normalizeMediaSrc(cur.kind, cur.src);
+    if (media) {
+      let el;
+      if (media.tag === 'iframe') {
+        const hosted = /^https?:$/.test(location.protocol);
+        if (!hosted && media.watch) {
+          // Embeds de vídeo não tocam via file:// nem no preview (origem nula → "Erro 153" do YouTube).
+          // Mostra um pôster clicável; quando o site estiver publicado (http/https), embeda inline normalmente.
+          const prov = media.provider && media.provider !== 'link' ? media.provider : 'vídeo';
+          el = document.createElement('a');
+          el.href = media.watch;
+          el.target = '_blank';
+          el.rel = 'noopener';
+          el.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-decoration:none;background:linear-gradient(135deg,#1a1228,#2a1845);color:#ece6ff;text-align:center;padding:24px;';
+          el.innerHTML =
+            '<span style="width:64px;height:64px;border-radius:50%;background:rgba(183,128,255,0.2);border:1px solid rgba(183,128,255,0.5);display:flex;align-items:center;justify-content:center;font-size:22px;color:#b780ff;">&#9654;</span>' +
+            '<span style="font-size:15px;font-weight:600;">Assistir no ' + prov + ' &#8599;</span>' +
+            '<span style="font-size:11.5px;color:#9890b0;max-width:300px;line-height:1.5;">O player embutido funciona quando o site está publicado (http/https). Aqui no preview/local, abre no ' + prov + '.</span>';
+        } else {
+          el = document.createElement('iframe');
+          el.src = media.src;
+          el.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          el.allowFullscreen = true;
+        }
+      } else if (media.tag === 'video') {
+        el = document.createElement('video');
+        el.src = media.src;
+        el.controls = true;
+      } else {
+        el = document.createElement('img');
+        el.src = media.src;
+        el.alt = cur.label || '';
+      }
+      el.className = 'hero-media';
+      hero.appendChild(el);
+      hero.classList.add('has-media');
+    }
+
+    prev.hidden = items.length < 2;
+    next.hidden = items.length < 2;
+
+    thumbs.innerHTML = items.map((it, i) => {
+      const playIcon = it.kind === 'video'
+        ? '<span class="thumb-play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5z"/></svg></span>'
+        : '';
+      const kindTag = '<span class="thumb-kind">' + (it.kind === 'video' ? 'vid' : 'img') + '</span>';
+      return '<button class="modal-thumb' + (i === idx ? ' is-active' : '') + '" data-i="' + i + '" type="button" aria-label="' + (it.label || ('Media ' + (i+1))) + '">' + playIcon + kindTag + '</button>';
+    }).join('');
+
+    thumbs.querySelectorAll('.modal-thumb').forEach(btn => {
+      btn.addEventListener('click', () => {
+        galleryState.idx = parseInt(btn.dataset.i, 10);
+        renderGallery();
+      });
+    });
+
+    requestAnimationFrame(() => {
+      thumbs.classList.toggle('is-scrollable', thumbs.scrollWidth > thumbs.clientWidth + 1);
+    });
+  }
+
+  function nextMedia() {
+    if (galleryState.items.length < 2) return;
+    galleryState.idx = (galleryState.idx + 1) % galleryState.items.length;
+    renderGallery();
+  }
+  function prevMedia() {
+    if (galleryState.items.length < 2) return;
+    galleryState.idx = (galleryState.idx - 1 + galleryState.items.length) % galleryState.items.length;
+    renderGallery();
+  }
+  document.getElementById('heroNext').addEventListener('click', nextMedia);
+  document.getElementById('heroPrev').addEventListener('click', prevMedia);
+
+  function isFullscreen() {
+    const g = document.getElementById('modalGallery');
+    return g && g.classList.contains('is-fullscreen');
+  }
+  function enterFullscreen() {
+    document.getElementById('modalGallery').classList.add('is-fullscreen');
+  }
+  function exitFullscreen() {
+    document.getElementById('modalGallery').classList.remove('is-fullscreen');
+  }
+  function toggleFullscreen() {
+    if (isFullscreen()) exitFullscreen(); else enterFullscreen();
+  }
+  document.getElementById('heroFs').addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleFullscreen();
+  });
+
+  function openProj(article) {
+    const tpl = article.querySelector('template.proj-detail');
+    if (!tpl) return;
+    const detail = tpl.content;
+
+    const h3 = article.querySelector('h3').cloneNode(true);
+    h3.querySelectorAll('.yr').forEach(n => n.remove());
+    document.getElementById('modalTitle').textContent = h3.textContent.trim();
+
+    document.getElementById('modalRole').innerHTML = detail.querySelector('[data-role]').innerHTML;
+    document.getElementById('modalDesc').innerHTML = detail.querySelector('[data-desc]').innerHTML;
+    document.getElementById('modalBullets').innerHTML = detail.querySelector('[data-bullets]').innerHTML;
+
+    // Ficha técnica (opcional) — engine · duração · time
+    const factsEl = detail.querySelector('[data-facts]');
+    const factsOut = document.getElementById('modalFacts');
+    factsOut.innerHTML = factsEl ? factsEl.innerHTML : '';
+    factsOut.style.display = (factsEl && factsEl.textContent.trim()) ? '' : 'none';
+
+    // Link do jogo (opcional) — botão "Jogar / Ver na loja" ou selo "fora do ar"
+    const linkEl = detail.querySelector('[data-link]');
+    const play = document.getElementById('modalPlay');
+    const playUrl = linkEl ? (linkEl.getAttribute('data-link') || '').trim() : '';
+    const linkStatus = linkEl ? (linkEl.getAttribute('data-link-status') || '') : '';
+    play.classList.remove('is-offline');
+    if (linkStatus === 'offline') {
+      play.removeAttribute('href');
+      play.classList.add('is-offline');
+      const offEn = linkEl.getAttribute('data-offline-en') || 'No longer available';
+      const offPt = linkEl.getAttribute('data-offline-pt') || 'Não está mais disponível';
+      play.innerHTML = '<span aria-hidden="true">⏻</span><span lang="en">' + offEn + '</span><span lang="pt">' + offPt + '</span>';
+      play.hidden = false;
+    } else if (playUrl) {
+      play.href = playUrl;
+      const linkEn = linkEl.getAttribute('data-link-en') || 'Play it';
+      const linkPt = linkEl.getAttribute('data-link-pt') || 'Jogar';
+      play.innerHTML = '<span lang="en">' + linkEn + '</span><span lang="pt">' + linkPt + '</span><span aria-hidden="true">↗</span>';
+      play.hidden = false;
+    } else {
+      play.hidden = true;
+    }
+
+    const mediaEl = detail.querySelector('[data-media]');
+    galleryState.items = mediaEl
+      ? [...mediaEl.querySelectorAll('[data-kind]')].map(el => ({
+          kind: el.dataset.kind || 'image',
+          label: el.dataset.label || '',
+          src: el.dataset.src || ''
+        }))
+      : [];
+    galleryState.idx = 0;
+
+    // Clear any leftover media from a previous open so the gallery box is
+    // clean *before* we paint the modal.
+    const hero = document.getElementById('modalHero');
+    hero.querySelectorAll('.hero-media').forEach(n => n.remove());
+    hero.classList.remove('has-media');
+
+    const plat = detail.querySelector('[data-platforms]').textContent.split(',').map(s => s.trim()).filter(Boolean);
+    document.getElementById('modalPlatforms').innerHTML = plat.map(p => {
+      const key = p.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const icon = PLATFORM_ICONS[key] || PLATFORM_ICONS.generic;
+      return `<span class="plat-chip">${icon}<span>${p}</span></span>`;
+    }).join('');
+    document.querySelectorAll('#platformsH [data-singular]').forEach(span => {
+      span.textContent = plat.length === 1 ? span.dataset.singular : span.dataset.plural;
+    });
+
+    // Open the modal FIRST so the gallery container is visible and has real
+    // layout dimensions. Only then render the gallery — iframes/videos created
+    // inside a display:none parent fail to paint on the first frame, which is
+    // why the first carousel item was "breaking" on every fresh modal open.
+    document.getElementById('modal').classList.add('open');
+    requestAnimationFrame(() => {
+      renderGallery();
+      const txt = document.querySelector('.modal-col-text');
+      if (!txt) return;
+      const overflowing = txt.scrollHeight > txt.clientHeight + 2;
+      txt.classList.toggle('is-overflowing', overflowing);
+    });
+  }
+  function closeModal() {
+    exitFullscreen();
+    document.getElementById('modal').classList.remove('open');
+    // Tear down any media so a fresh open always starts clean.
+    const hero = document.getElementById('modalHero');
+    hero.querySelectorAll('.hero-media').forEach(n => n.remove());
+    hero.classList.remove('has-media');
+  }
+
+  document.querySelectorAll('.proj').forEach(el => {
+    el.addEventListener('click', () => openProj(el));
+  });
+  document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (isFullscreen() && e.key === 'Escape') { exitFullscreen(); e.stopPropagation(); return; }
+    if (e.key === 'Escape') closeModal();
+    if (!document.getElementById('modal').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') nextMedia();
+    if (e.key === 'ArrowLeft') prevMedia();
+    if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+  });
+
+  // ─── A · Scroll-reveal dos cards ───
+  // Classes adicionadas só via JS (sem JS nada fica escondido). Observer é
+  // descartado após cada reveal; stagger de 70ms entre itens que entram juntos.
+  // Após a animação, as classes saem e o card volta ao estado natural
+  // (pra não deixar o hover-lift lento por herdar a transition de 520ms).
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
+    const revealables = document.querySelectorAll('.proj, h2.sec, .show-more-row');
+    revealables.forEach(el => el.classList.add('reveal-init'));
+    const io = new IntersectionObserver((entries) => {
+      entries.filter(en => en.isIntersecting).forEach((en, k) => {
+        const el = en.target;
+        const delay = Math.min(k * 70, 350);
+        el.style.transitionDelay = delay + 'ms';
+        el.classList.add('reveal-in');
+        io.unobserve(el);
+        setTimeout(() => {
+          el.classList.remove('reveal-init', 'reveal-in');
+          el.style.transitionDelay = '';
+        }, 600 + delay);
+      });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+    revealables.forEach(el => io.observe(el));
+  }
+</script>
+
+
+
+</body></html>
