@@ -2,13 +2,22 @@
 <html lang="en" data-lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leonardo Dantas — Game Designer</title>
-<meta name="description" content="Leonardo Dantas — Game Designer creating games across VR, MR, UGC and Mobile. Blumhouse Horrorverse, The Office World, Universal Monsters Arena and more.">
+<title>Leonardo Dantas · Game Designer</title>
+<meta name="description" content="Leonardo Dantas · Game Designer creating games across VR, MR, UGC and Mobile.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Leonardo Dantas — Game Designer">
-<meta property="og:description" content="Game Designer creating games across VR, MR, UGC and Mobile. XR titles for Meta Quest at ARVORE.">
+<meta property="og:title" content="Leonardo Dantas · Game Designer">
+<meta property="og:description" content="Game Designer creating games across VR, MR, UGC and Mobile.">
 <!-- Quando o site tiver domínio, descomente e troque pela URL absoluta de uma imagem 1200x630: -->
-<!-- <meta property="og:image" content="https://SEU-DOMINIO/images/og-cover.jpg"> -->
+<!-- Preview ao compartilhar o link (LinkedIn/WhatsApp/Discord). Para ativar:
+     1) exporte images/og-cover.svg como og-cover.png (1200x630);
+     2) troque SEU-SITE pela URL real do site no ar. -->
+<meta property="og:image" content="https://leonardodantasgd.com/images/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Leonardo Dantas · Game Designer">
+<meta name="twitter:description" content="Game Designer creating games across VR, MR, UGC and Mobile.">
+<meta name="twitter:image" content="https://leonardodantasgd.com/images/og-cover.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23100a18'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23b780ff' text-anchor='middle' letter-spacing='-1'%3ELD%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -167,6 +176,9 @@
     aspect-ratio: 16/10; position: relative; overflow: hidden;
     border-radius: 4px; background: linear-gradient(135deg, #1f1530, #3a2056);
   }
+  /* Quando o card tem capa real, o placeholder (listras + label) some */
+  .proj-img:has(img)::after { display: none; }
+  .proj-img:has(img) .ph { display: none; }
   .proj-img::after {
     content: ''; position: absolute; inset: 0;
     background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 8px);
@@ -501,19 +513,19 @@
     border-color: var(--accent);
     box-shadow: 0 0 0 1px rgba(183,128,255,0.4);
   }
+  /* Miniatura real (YouTube/imagem). Se falhar o carregamento, o onerror remove
+     a <img> e as listras de placeholder voltam — fallback garantido. */
+  .modal-thumb .thumb-img {
+    position: absolute; inset: 0; z-index: 0;
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .modal-thumb:has(.thumb-img)::before { display: none; }
   .modal-thumb .thumb-play {
     position: absolute; inset: 0; z-index: 1;
     display: flex; align-items: center; justify-content: center;
     color: var(--ink); opacity: 0.85;
   }
   .modal-thumb .thumb-play svg { width: 16px; height: 16px; }
-  .modal-thumb .thumb-kind {
-    position: absolute; bottom: 3px; left: 4px; z-index: 1;
-    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-    font-size: 8.5px; letter-spacing: 0.1em;
-    color: var(--ink); opacity: 0.7;
-    text-transform: uppercase;
-  }
   @media (max-width: 560px) {
     .modal-thumb { width: 64px; }
   }
@@ -753,7 +765,7 @@
     <div class="role">Game Designer</div>
     <p class="bio">
       <span lang="en"><em>Game Designer</em> creating games across <em>VR, MR, UGC and Mobile</em>, where gameplay, systems and setting work as one.</span>
-      <span lang="pt"><em>Game Designer</em> criando jogos em <em>VR, MR, UGC e mobile</em>, em que gameplay, sistemas e ambientação funcionam como uma coisa só.</span>
+      <span lang="pt"><em>Game Designer</em> criando jogos em <em>VR, MR, UGC e Mobile</em>, em que gameplay, sistemas e ambientação funcionam como uma coisa só.</span>
     </p>
     <div class="cta-row">
       <a class="cta" href="About.html">
@@ -767,8 +779,8 @@
     </div>
     <div class="now-block" style="display: none;">
       <span class="live"></span>
-      <span lang="en"><b>Right now:</b> designing and shipping live updates at ARVORE.</span>
-      <span lang="pt"><b>Agora:</b> desenhando e lançando updates live na ARVORE.</span>
+      <span lang="en"><b>Right now:</b> designing and shipping live updates.</span>
+      <span lang="pt"><b>Agora:</b> desenhando e lançando updates live.</span>
     </div>
   </section>
 
@@ -788,8 +800,8 @@
   <div class="tab-panel is-active" data-panel="professional" role="tabpanel">
 
   <h2 class="sec">
-    <span lang="en">Professional projects</span>
-    <span lang="pt">Projetos profissionais</span>
+    <span lang="en">Professional Projects</span>
+    <span lang="pt">Projetos Profissionais</span>
     <span class="count" data-count-for="pro"></span>
   </h2>
   <div class="proj-list" id="proList">
@@ -798,12 +810,12 @@
       <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/blumhouse-horrorverse-cover.jpg"><span class="ph">HORRORVERSE</span></div>
       <div>
         <h3>Blumhouse Horrorverse <span class="yr">2025</span></h3>
-        <div class="where">@ ARVORE</div>
+        <div class="where">@ ARVORE Immersive Experiences</div>
         <div class="desc">
           <span lang="en">Blumhouse Horrorverse is an asymmetric game for up to 8 players, inspired by Blumhouse films. Players take on the roles of Victims or the Villain. As a Victim, your goal is to escape before the Villain catches you. As the Villain, you must hunt down and eliminate the victims. After the lockdown ends, explore themed activities like challenges and mini-games.</span>
           <span lang="pt">Blumhouse Horrorverse é um jogo assimétrico para até 8 jogadores, inspirado nos filmes da Blumhouse. Os jogadores assumem os papéis de Vítimas ou do Vilão. Como Vítima, seu objetivo é escapar antes que o Vilão te capture. Como Vilão, você deve caçar e eliminar as vítimas. Depois que o lockdown termina, explore atividades temáticas como desafios e minigames.</span>
         </div>
-        <div class="meta">Horizon Worlds · Asymmetric Gameplay (1–8 players) · UGC</div>
+        <div class="meta">Horizon Worlds · Asymmetric Horror (2–8 Players) </div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -811,8 +823,8 @@
           <span lang="pt">Lead Game Designer / Level Designer</span>
         </div>
         <div data-facts="">
-          <span lang="en">Meta Horizon Worlds · Live release May 2025 · Live Ops</span>
-          <span lang="pt">Meta Horizon Worlds · Lançado em mai 2025 · Live Ops</span>
+          <span lang="en">Meta Horizon Worlds · ~20 -Person Team · Released May 2025</span>
+          <span lang="pt">Meta Horizon Worlds · Time de ~20 · Lançado em Mai 2025</span>
         </div>
         <div data-desc="">
           <span lang="en">My contribution played an important role in guiding the project from concept to live release. I worked closely with designers, artists, and other team members to ensure the vision was clear and achievable. Through collaboration, we refined gameplay, optimized level flow, and responded to player feedback during Live Ops. This teamwork was key to maintaining consistency and delivering a polished, engaging experience for players.</span>
@@ -843,12 +855,12 @@
         <div data-platforms="">VR, Mobile, Web</div>
         <div data-link="https://horizon.meta.com/world/632338729966053/" data-link-status="offline" data-link-en="Play it on Meta Horizon" data-link-pt="Jogar no Meta Horizon"></div>
         <div data-media="">
-          <div data-kind="video" data-label="Reveal trailer" data-src="https://www.youtube.com/watch?v=bJniOsY9kAY"></div>
-          <div data-kind="video" data-label="8-player chase" data-src="https://youtu.be/GLKt6EpByJc?si=Ey3xc7aMrF94dooc"></div><div data-kind="image" data-label="Hunter POV" data-src="images/hunter-pov.jpg"></div>
+          <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=bJniOsY9kAY"></div>
+          <div data-kind="video" data-label="Gameplay" data-src="https://youtu.be/GLKt6EpByJc?si=Ey3xc7aMrF94dooc"></div><div data-kind="image" data-label="Img" data-src="images/hunter-pov.jpg"></div>
           
           
-          <div data-kind="image" data-label="Map overview" data-src="images/map-overview.jpg"></div>
-        </div>
+          <div data-kind="image" data-label="Img" data-src="images/map-overview.jpg"></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-1.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-2.png"></div></div>
       </template>
     </article>
 
@@ -856,12 +868,12 @@
       <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/coffee-fest-cover.jpg"><span class="ph">COFFEE FEST</span></div>
       <div>
         <h3>Coffee Fest <span class="yr">2026</span></h3>
-        <div class="where">@ ARVORE</div>
+        <div class="where">@ ARVORE Immersive Experiences</div>
         <div class="desc">
           <span lang="en">Coffee Fest is a coffee-making world in Horizon Worlds: brew and customize drinks, chase high scores and please Cricríticornus, the resident critic. Live events, daily missions and magic coffees keep the world moving.</span>
           <span lang="pt">Coffee Fest é um mundo de fazer café no Horizon Worlds: prepare e customize bebidas, busque a maior pontuação e agrade o Cricríticornus, o crítico residente. Eventos live, missões diárias e cafés mágicos mantêm o mundo em movimento.</span>
         </div>
-        <div class="meta">Horizon Worlds · UGC · Live Ops</div>
+        <div class="meta">Horizon Worlds · Casual</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -869,8 +881,8 @@
           <span lang="pt">Lead Game Designer</span>
         </div>
         <div data-facts="">
-          <span lang="en">Meta Horizon Worlds · UGC · Live Ops</span>
-          <span lang="pt">Meta Horizon Worlds · UGC · Live Ops</span>
+          <span lang="en">Meta Horizon Worlds · ~13 - Person Team · Live Ops 2026</span>
+          <span lang="pt">Meta Horizon Worlds · Time de ~13 · Live Ops 2026</span>
         </div>
         <div data-desc="">
           <span lang="en">Coffee Fest is my deepest dive into UGC Live Ops so far. I design and ship updates that keep the world fresh: seasonal events, new mechanics, monetization improvements and daily missions, all built directly in Horizon Worlds. The best part of the loop is watching playtests turn into players racing for the critic's stars: design, release, observe, adjust.</span>
@@ -901,22 +913,22 @@
         <div data-platforms="">VR, Mobile, Web</div>
         <div data-link="https://horizon.meta.com/world/820800191123018/" data-link-en="Play it on Meta Horizon" data-link-pt="Jogar no Meta Horizon"></div>
         <div data-media="">
-          <div data-kind="video" data-label="Trailer"></div>
-          <div data-kind="image" data-label="Gameplay"></div>
-        </div>
+          <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=TEpJq3EJ-jE"></div>
+          <div data-kind="video" data-label="Gameplay" data-src="https://www.youtube.com/watch?v=2iAUDKLCujU"></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-3.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-4.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-5.png"></div></div>
       </template>
     </article>
 
     <article class="proj">
       <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/cruzcredo-cover.png"><span class="ph">CRUZCREDO</span></div>
       <div>
-        <h3>Cruzcredo! Torne-se uma Lenda <span class="yr">TBD</span></h3>
+        <h3><span lang="en">HolyHex! Become a Legend</span><span lang="pt">Cruzcredo! Torne-se uma Lenda</span> <span class="yr">TBD</span></h3>
         <div class="where">@ Ginga Studios</div>
         <div class="desc">
           <span lang="en">Rise from the grave and stumble through the streets of Casca Dura, a city buzzing with mysteries, wacky gossip and some good ol' chaos thanks to the "HolyHex Curse". Flying rats, a vengeful ghost bride and, oh boy, the skinwalkers... Save Casca Dura from its doom and become a legend!</span>
           <span lang="pt">Tire o pé da cova e saia pelas ruas de Casca Dura, uma cidadezinha cheia de mistérios e fofocas, que está ameaçada pela “Maldição dos Cruzcredos”. Combata ratos-com-asas, uma noiva fantasma vingativa, chupa-cabras insaciáveis e muito mais. Vem virar uma lenda!</span>
         </div>
-        <div class="meta">PC · Action/Adventure · Steam</div>
+        <div class="meta">Steam · Action/Adventure 2D</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -924,8 +936,8 @@
           <span lang="pt">Game Designer e Co-Diretor</span>
         </div>
         <div data-facts="">
-          <span lang="en">Unity · In development · Part-time</span>
-          <span lang="pt">Unity · Em desenvolvimento · Part-time</span>
+          <span lang="en">Unity · ~9 - Person Team · In Development </span>
+          <span lang="pt">Unity · Time de ~9 · Em Desenvolvimento</span>
         </div>
         <div data-desc="">
           <span lang="en">As Game Designer and Co-Director, I own the game's design end to end, from rules and enemy balancing to mechanics and gameplay systems. I work directly in Unity, building and iterating levels, and act as the bridge between design and programming, side by side with the developer to implement and tune systems. I also collaborate closely with Direction and Production in a multidisciplinary team, and develop the pitch for stakeholders and events.</span>
@@ -960,22 +972,22 @@
         <div data-platforms="">PC</div>
         <div data-link="https://store.steampowered.com/app/3401730/Cruzcredo_Tornese_uma_Lenda/" data-link-en="Wishlist on Steam" data-link-pt="Lista de desejos na Steam"></div>
         <div data-media="">
-          <div data-kind="video" data-label="Teaser"></div>
-          <div data-kind="image" data-label="Key art"></div>
-          <div data-kind="image" data-label="Sketch"></div>
-          <div data-kind="image" data-label="Process board"></div>
+          <div data-kind="video" data-label="Teaser" data-src="https://youtu.be/yZuEwvuE6k0?si=7YU-x_oumsTD94iV"></div>
+          <div data-kind="image" data-label="Key art" data-src="images/key-art.png"></div>
+          <div data-kind="image" data-label="Sketch" data-src="images/sketch.png"></div>
+          <div data-kind="image" data-label="Process board" data-src="images/process-board-1.png"></div>
         </div>
       </template>
     </article><article class="proj">
       <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/universal-monsters-arena-cover.png"><span class="ph">MONSTERS</span></div>
       <div>
         <h3>Universal Monsters Arena <span class="yr">2024</span></h3>
-        <div class="where">@ ARVORE</div>
+        <div class="where">@ ARVORE Immersive Experiences</div>
         <div class="desc">
           <span lang="en">Universal Monsters Arena is a team deathmatch multiplayer game where two teams compete against each other in arenas for a team-victory, becoming one of 6 iconic movie monsters.</span>
           <span lang="pt">Universal Monsters Arena é um jogo multiplayer de team deathmatch em que dois times competem em arenas pela vitória, encarnando um de 6 monstros icônicos do cinema.</span>
         </div>
-        <div class="meta">Horizon Worlds · 2–8 players · combat</div>
+        <div class="meta">Horizon Worlds · Combat (2–8 Players) · UGC</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -983,8 +995,8 @@
           <span lang="pt">Game Designer / Level Designer</span>
         </div>
         <div data-facts="">
-          <span lang="en">Meta Horizon Worlds · UGC</span>
-          <span lang="pt">Meta Horizon Worlds · UGC</span>
+          <span lang="en">Meta Horizon Worlds · ~15-Person Team · Released 2024</span>
+          <span lang="pt">Meta Horizon Worlds · Time de ~15 · Lançado em 2024</span>
         </div>
         <div data-desc="">
           <span lang="en">I contributed directly to the evolution of mechanics and player experience, taking responsibility for features such as combat systems and dynamic gameplay. Working with senior designers throughout all phases of development deepened my understanding of how design decisions shape the overall project. My contributions supported the team's goals, and the project was also an important learning experience that accelerated my growth as a designer.</span>
@@ -1011,9 +1023,9 @@
         <div data-platforms="">VR</div>
         <div data-link="" data-link-status="offline"></div>
         <div data-media="">
-          <div data-kind="video" data-label="Trailer"></div>
-          <div data-kind="image" data-label="Gameplay"></div>
-        </div>
+          <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=1JNSrYA1vSE"></div>
+          <div data-kind="image" data-label="Gameplay" data-src="images/gameplay.jpeg"></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item.jpeg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-1.jpeg"></div></div>
       </template>
     </article>
 
@@ -1021,12 +1033,12 @@
       <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/the-office-world-cover.jpg"><span class="ph">OFFICE</span></div>
       <div>
         <h3>The Office World <span class="yr">2024</span></h3>
-        <div class="where">@ ARVORE</div>
+        <div class="where">@ ARVORE Immersive Experiences</div>
         <div class="desc">
           <span lang="en">Players take on unique roles within Dunder Mifflin, tackling challenges in minigames such as selling paper, wrangling cats, or hunting moles.</span>
           <span lang="pt">Os jogadores assumem papéis únicos dentro da Dunder Mifflin, encarando desafios em minigames como vender papel, capturar gatos ou caçar toupeiras.</span>
         </div>
-        <div class="meta">Horizon Worlds · 1–6 players · party</div>
+        <div class="meta">Horizon Worlds · Party Game (1–6 Players)</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -1034,8 +1046,8 @@
           <span lang="pt">Game Designer</span>
         </div>
         <div data-facts="">
-          <span lang="en">Meta Horizon Worlds · UGC · Live Ops</span>
-          <span lang="pt">Meta Horizon Worlds · UGC · Live Ops</span>
+          <span lang="en">Meta Horizon Worlds · ~15 -Person Team · Released 2024</span>
+          <span lang="pt">Meta Horizon Worlds · Time de ~15 · Lançado em 2024</span>
         </div>
         <div data-desc="">
           <span lang="en">The Office World needed flexible support across different areas of the project. I collaborated with both UX and Game Design teams to improve specific features and ensure smooth delivery during Live Ops. While my role was more complementary here, that flexibility let me add value where the team needed most: from achievements to UX improvements and new gameplay experiences.</span>
@@ -1058,9 +1070,9 @@
         <div data-platforms="">VR</div>
         <div data-link="" data-link-status="offline"></div>
         <div data-media="">
-          <div data-kind="video" data-label="Trailer"></div>
-          <div data-kind="image" data-label="Gameplay"></div>
-        </div>
+          <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=kSvLM0HUMlI"></div>
+          <div data-kind="image" data-label="Gameplay" data-src="images/gameplay.jpg"></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-6.png"></div></div>
       </template>
     </article>
 
@@ -1076,17 +1088,21 @@
     <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/yuki-mrcade-cover.png"><span class="ph">YUKI</span></div>
     <div>
       <h3>YUKI MRcade <span class="yr">2023</span></h3>
-      <div class="where">@ ARVORE</div>
+      <div class="where">@ ARVORE Immersive Experiences</div>
       <div class="desc">
         <span lang="en">YUKI is an upbeat mix of the bullet-hell and roguelike game genres in VR, set in an incredible anime universe.</span>
         <span lang="pt">YUKI é uma mistura vibrante dos gêneros bullet-hell e roguelike em VR, ambientada em um incrível universo anime.</span>
       </div>
-      <div class="meta">Meta Quest · bullet-hell roguelike · MR</div>
+      <div class="meta">Meta Quest · Bullet-Hell Roguelike</div>
     </div>
     <template class="proj-detail">
       <div data-role="">
         <span lang="en">Game Designer</span>
         <span lang="pt">Game Designer</span>
+      </div>
+      <div data-facts="">
+        <span lang="en">Unity · ~11 -Person Team · Released Oct 2023</span>
+        <span lang="pt">Unity · Time de ~11 · Lançado em Out 2023</span>
       </div>
       <div data-desc="">
         <span lang="en">In a small, focused team alongside a senior game designer, I built multiple core features hands-on, iterating constantly so the gameplay systems worked together cohesively and delivered a polished final result. That close collaboration deepened my understanding of balancing and its impact on the overall experience.</span>
@@ -1105,9 +1121,9 @@
       <div data-platforms="">VR</div>
       <div data-link="https://www.meta.com/experiences/yuki-space-ranger/2886115781495034/" data-link-en="Get it on the Meta Quest Store" data-link-pt="Ver na Meta Quest Store"></div>
       <div data-media="">
-        <div data-kind="video" data-label="Trailer"></div>
-        <div data-kind="image" data-label="Gameplay"></div>
-      </div>
+        <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=xJRKuN_MmFE"></div>
+        <div data-kind="image" data-label="Gameplay" data-src="images/gameplay-1.jpg"></div>
+      <div data-kind="image" data-label="New item" data-src="images/new-item.jpg"></div></div>
     </template>
   </article>
 
@@ -1115,17 +1131,21 @@
     <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/pixel-ripped-1995-on-the-road-cover.png"><span class="ph">PIXEL RIPPED</span></div>
     <div>
       <h3>Pixel Ripped 1995: On the Road <span class="yr">2022</span></h3>
-      <div class="where">@ ARVORE</div>
+      <div class="where">@ ARVORE Immersive Experiences</div>
       <div class="desc">
         <span lang="en">Dot needs David's help again, this time to save her friends from Cyblin Lord's suspicious birthday party, maleficently planned by himself. A brand new and unique adventure made for the Holoride platform.</span>
         <span lang="pt">Dot precisa da ajuda de David mais uma vez, agora para salvar seus amigos da suspeita festa de aniversário do Cyblin Lord, maleficamente planejada por ele mesmo. Uma aventura nova e única feita para a plataforma Holoride.</span>
       </div>
-      <div class="meta">Holoride · adventure · in-car VR</div>
+      <div class="meta">Holoride · Platformer/Adventure </div>
     </div>
     <template class="proj-detail">
       <div data-role="">
         <span lang="en">Game Designer</span>
         <span lang="pt">Game Designer</span>
+      </div>
+      <div data-facts="">
+        <span lang="en">Unity · ~10-Person Team · Released 2022</span>
+        <span lang="pt">Unity · Time de ~10 · Lançado em 2022</span>
       </div>
       <div data-desc="">
         <span lang="en">This project was an important step in my transition from IT to Game Design, giving me the opportunity to apply my skills in a new discipline. My role involved refining level designs, improving overall juiciness and polish, and ensuring the experience was presentation-ready for Gamescom. I also supported the team by creating documentation that clarified design decisions and streamlined collaboration. These contributions demonstrated my ability to adapt quickly and add value across multiple areas of the development process.</span>
@@ -1152,9 +1172,9 @@
       <div data-platforms="">VR</div>
       <div data-link="" data-link-status="offline"></div>
       <div data-media="">
-        <div data-kind="video" data-label="Trailer"></div>
-        <div data-kind="image" data-label="Gameplay"></div>
-      </div>
+        <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=aW7YlHHIDJI"></div>
+        <div data-kind="image" data-label="Gameplay" data-src="images/gameplay.png"></div>
+      <div data-kind="image" data-label="New item" data-src="images/new-item-7.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-9.png"></div></div>
     </template>
   </article></div>
 
@@ -1172,8 +1192,8 @@
   <div class="tab-panel" data-panel="personal" role="tabpanel" hidden="">
 
   <h2 class="sec">
-    <span lang="en">Personal projects</span>
-    <span lang="pt">Projetos pessoais</span>
+    <span lang="en">Personal Projects</span>
+    <span lang="pt">Projetos Pessoais</span>
     <span class="count" data-count-for="per"></span>
   </h2>
   <div class="proj-list" id="perList">
@@ -1186,7 +1206,7 @@
           <span lang="en">Magic Realm is a 3D RTS, with low poly graphics, where you control all strategies in your battle against magic. Produced as the conclusion project of the Digital Games course at FATEC Americana.</span>
           <span lang="pt">Magic Realm é um RTS 3D com gráficos low poly, em que você controla todas as estratégias na sua batalha contra a magia. Produzido como projeto de conclusão do curso de Jogos Digitais da FATEC Americana.</span>
         </div>
-        <div class="meta">PC · 3D RTS · low-poly</div>
+        <div class="meta">itch.io · 3D RTS · Low-Poly</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -1243,7 +1263,7 @@
           <span lang="en">A mysterious infection is transforming the jellies into hideous creatures. Adventure through the universe of Jello Quest and save your gelatinous companions.</span>
           <span lang="pt">Uma infecção misteriosa está transformando as gelatinas em criaturas horrendas. Aventure-se pelo universo de Jello Quest e salve seus companheiros gelatinosos.</span>
         </div>
-        <div class="meta">PC · 2D · adventure</div>
+        <div class="meta">itch.io · 2D Adventure · Jam</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -1297,7 +1317,7 @@
           <span lang="en">Remember the good old bullet hells you played on a tamagotchi? Well, neither did I. But what about being locked inside one while you try to keep yourself alive?</span>
           <span lang="pt">Lembra dos bons e velhos bullet hells que você jogava num tamagotchi? Pois é, nem eu. Mas que tal ficar preso dentro de um enquanto tenta se manter vivo?</span>
         </div>
-        <div class="meta">PC · bullet hell · jam</div>
+        <div class="meta">itch.io · Bullet Hell · Jam</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -1337,7 +1357,7 @@
           <span lang="en">Help the cat to push his box into the right place and go to the next level. Take on these challenges in a simple and relaxing way.</span>
           <span lang="pt">Ajude o gato a empurrar a caixa para o lugar certo e avançar de nível. Encare esses desafios de um jeito simples e relaxante.</span>
         </div>
-        <div class="meta">PC · puzzle · casual</div>
+        <div class="meta">itch.io · Puzzle · Casual</div>
       </div>
       <template class="proj-detail">
         <div data-role="">
@@ -1586,12 +1606,20 @@
     prev.hidden = items.length < 2;
     next.hidden = items.length < 2;
 
+    function mediaThumbUrl(it) {
+      if (!it.src) return null;
+      if (it.kind === 'image') return it.src;
+      const yt = it.src.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+      if (yt) return 'https://i.ytimg.com/vi/' + yt[1] + '/mqdefault.jpg';
+      return null; // vimeo/mp4: mantém placeholder
+    }
     thumbs.innerHTML = items.map((it, i) => {
       const playIcon = it.kind === 'video'
         ? '<span class="thumb-play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5z"/></svg></span>'
         : '';
-      const kindTag = '<span class="thumb-kind">' + (it.kind === 'video' ? 'vid' : 'img') + '</span>';
-      return '<button class="modal-thumb' + (i === idx ? ' is-active' : '') + '" data-i="' + i + '" type="button" aria-label="' + (it.label || ('Media ' + (i+1))) + '">' + playIcon + kindTag + '</button>';
+      const turl = mediaThumbUrl(it);
+      const thumbImg = turl ? '<img class="thumb-img" src="' + turl.replace(/"/g, '&quot;') + '" alt="" loading="lazy" onerror="this.remove()">' : '';
+      return '<button class="modal-thumb' + (i === idx ? ' is-active' : '') + '" data-i="' + i + '" type="button" aria-label="' + (it.label || ('Media ' + (i+1))) + '">' + thumbImg + playIcon + '</button>';
     }).join('');
 
     thumbs.querySelectorAll('.modal-thumb').forEach(btn => {
@@ -1644,7 +1672,9 @@
 
     const h3 = article.querySelector('h3').cloneNode(true);
     h3.querySelectorAll('.yr').forEach(n => n.remove());
-    document.getElementById('modalTitle').textContent = h3.textContent.trim();
+    // innerHTML (não textContent): preserva títulos bilíngues <span lang> (ex.: Cruzcredo),
+    // e o CSS de idioma age no modal. Títulos de texto puro passam inalterados.
+    document.getElementById('modalTitle').innerHTML = h3.innerHTML.trim();
 
     document.getElementById('modalRole').innerHTML = detail.querySelector('[data-role]').innerHTML;
     document.getElementById('modalDesc').innerHTML = detail.querySelector('[data-desc]').innerHTML;

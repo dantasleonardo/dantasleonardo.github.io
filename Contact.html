@@ -2,11 +2,11 @@
 <html lang="en" data-lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Leonardo Dantas</title>
-<meta name="description" content="Contact Leonardo Dantas — Game Designer. Always open to talk about games, design and ideas worth building.">
+<title>Contact · Leonardo Dantas</title>
+<meta name="description" content="Contact Leonardo Dantas · Game Designer. Always Open to Talk about games, design and ideas worth building.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Contact — Leonardo Dantas">
-<meta property="og:description" content="Game Designer — always open to talk about games, design and ideas worth building.">
+<meta property="og:title" content="Contact · Leonardo Dantas">
+<meta property="og:description" content="Game Designer · always open to talk about games, design and ideas worth building.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23100a18'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23b780ff' text-anchor='middle' letter-spacing='-1'%3ELD%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -72,6 +72,7 @@
     transition: color 140ms ease;
   }
   .top .top-nav a:hover { color: var(--accent); }
+  .top .top-nav a.active { color: var(--ink); }
   .top .lang {
     background: transparent; border: 1px solid var(--rule); cursor: pointer;
     color: var(--dim); font-family: inherit; font-size: 11.5px;
@@ -262,13 +263,17 @@
   <header class="top">
     <a href="index.html" class="home">
       <span class="arrow">←</span>
-      <span lang="en">Portfolio</span>
-      <span lang="pt">Portfolio</span>
+      <span lang="en">Homepage</span>
+      <span lang="pt">Início</span>
     </a>
     <nav class="top-nav">
       <a href="About.html">
         <span lang="en">About</span>
         <span lang="pt">Sobre</span>
+      </a>
+      <a href="Contact.html" class="active">
+        <span lang="en">Contact</span>
+        <span lang="pt">Contato</span>
       </a>
     </nav>
     <button class="lang" id="langBtn" aria-label="Switch language">
@@ -292,8 +297,8 @@
       </p>
       <div class="avail">
         <span class="live"></span>
-        <span lang="en"><b>Always open to talk</b></span>
-        <span lang="pt"><b>Sempre aberto a conversar</b></span>
+        <span lang="en"><b>Always Open to Talk</b></span>
+        <span lang="pt"><b>Sempre Aberto a Conversar</b></span>
       </div>
     </div>
 
@@ -304,8 +309,8 @@
         <span lang="pt">Vamos conversar</span>
       </h2>
       <div class="card-sub">
-        <span lang="en">The best way to reach me</span>
-        <span lang="pt">O melhor jeito de me encontrar</span>
+        <span lang="en">The Best Way to Reach Me</span>
+        <span lang="pt">O Melhor Jeito de Me Encontrar</span>
       </div>
 
       <div class="channels">
@@ -388,7 +393,7 @@
     const cur = document.documentElement.getAttribute('data-lang');
     const next = cur === 'en' ? 'pt' : 'en';
     document.documentElement.setAttribute('data-lang', next);
-    document.title = next === 'en' ? 'Contact — Leonardo Dantas' : 'Contato — Leonardo Dantas';
+    document.title = next === 'en' ? 'Contact · Leonardo Dantas' : 'Contato · Leonardo Dantas';
   });
 
   // ─────────────────────────────────────────────────────────

@@ -2,10 +2,10 @@
 <html lang="en" data-lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Leonardo Dantas</title>
-<meta name="description" content="About Leonardo Dantas — Game Designer creating games across VR, MR, UGC and Mobile. Bio, timeline, education and skills.">
+<title>About · Leonardo Dantas</title>
+<meta name="description" content="About Leonardo Dantas · Game Designer creating games across VR, MR, UGC and Mobile. Bio, timeline, education and skills.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="About — Leonardo Dantas">
+<meta property="og:title" content="About · Leonardo Dantas">
 <meta property="og:description" content="Game Designer creating games across VR, MR, UGC and Mobile. Bio, timeline, education and skills.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23100a18'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23b780ff' text-anchor='middle' letter-spacing='-1'%3ELD%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,6 +66,7 @@
     transition: color 140ms ease;
   }
   .top .top-nav a:hover { color: var(--accent); }
+  .top .top-nav a.active { color: var(--ink); }
   .top .lang {
     background: transparent; border: 1px solid var(--rule); cursor: pointer;
     color: var(--dim); font-family: inherit; font-size: 11.5px;
@@ -400,10 +401,14 @@
   <header class="top">
     <a href="index.html" class="home">
       <span class="arrow">←</span>
-      <span lang="en">Portfolio</span>
-      <span lang="pt">Portfolio</span>
+      <span lang="en">Homepage</span>
+      <span lang="pt">Início</span>
     </a>
     <nav class="top-nav">
+      <a href="About.html" class="active">
+        <span lang="en">About</span>
+        <span lang="pt">Sobre</span>
+      </a>
       <a href="Contact.html">
         <span lang="en">Contact</span>
         <span lang="pt">Contato</span>
@@ -417,7 +422,9 @@
 
   <!-- ───── HERO ───── -->
   <section class="hero">
-    <img class="portrait" src="images/portrait.png" alt="Leonardo Dantas" style="width:100%;max-width:100%;height:auto;display:block;object-fit:cover;">
+    <div class="portrait">
+      <span class="ph">PORTRAIT / 4:5</span>
+    </div>
     <div>
     <h1>Leonardo Dantas</h1>
     <div class="role">Game Designer</div>
@@ -451,12 +458,12 @@
   </h2>
   <div class="bio-prose">
     <p>
-      <span lang="en">I've been making games professionally since 2022. I joined <b><a href="https://www.arvore.io/" target="_blank" rel="noopener">ARVORE</a></b> in 2021 as IT Tech Support and made the transition into Game Design from inside the studio, shipping multiplayer titles for Meta Quest: <b>Blumhouse Horrorverse</b> (as Lead Game/Level Designer), <b>The Office World</b>, <b>Universal Monsters Arena</b>, <b>YUKI MRcade</b>, <b>Pixel Ripped 1995: On the Road</b> and <b>Coffee Fest</b> (as Lead Game Designer). The work spans initial concepts, level design, balancing, documentation (GDD, LDD) and Live Ops.</span>
-      <span lang="pt">Faço jogos profissionalmente desde 2022. Entrei na <b><a href="https://www.arvore.io/" target="_blank" rel="noopener">ARVORE</a></b> em 2021 como IT Tech Support e fiz a transição para o Game Design de dentro do estúdio, lançando títulos multiplayer para Meta Quest: <b>Blumhouse Horrorverse</b> (como Lead Game/Level Designer), <b>The Office World</b>, <b>Universal Monsters Arena</b>, <b>YUKI MRcade</b>, <b>Pixel Ripped 1995: On the Road</b> e <b>Coffee Fest</b> (como Lead Game Designer). O trabalho cobre conceitos iniciais, level design, balanceamento, documentação (GDD, LDD) e Live Ops.</span>
+      <span lang="en">I've been making games professionally since 2022. I joined <b>ARVORE</b> in 2021 as IT Tech Support and made the transition into Game Design from inside the studio, shipping multiplayer titles for Meta Quest: <b>Blumhouse Horrorverse</b> (as Lead Game/Level Designer), <b>The Office World</b>, <b>Universal Monsters Arena</b>, <b>YUKI MRcade</b>, <b>Pixel Ripped 1995: On the Road</b> and <b>Coffee Fest</b> (as Lead Game Designer). The work spans initial concepts, level design, balancing, documentation (GDD, LDD) and Live Ops.</span>
+      <span lang="pt">Faço jogos profissionalmente desde 2022. Entrei na <b>ARVORE</b> em 2021 como IT Tech Support e fiz a transição para o Game Design de dentro do estúdio, lançando títulos multiplayer para Meta Quest: <b>Blumhouse Horrorverse</b> (como Lead Game/Level Designer), <b>The Office World</b>, <b>Universal Monsters Arena</b>, <b>YUKI MRcade</b>, <b>Pixel Ripped 1995: On the Road</b> e <b>Coffee Fest</b> (como Lead Game Designer). O trabalho cobre conceitos iniciais, level design, balanceamento, documentação (GDD, LDD) e Live Ops.</span>
     </p>
     <p>
-      <span lang="en">I hold a Tech Degree in Digital Games from <b>FATEC Americana</b>. During college, I researched serious games as a Scientific Initiation student and founded <em>GAMINP</em>, a study and incentive group for game development.</span>
-      <span lang="pt">Sou formado em Tecnologia em Jogos Digitais pela <b>FATEC Americana</b>. Durante a faculdade, pesquisei serious games como aluno de Iniciação Científica e fundei o <em>GAMINP</em>, um grupo de estudo e incentivo ao desenvolvimento de jogos.</span>
+      <span lang="en">I hold a Tech Degree in Digital Games from <b>FATEC Americana</b>. During college, I researched Serious Games as a Scientific Initiation student and founded <em>GAMINP</em>, a study and incentive group for game development.</span>
+      <span lang="pt">Sou formado em Tecnologia em Jogos Digitais pela <b>FATEC Americana</b>. Durante a faculdade, pesquisei Serious Games como aluno de Iniciação Científica e fundei o <em>GAMINP</em>, um grupo de estudo e incentivo ao desenvolvimento de jogos.</span>
     </p>
     <p>
       <span lang="en">I love game jams (most of my personal projects were born in one) and I'm always learning: game and level design, UI tech art, production and beyond. I'm based in <b>São Paulo, Brazil</b> and work in English and Portuguese. Off the clock, you'll usually find me playing games, going out to eat with friends, reading or watching series.</span>
@@ -475,7 +482,7 @@
       <span class="yr"><span lang="en">Sep 2025 – now</span><span lang="pt">set 2025 – hoje</span></span>
       <h3>
         <span><span lang="en">Game Designer</span><span lang="pt">Game Designer</span></span>
-        <a class="at" href="https://www.arvore.io/" target="_blank" rel="noopener">@ ARVORE</a>
+        <span class="at">@ ARVORE Immersive Experiences</span>
       </h3>
       <p>
         <span lang="en">Development and Live Ops of multiplayer UGC games (Horizon Worlds) and immersive VR/MR experiences, working closely with art, engineering and production teams.</span>
@@ -487,7 +494,7 @@
       <span class="yr"><span lang="en">Mar 2023 – Aug 2025</span><span lang="pt">mar 2023 – ago 2025</span></span>
       <h3>
         <span><span lang="en">Jr Game Designer</span><span lang="pt">Jr Game Designer</span></span>
-        <a class="at" href="https://www.arvore.io/" target="_blank" rel="noopener">@ ARVORE</a>
+        <span class="at">@ ARVORE Immersive Experiences</span>
       </h3>
       <p>
         <span lang="en">Shipped and supported <b>Blumhouse Horrorverse</b>, <b>The Office World</b>, <b>Universal Monsters Arena</b>, <b>YUKI MRcade</b> and <b>Coffee Fest</b>: from combat features and level design to playtests and Live Ops.</span>
@@ -499,7 +506,7 @@
       <span class="yr"><span lang="en">Apr 2021 – Feb 2023</span><span lang="pt">abr 2021 – fev 2023</span></span>
       <h3>
         <span><span lang="en">IT Tech Support</span><span lang="pt">IT Tech Support</span></span>
-        <a class="at" href="https://www.arvore.io/" target="_blank" rel="noopener">@ ARVORE</a>
+        <span class="at">@ ARVORE Immersive Experiences</span>
       </h3>
       <p>
         <span lang="en">Kept the studio running while making my transition into design, taking my first design steps on <b>Pixel Ripped 1995: On the Road</b>.</span>
@@ -532,8 +539,8 @@
       <span class="edu-school">FATEC Americana</span>
       <span class="edu-yr">2017 – 2020</span>
       <span class="edu-degree">
-        <span lang="en">Tech Degree in Digital Games · Scientific Initiation on serious games · founder of GAMINP</span>
-        <span lang="pt">Tecnólogo em Jogos Digitais · Iniciação Científica em serious games · fundador do GAMINP</span>
+        <span lang="en">Tech Degree in Digital Games · Scientific Initiation on Serious Games · Founder of GAMINP</span>
+        <span lang="pt">Tecnólogo em Jogos Digitais · Iniciação Científica em Serious Games · Fundador do GAMINP</span>
       </span>
     </div>
 
@@ -563,8 +570,8 @@
         <li><span lang="en">Systems Design</span><span lang="pt">Systems Design</span></li>
         <li><span lang="en">Level Design</span><span lang="pt">Level Design</span></li>
         <li><span lang="en">Multiplayer &amp; Live Ops</span><span lang="pt">Multiplayer &amp; Live Ops</span></li>
-        <li><span lang="en">UX: personas, playtests &amp; flows</span><span lang="pt">UX: personas, playtests e fluxos</span></li>
-        <li><span lang="en">VR / MR / UGC experience design</span><span lang="pt">Design de experiência VR / MR / UGC</span></li>
+        <li><span lang="en">UX: Personas, Playtests &amp; Flows</span><span lang="pt">UX: Personas, Playtests e Fluxos</span></li>
+        <li><span lang="en">VR / MR / UGC Experience Design</span><span lang="pt">Design de Experiência VR / MR / UGC</span></li>
       </ul>
     </div>
     <div class="skills-col">
@@ -576,7 +583,7 @@
         <li><span lang="en">Unity (Technical Design)</span><span lang="pt">Unity (Technical Design)</span></li>
         <li><span lang="en">Meta Horizon Worlds (UGC)</span><span lang="pt">Meta Horizon Worlds (UGC)</span></li>
         <li><span lang="en">UI Tech Art</span><span lang="pt">UI Tech Art</span></li>
-        <li><span lang="en">AI-assisted prototyping</span><span lang="pt">Prototipagem assistida por IA</span></li>
+        <li><span lang="en">AI-Assisted Prototyping</span><span lang="pt">Prototipagem Assistida por IA</span></li>
         <li><span lang="en">Documentation: GDD, LDD, Miro</span><span lang="pt">Documentação: GDD, LDD, Miro</span></li>
       </ul>
     </div>
@@ -609,7 +616,7 @@
     const cur = document.documentElement.getAttribute('data-lang');
     const next = cur === 'en' ? 'pt' : 'en';
     document.documentElement.setAttribute('data-lang', next);
-    document.title = next === 'en' ? 'About — Leonardo Dantas' : 'Sobre — Leonardo Dantas';
+    document.title = next === 'en' ? 'About · Leonardo Dantas' : 'Sobre · Leonardo Dantas';
   });
 
   // ─── Scroll-reveal das seções ───
