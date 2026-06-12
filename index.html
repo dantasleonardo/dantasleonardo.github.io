@@ -45,7 +45,8 @@
   a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(183,128,255,0.5); }
   a:hover { border-bottom-style: solid; }
 
-  html { scrollbar-color: rgba(183,128,255,0.35) var(--bg); scrollbar-width: thin; overflow-y: scroll; }
+  html { scrollbar-color: rgba(183,128,255,0.35) var(--bg); scrollbar-width: thin; overflow-y: scroll; scrollbar-gutter: stable; }
+  html.modal-locked { overflow: hidden; }
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb {
@@ -322,6 +323,7 @@
     max-width: 1040px; width: 100%;
     max-height: 90vh;
     overflow: auto;
+    overscroll-behavior: contain;
     padding: 44px 48px 36px; position: relative; border-radius: 6px;
     text-align: center;
     display: flex; flex-direction: column;
@@ -352,6 +354,7 @@
     }
     .modal-col-text {
       overflow-y: auto;
+      overscroll-behavior: contain;
       min-height: 0;
       padding-right: 10px;
       padding-bottom: 24px;
@@ -486,7 +489,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 2px 18px;
+    padding: 5px 18px;
     scrollbar-width: thin;
     scroll-padding-inline: 18px;
   }
@@ -502,16 +505,18 @@
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 4px; position: relative; overflow: hidden;
     cursor: pointer; padding: 0;
-    transition: border-color 140ms, transform 140ms;
+    opacity: 0.55;
+    transition: border-color 140ms, opacity 140ms, transform 140ms;
   }
   .modal-thumb::before {
     content: ''; position: absolute; inset: 0;
     background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 6px);
   }
-  .modal-thumb:hover { border-color: rgba(183,128,255,0.4); }
+  .modal-thumb:hover { border-color: rgba(183,128,255,0.4); opacity: 0.85; }
   .modal-thumb.is-active {
     border-color: var(--accent);
-    box-shadow: 0 0 0 1px rgba(183,128,255,0.4);
+    box-shadow: 0 0 0 2px var(--accent);
+    opacity: 1;
   }
   /* Miniatura real (YouTube/imagem). Se falhar o carregamento, o onerror remove
      a <img> e as listras de placeholder voltam — fallback garantido. */
@@ -743,7 +748,7 @@
 <div class="wrap">
 
   <header class="top">
-    <a href="#" class="home">Portfolio</a>
+    <a href="#" class="home"><span lang="en">Homepage</span><span lang="pt">Início</span></a>
     <nav class="top-nav">
       <a href="About.html">
         <span lang="en">About</span>
@@ -823,7 +828,7 @@
           <span lang="pt">Lead Game Designer / Level Designer</span>
         </div>
         <div data-facts="">
-          <span lang="en">Meta Horizon Worlds · ~20 -Person Team · Released May 2025</span>
+          <span lang="en">Meta Horizon Worlds · ~20-person team · Released May 2025</span>
           <span lang="pt">Meta Horizon Worlds · Time de ~20 · Lançado em Mai 2025</span>
         </div>
         <div data-desc="">
@@ -881,7 +886,7 @@
           <span lang="pt">Lead Game Designer</span>
         </div>
         <div data-facts="">
-          <span lang="en">Meta Horizon Worlds · ~13 - Person Team · Live Ops 2026</span>
+          <span lang="en">Meta Horizon Worlds · ~13-person team · Live Ops 2026</span>
           <span lang="pt">Meta Horizon Worlds · Time de ~13 · Live Ops 2026</span>
         </div>
         <div data-desc="">
@@ -936,7 +941,7 @@
           <span lang="pt">Game Designer e Co-Diretor</span>
         </div>
         <div data-facts="">
-          <span lang="en">Unity · ~9 - Person Team · In Development </span>
+          <span lang="en">Unity · ~9-person team · In Development </span>
           <span lang="pt">Unity · Time de ~9 · Em Desenvolvimento</span>
         </div>
         <div data-desc="">
@@ -995,7 +1000,7 @@
           <span lang="pt">Game Designer / Level Designer</span>
         </div>
         <div data-facts="">
-          <span lang="en">Meta Horizon Worlds · ~15-Person Team · Released 2024</span>
+          <span lang="en">Meta Horizon Worlds · ~15-person team · Released 2024</span>
           <span lang="pt">Meta Horizon Worlds · Time de ~15 · Lançado em 2024</span>
         </div>
         <div data-desc="">
@@ -1046,7 +1051,7 @@
           <span lang="pt">Game Designer</span>
         </div>
         <div data-facts="">
-          <span lang="en">Meta Horizon Worlds · ~15 -Person Team · Released 2024</span>
+          <span lang="en">Meta Horizon Worlds · ~15-person team · Released 2024</span>
           <span lang="pt">Meta Horizon Worlds · Time de ~15 · Lançado em 2024</span>
         </div>
         <div data-desc="">
@@ -1101,7 +1106,7 @@
         <span lang="pt">Game Designer</span>
       </div>
       <div data-facts="">
-        <span lang="en">Unity · ~11 -Person Team · Released Oct 2023</span>
+        <span lang="en">Unity · ~11-person team · Released Oct 2023</span>
         <span lang="pt">Unity · Time de ~11 · Lançado em Out 2023</span>
       </div>
       <div data-desc="">
@@ -1144,7 +1149,7 @@
         <span lang="pt">Game Designer</span>
       </div>
       <div data-facts="">
-        <span lang="en">Unity · ~10-Person Team · Released 2022</span>
+        <span lang="en">Unity · ~10-person team · Released 2022</span>
         <span lang="pt">Unity · Time de ~10 · Lançado em 2022</span>
       </div>
       <div data-desc="">
@@ -1199,7 +1204,7 @@
   <div class="proj-list" id="perList">
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/magic-realm-cover.png"><span class="ph">MAGIC</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/magic-realm-cover-1.png"><span class="ph">MAGIC</span></div>
       <div>
         <h3>Magic Realm <span class="yr">2021</span></h3>
         <div class="desc">
@@ -1258,7 +1263,7 @@
     <article class="proj">
       <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/jello-quest-cover.png"><span class="ph">JELLO</span></div>
       <div>
-        <h3>Jello Quest <span class="yr">2023</span></h3>
+        <h3>Jello Quest: Blob War <span class="yr">2023</span></h3>
         <div class="desc">
           <span lang="en">A mysterious infection is transforming the jellies into hideous creatures. Adventure through the universe of Jello Quest and save your gelatinous companions.</span>
           <span lang="pt">Uma infecção misteriosa está transformando as gelatinas em criaturas horrendas. Aventure-se pelo universo de Jello Quest e salve seus companheiros gelatinosos.</span>
@@ -1305,12 +1310,12 @@
           <div data-kind="video" data-label="Launch trailer" data-src="https://youtu.be/Q98YWXrKC4Q?si=p2VIyUqJ6Upi4mp_"></div>
           
           
-        </div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-10.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-11.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-1.jpg"></div></div>
       <div data-link="https://leodantas.itch.io/jello-quest-blob-war"></div></template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/tamagotchi-hell-cover.png"><span class="ph">TAMAGOTCHI</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/tamagotchi-hell-cover-1.png"><span class="ph">TAMAGOTCHI</span></div>
       <div>
         <h3>Tamagotchi Hell <span class="yr">2022</span></h3>
         <div class="desc">
@@ -1345,12 +1350,12 @@
         <div data-platforms="">PC</div>
         <div data-media="">
           <div data-kind="video" data-label="Gameplay" data-src="https://www.youtube.com/watch?v=m5zW1DFpR0c"></div>
-        </div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-12.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-14.png"></div></div>
       <div data-link="https://sollarium-studio.itch.io/tamagotchi-hell"></div></template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/kitty-cubes-cover.png"><span class="ph">KITTY</span></div>
+      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/kitty-cubes-cover-1.png"><span class="ph">KITTY</span></div>
       <div>
         <h3>Kitty Cubes <span class="yr">2022</span></h3>
         <div class="desc">
@@ -1390,7 +1395,7 @@
         <div data-media="">
           
           <div data-kind="image" data-label="Gameplay" data-src="images/gameplay-1.png"></div>
-        </div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-15.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-16.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-17.png"></div></div>
       <div data-link="https://sollarium-studio.itch.io/kitty-cubes"></div></template>
     </article>
 
@@ -1631,6 +1636,13 @@
 
     requestAnimationFrame(() => {
       thumbs.classList.toggle('is-scrollable', thumbs.scrollWidth > thumbs.clientWidth + 1);
+      // Rola a faixa pra deixar a miniatura ativa visível/centralizada,
+      // pra ela "acompanhar" as setas em vez de ficar cortada na borda.
+      const activeThumb = thumbs.querySelector('.modal-thumb.is-active');
+      if (activeThumb) {
+        const target = activeThumb.offsetLeft - (thumbs.clientWidth - activeThumb.offsetWidth) / 2;
+        thumbs.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+      }
     });
   }
 
@@ -1733,6 +1745,7 @@
     // inside a display:none parent fail to paint on the first frame, which is
     // why the first carousel item was "breaking" on every fresh modal open.
     document.getElementById('modal').classList.add('open');
+    document.documentElement.classList.add('modal-locked');
     requestAnimationFrame(() => {
       renderGallery();
       const txt = document.querySelector('.modal-col-text');
@@ -1744,6 +1757,7 @@
   function closeModal() {
     exitFullscreen();
     document.getElementById('modal').classList.remove('open');
+    document.documentElement.classList.remove('modal-locked');
     // Tear down any media so a fresh open always starts clean.
     const hero = document.getElementById('modalHero');
     hero.querySelectorAll('.hero-media').forEach(n => n.remove());
