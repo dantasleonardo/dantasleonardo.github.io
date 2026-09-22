@@ -216,6 +216,16 @@
     color: var(--quiet); letter-spacing: 0.04em;
   }
   .proj .where { color: var(--accent); font-weight: 500; font-size: 13px; margin-top: 2px; }
+  /* Linha de crédito do card: "cargo · estúdio". O cargo vem do data-role do modal (via JS);
+     no celular vira duas linhas, sem o "·", em vez de quebrar a frase no meio */
+  .proj .credit { margin-top: 2px; font-size: 13px; line-height: 1.5; }
+  .proj .credit-role { color: var(--ink); font-weight: 500; }
+  .proj .credit-sep { color: var(--quiet); }
+  .proj .credit .where { display: inline; margin-top: 0; }
+  @media (max-width: 560px) {
+    .proj .credit-sep { display: none; }
+    .proj .credit-role, .proj .credit .where { display: block; }
+  }
   /* Coluna de texto vira flex: título no topo, meta SEMPRE no rodapé,
      independente do tamanho da descrição */
   .proj > div:not(.proj-img) {
@@ -956,16 +966,16 @@
       </div>
       <template class="proj-detail">
         <div data-role="">
-          <span lang="en">Lead Game Designer &amp; Co-Director</span>
-          <span lang="pt">Lead Game Designer e Co-Diretor</span>
+          <span lang="en">Lead Game Designer / Co-Director</span>
+          <span lang="pt">Lead Game Designer / Co-Diretor</span>
         </div>
         <div data-facts="">
           <span lang="en">Unity · ~9-person team · In Development </span>
           <span lang="pt">Unity · Time de ~9 · Em Desenvolvimento</span>
         </div>
         <div data-desc="">
-          <span lang="en">As Game Designer and Co-Director, I own the game's design end to end, from rules and enemy balancing to mechanics and gameplay systems. I work directly in Unity, building and iterating levels, and act as the bridge between design and programming, side by side with the developer to implement and tune systems. I also collaborate closely with Direction and Production in a multidisciplinary team, and develop the pitch for stakeholders and events.</span>
-          <span lang="pt">Como Game Designer e Co-Diretor, cuido do design do jogo de ponta a ponta, das regras e balanceamento de inimigos às mecânicas e sistemas de gameplay. Trabalho diretamente na Unity, criando e iterando níveis, e atuo como ponte entre design e programação, lado a lado com o desenvolvedor para implementar e ajustar sistemas. Também colaboro de perto com Direção e Produção em uma equipe multidisciplinar, e desenvolvo o pitch para stakeholders e eventos.</span>
+          <span lang="en">As Lead Game Designer and Co-Director, I own the game's design end to end, from rules and enemy balancing to mechanics and gameplay systems. I work directly in Unity, building and iterating levels, and act as the bridge between design and programming, side by side with the developer to implement and tune systems. I also collaborate closely with Direction and Production in a multidisciplinary team, and develop the pitch for stakeholders and events.</span>
+          <span lang="pt">Como Lead Game Designer e Co-Diretor, cuido do design do jogo de ponta a ponta, das regras e balanceamento de inimigos às mecânicas e sistemas de gameplay. Trabalho diretamente na Unity, criando e iterando níveis, e atuo como ponte entre design e programação, lado a lado com o desenvolvedor para implementar e ajustar sistemas. Também colaboro de perto com Direção e Produção em uma equipe multidisciplinar, e desenvolvo o pitch para stakeholders e eventos.</span>
         </div>
         <ul data-bullets="">
           <li>
@@ -1813,6 +1823,33 @@
     if (lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll: true });
     lastFocus = null;
   }
+
+  // Cargo no card, na linha do estúdio. Lê o mesmo data-role que o modal usa: o Editor
+  // continua editando num lugar só, e projeto novo já sai com a linha.
+  document.querySelectorAll('.proj').forEach(article => {
+    const tpl = article.querySelector('template.proj-detail');
+    const roleEl = tpl && tpl.content.querySelector('[data-role]');
+    const col = article.querySelector(':scope > div:not(.proj-img)');
+    const h3 = col && col.querySelector(':scope > h3');
+    if (!roleEl || !h3 || !roleEl.textContent.trim()) return;
+    const line = document.createElement('div');
+    line.className = 'credit';
+    const role = document.createElement('span');
+    role.className = 'credit-role';
+    const langs = roleEl.querySelectorAll('span[lang]');
+    if (langs.length) langs.forEach(s => role.appendChild(s.cloneNode(true)));
+    else role.textContent = roleEl.textContent.trim();
+    line.appendChild(role);
+    const where = col.querySelector(':scope > .where');
+    if (where) {
+      const sep = document.createElement('span');
+      sep.className = 'credit-sep';
+      sep.setAttribute('aria-hidden', 'true');
+      sep.textContent = ' · ';
+      line.append(sep, where);
+    }
+    h3.after(line);
+  });
 
   // Cards abrem por clique e por teclado (Tab até o card, Enter ou Espaço).
   // Os atributos entram aqui, não no HTML, pra projeto novo criado pelo Editor já vir junto.
