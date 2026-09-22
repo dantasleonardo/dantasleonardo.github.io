@@ -3,6 +3,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Leonardo Dantas · Game Designer</title>
+<script>
+  // Idioma antes de pintar a página (sem piscar EN pra quem lê em PT).
+  // Lembra a escolha entre páginas; na primeira visita segue o idioma do navegador.
+  // No preview do Editor (iframe ou aba blob) respeita o seletor EN/PT de lá.
+  (function () {
+    var d = document.documentElement;
+    var preview = window.self !== window.top || location.protocol === 'blob:' || location.href === 'about:srcdoc';
+    var lang = d.getAttribute('data-lang') || 'en';
+    if (!preview) {
+      var saved = null;
+      try { saved = localStorage.getItem('lang'); } catch (e) {}
+      lang = (saved === 'en' || saved === 'pt') ? saved : (/^pt\b/i.test(navigator.language || '') ? 'pt' : 'en');
+    }
+    d.setAttribute('data-lang', lang);
+    d.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  })();
+</script>
 <meta name="description" content="Leonardo Dantas · Game Designer creating games across VR, MR, UGC and Mobile.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Leonardo Dantas · Game Designer">
@@ -173,6 +190,7 @@
   }
   .proj:first-child { border-top: none; }
   .proj:hover { background: rgba(183,128,255,0.05); }
+  .proj:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .proj-img {
     aspect-ratio: 16/10; position: relative; overflow: hidden;
     border-radius: 4px; background: linear-gradient(135deg, #1f1530, #3a2056);
@@ -578,6 +596,7 @@
     font-size: 22px; cursor: pointer; line-height: 1;
   }
   .modal-close:hover { color: var(--accent); }
+  .modal:focus { outline: none; }
   @media (max-width: 560px) {
     .modal { padding: 36px 22px 28px; }
     .modal h3 { font-size: 24px; }
@@ -812,7 +831,7 @@
   <div class="proj-list" id="proList">
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/blumhouse-horrorverse-cover.jpg"><span class="ph">HORRORVERSE</span></div>
+      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/blumhouse-horrorverse-cover.jpg"><span class="ph">HORRORVERSE</span></div>
       <div>
         <h3>Blumhouse Horrorverse <span class="yr">2025</span></h3>
         <div class="where">@ ARVORE Immersive Experiences</div>
@@ -865,12 +884,12 @@
           
           
           <div data-kind="image" data-label="Img" data-src="images/map-overview.jpg"></div>
-        <div data-kind="image" data-label="New item" data-src="images/new-item.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-1.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-2.png"></div></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-2.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-1-1.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-2-1.jpg"></div></div>
       </template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/coffee-fest-cover.jpg"><span class="ph">COFFEE FEST</span></div>
+      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/coffee-fest-cover.jpg"><span class="ph">COFFEE FEST</span></div>
       <div>
         <h3>Coffee Fest <span class="yr">2026</span></h3>
         <div class="where">@ ARVORE Immersive Experiences</div>
@@ -920,12 +939,12 @@
         <div data-media="">
           <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=TEpJq3EJ-jE"></div>
           <div data-kind="video" data-label="Gameplay" data-src="https://www.youtube.com/watch?v=2iAUDKLCujU"></div>
-        <div data-kind="image" data-label="New item" data-src="images/new-item-3.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-4.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-5.png"></div></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-3.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-4.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-5.jpg"></div></div>
       </template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/cruzcredo-cover.png"><span class="ph">CRUZCREDO</span></div>
+      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/cruzcredo-cover.jpg"><span class="ph">CRUZCREDO</span></div>
       <div>
         <h3><span lang="en">HolyHex! Become a Legend</span><span lang="pt">Cruzcredo! Torne-se uma Lenda</span> <span class="yr">TBD</span></h3>
         <div class="where">@ Ginga Studios</div>
@@ -937,8 +956,8 @@
       </div>
       <template class="proj-detail">
         <div data-role="">
-          <span lang="en">Game Designer &amp; Co-Director</span>
-          <span lang="pt">Game Designer e Co-Diretor</span>
+          <span lang="en">Lead Game Designer &amp; Co-Director</span>
+          <span lang="pt">Lead Game Designer e Co-Diretor</span>
         </div>
         <div data-facts="">
           <span lang="en">Unity · ~9-person team · In Development </span>
@@ -978,13 +997,13 @@
         <div data-link="https://store.steampowered.com/app/3401730/Cruzcredo_Tornese_uma_Lenda/" data-link-en="Wishlist on Steam" data-link-pt="Lista de desejos na Steam"></div>
         <div data-media="">
           <div data-kind="video" data-label="Teaser" data-src="https://youtu.be/yZuEwvuE6k0?si=7YU-x_oumsTD94iV"></div>
-          <div data-kind="image" data-label="Key art" data-src="images/key-art.png"></div>
-          <div data-kind="image" data-label="Sketch" data-src="images/sketch.png"></div>
-          <div data-kind="image" data-label="Process board" data-src="images/process-board-1.png"></div>
+          <div data-kind="image" data-label="Key art" data-src="images/key-art.jpg"></div>
+          <div data-kind="image" data-label="Sketch" data-src="images/sketch.jpg"></div>
+          <div data-kind="image" data-label="Process board" data-src="images/process-board-1.jpg"></div>
         </div>
       </template>
     </article><article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/universal-monsters-arena-cover.png"><span class="ph">MONSTERS</span></div>
+      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/universal-monsters-arena-cover.jpg"><span class="ph">MONSTERS</span></div>
       <div>
         <h3>Universal Monsters Arena <span class="yr">2024</span></h3>
         <div class="where">@ ARVORE Immersive Experiences</div>
@@ -1035,7 +1054,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/the-office-world-cover.jpg"><span class="ph">OFFICE</span></div>
+      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/the-office-world-cover.jpg"><span class="ph">OFFICE</span></div>
       <div>
         <h3>The Office World <span class="yr">2024</span></h3>
         <div class="where">@ ARVORE Immersive Experiences</div>
@@ -1077,7 +1096,7 @@
         <div data-media="">
           <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=kSvLM0HUMlI"></div>
           <div data-kind="image" data-label="Gameplay" data-src="images/gameplay.jpg"></div>
-        <div data-kind="image" data-label="New item" data-src="images/new-item-6.png"></div></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-6.jpg"></div></div>
       </template>
     </article>
 
@@ -1090,7 +1109,7 @@
     
 
   <article class="proj">
-    <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/yuki-mrcade-cover.png"><span class="ph">YUKI</span></div>
+    <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/yuki-mrcade-cover.jpg"><span class="ph">YUKI</span></div>
     <div>
       <h3>YUKI MRcade <span class="yr">2023</span></h3>
       <div class="where">@ ARVORE Immersive Experiences</div>
@@ -1133,7 +1152,7 @@
   </article>
 
   <article class="proj">
-    <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/pixel-ripped-1995-on-the-road-cover.png"><span class="ph">PIXEL RIPPED</span></div>
+    <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/pixel-ripped-1995-on-the-road-cover.jpg"><span class="ph">PIXEL RIPPED</span></div>
     <div>
       <h3>Pixel Ripped 1995: On the Road <span class="yr">2022</span></h3>
       <div class="where">@ ARVORE Immersive Experiences</div>
@@ -1178,8 +1197,8 @@
       <div data-link="" data-link-status="offline"></div>
       <div data-media="">
         <div data-kind="video" data-label="Trailer" data-src="https://www.youtube.com/watch?v=aW7YlHHIDJI"></div>
-        <div data-kind="image" data-label="Gameplay" data-src="images/gameplay.png"></div>
-      <div data-kind="image" data-label="New item" data-src="images/new-item-7.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-9.png"></div></div>
+        <div data-kind="image" data-label="Gameplay" data-src="images/gameplay-2.jpg"></div>
+      <div data-kind="image" data-label="New item" data-src="images/new-item-7.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-9.png"></div></div>
     </template>
   </article></div>
 
@@ -1204,7 +1223,7 @@
   <div class="proj-list" id="perList">
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/magic-realm-cover-1.png"><span class="ph">MAGIC</span></div>
+      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/magic-realm-cover-1.png"><span class="ph">MAGIC</span></div>
       <div>
         <h3>Magic Realm <span class="yr">2021</span></h3>
         <div class="desc">
@@ -1261,7 +1280,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/jello-quest-cover.png"><span class="ph">JELLO</span></div>
+      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/jello-quest-cover.jpg"><span class="ph">JELLO</span></div>
       <div>
         <h3>Jello Quest: Blob War <span class="yr">2023</span></h3>
         <div class="desc">
@@ -1310,12 +1329,12 @@
           <div data-kind="video" data-label="Launch trailer" data-src="https://youtu.be/Q98YWXrKC4Q?si=p2VIyUqJ6Upi4mp_"></div>
           
           
-        <div data-kind="image" data-label="New item" data-src="images/new-item-10.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-11.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-1.jpg"></div></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-10.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-11.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-1.jpg"></div></div>
       <div data-link="https://leodantas.itch.io/jello-quest-blob-war"></div></template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/tamagotchi-hell-cover-1.png"><span class="ph">TAMAGOTCHI</span></div>
+      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/tamagotchi-hell-cover-1.png"><span class="ph">TAMAGOTCHI</span></div>
       <div>
         <h3>Tamagotchi Hell <span class="yr">2022</span></h3>
         <div class="desc">
@@ -1350,12 +1369,12 @@
         <div data-platforms="">PC</div>
         <div data-media="">
           <div data-kind="video" data-label="Gameplay" data-src="https://www.youtube.com/watch?v=m5zW1DFpR0c"></div>
-        <div data-kind="image" data-label="New item" data-src="images/new-item-12.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-14.png"></div></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-12.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-14.jpg"></div></div>
       <div data-link="https://sollarium-studio.itch.io/tamagotchi-hell"></div></template>
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/kitty-cubes-cover-1.png"><span class="ph">KITTY</span></div>
+      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/kitty-cubes-cover-1.png"><span class="ph">KITTY</span></div>
       <div>
         <h3>Kitty Cubes <span class="yr">2022</span></h3>
         <div class="desc">
@@ -1394,8 +1413,8 @@
         <div data-platforms="">PC</div>
         <div data-media="">
           
-          <div data-kind="image" data-label="Gameplay" data-src="images/gameplay-1.png"></div>
-        <div data-kind="image" data-label="New item" data-src="images/new-item-15.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-16.png"></div><div data-kind="image" data-label="New item" data-src="images/new-item-17.png"></div></div>
+          <div data-kind="image" data-label="Gameplay" data-src="images/gameplay-1-1.jpg"></div>
+        <div data-kind="image" data-label="New item" data-src="images/new-item-15.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-16.jpg"></div><div data-kind="image" data-label="New item" data-src="images/new-item-17.jpg"></div></div>
       <div data-link="https://sollarium-studio.itch.io/kitty-cubes"></div></template>
     </article>
 
@@ -1422,8 +1441,8 @@
 </div>
 
 <div class="modal-bg" id="modal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">×</button>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
     <h3 id="modalTitle"></h3>
     <div class="modal-body">
       <div class="modal-col-media">
@@ -1460,9 +1479,13 @@
 </div>
 
 <script>
+  // Idioma: o <head> já aplicou a escolha salva; aqui só o botão.
   document.getElementById('langBtn').addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-lang') || 'en';
-    document.documentElement.setAttribute('data-lang', cur === 'en' ? 'pt' : 'en');
+    const d = document.documentElement;
+    const next = d.getAttribute('data-lang') === 'pt' ? 'en' : 'pt';
+    d.setAttribute('data-lang', next);
+    d.lang = next === 'pt' ? 'pt-BR' : 'en';
+    try { localStorage.setItem('lang', next); } catch (e) {}
   });
 
   // ─── Tabs ────────────────────────────────────────────
@@ -1677,10 +1700,27 @@
     toggleFullscreen();
   });
 
+  // ─── Link direto por projeto (leonardodantasgd.com/#blumhouse-horrorverse) ───
+  // O endereço sai do nome em inglês do card, então não tem campo extra pra manter no Editor.
+  // Só mexe na URL com o site hospedado: no preview do Editor (about:srcdoc) isso daria erro.
+  function projSlug(article) {
+    const h3 = article.querySelector('h3').cloneNode(true);
+    h3.querySelectorAll('.yr, [lang="pt"]').forEach(n => n.remove());
+    return h3.textContent.trim().toLowerCase()
+      .normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  function setHash(slug) {
+    if (!/^https?:$/.test(location.protocol)) return;
+    try { history.replaceState(null, '', slug ? '#' + slug : location.pathname + location.search); } catch (e) {}
+  }
+
+  let lastFocus = null;
   function openProj(article) {
     const tpl = article.querySelector('template.proj-detail');
     if (!tpl) return;
     const detail = tpl.content;
+    if (!document.getElementById('modal').classList.contains('open')) lastFocus = document.activeElement;
 
     const h3 = article.querySelector('h3').cloneNode(true);
     h3.querySelectorAll('.yr').forEach(n => n.remove());
@@ -1746,6 +1786,11 @@
     // why the first carousel item was "breaking" on every fresh modal open.
     document.getElementById('modal').classList.add('open');
     document.documentElement.classList.add('modal-locked');
+    // Teclado: o fundo sai da ordem do Tab e o foco entra no modal.
+    // Foca a caixa (não o botão ×) pra um Espaço solto não fechar o modal que acabou de abrir.
+    document.querySelector('.wrap').inert = true;
+    document.querySelector('#modal .modal').focus({ preventScroll: true });
+    setHash(projSlug(article));
     requestAnimationFrame(() => {
       renderGallery();
       const txt = document.querySelector('.modal-col-text');
@@ -1755,6 +1800,7 @@
     });
   }
   function closeModal() {
+    if (!document.getElementById('modal').classList.contains('open')) return;
     exitFullscreen();
     document.getElementById('modal').classList.remove('open');
     document.documentElement.classList.remove('modal-locked');
@@ -1762,11 +1808,35 @@
     const hero = document.getElementById('modalHero');
     hero.querySelectorAll('.hero-media').forEach(n => n.remove());
     hero.classList.remove('has-media');
+    document.querySelector('.wrap').inert = false;
+    if (location.hash) setHash('');
+    if (lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll: true });
+    lastFocus = null;
   }
 
+  // Cards abrem por clique e por teclado (Tab até o card, Enter ou Espaço).
+  // Os atributos entram aqui, não no HTML, pra projeto novo criado pelo Editor já vir junto.
   document.querySelectorAll('.proj').forEach(el => {
+    el.tabIndex = 0;
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-haspopup', 'dialog');
     el.addEventListener('click', () => openProj(el));
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProj(el); }
+    });
   });
+
+  function openFromHash() {
+    const slug = decodeURIComponent(location.hash.slice(1));
+    if (!slug) return;
+    const article = [...document.querySelectorAll('.proj')].find(a => projSlug(a) === slug);
+    if (!article) return;
+    const panel = article.closest('.tab-panel');
+    if (panel) activateTab(panel.dataset.panel);
+    openProj(article);
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
   document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
   document.addEventListener('keydown', e => {
     if (isFullscreen() && e.key === 'Escape') { exitFullscreen(); e.stopPropagation(); return; }
