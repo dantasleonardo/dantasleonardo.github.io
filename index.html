@@ -226,6 +226,12 @@
     .proj .credit-sep { display: none; }
     .proj .credit-role, .proj .credit .where { display: block; }
   }
+  /* Tags de competência do card: vêm do data-tags do projeto (lista separada por vírgula), via JS */
+  .proj .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .proj .chip {
+    font-size: 11px; line-height: 1.5; padding: 2px 9px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12); color: var(--dim);
+  }
   /* Coluna de texto vira flex: título no topo, meta SEMPRE no rodapé,
      independente do tamanho da descrição */
   .proj > div:not(.proj-img) {
@@ -860,6 +866,10 @@
           <span lang="en">Meta Horizon Worlds · ~20-person team · Released May 2025</span>
           <span lang="pt">Meta Horizon Worlds · Time de ~20 · Lançado em Mai 2025</span>
         </div>
+        <div data-tags="">
+          <span lang="en">Level Design, Balancing, Documentation, Live Ops</span>
+          <span lang="pt">Level Design, Balanceamento, Documentação, Live Ops</span>
+        </div>
         <div data-desc="">
           <span lang="en">My contribution played an important role in guiding the project from concept to live release. I worked closely with designers, artists, and other team members to ensure the vision was clear and achievable. Through collaboration, we refined gameplay, optimized level flow, and responded to player feedback during Live Ops. This teamwork was key to maintaining consistency and delivering a polished, engaging experience for players.</span>
           <span lang="pt">Minha contribuição teve um papel importante em guiar o projeto do conceito ao lançamento live. Trabalhei lado a lado com designers, artistas e outros membros do time para garantir que a visão fosse clara e alcançável. Com essa colaboração, refinamos o gameplay, otimizamos o fluxo dos níveis e respondemos ao feedback dos jogadores durante o Live Ops. Esse trabalho em equipe foi essencial para manter a consistência e entregar uma experiência polida e envolvente para os jogadores.</span>
@@ -918,6 +928,10 @@
           <span lang="en">Meta Horizon Worlds · ~13-person team · Live Ops 2026</span>
           <span lang="pt">Meta Horizon Worlds · Time de ~13 · Live Ops 2026</span>
         </div>
+        <div data-tags="">
+          <span lang="en">Live Ops, Event Design, Monetization</span>
+          <span lang="pt">Live Ops, Design de Eventos, Monetização</span>
+        </div>
         <div data-desc="">
           <span lang="en">Coffee Fest is my deepest dive into UGC Live Ops so far. I design and ship updates that keep the world fresh: seasonal events, new mechanics, monetization improvements and daily missions, all built directly in Horizon Worlds. The best part of the loop is watching playtests turn into players racing for the critic's stars: design, release, observe, adjust.</span>
           <span lang="pt">O Coffee Fest é meu mergulho mais fundo em Live Ops de UGC até agora. Desenho e lanço updates que mantêm o mundo vivo: eventos sazonais, novas mecânicas, melhorias de monetização e missões diárias, tudo construído diretamente no Horizon Worlds. A melhor parte do loop é ver playtests virarem jogadores correndo pelas estrelas do crítico: desenhar, lançar, observar, ajustar.</span>
@@ -972,6 +986,10 @@
         <div data-facts="">
           <span lang="en">Unity · ~9-person team · In Development </span>
           <span lang="pt">Unity · Time de ~9 · Em Desenvolvimento</span>
+        </div>
+        <div data-tags="">
+          <span lang="en">Systems Design, Enemy Design, Level Design, Pitching</span>
+          <span lang="pt">Systems Design, Design de Inimigos, Level Design, Pitch</span>
         </div>
         <div data-desc="">
           <span lang="en">As Lead Game Designer and Co-Director, I own the game's design end to end, from rules and enemy balancing to mechanics and gameplay systems. I work directly in Unity, building and iterating levels, and act as the bridge between design and programming, side by side with the developer to implement and tune systems. I also collaborate closely with Direction and Production in a multidisciplinary team, and develop the pitch for stakeholders and events.</span>
@@ -1032,6 +1050,10 @@
           <span lang="en">Meta Horizon Worlds · ~15-person team · Released 2024</span>
           <span lang="pt">Meta Horizon Worlds · Time de ~15 · Lançado em 2024</span>
         </div>
+        <div data-tags="">
+          <span lang="en">Combat Design, Balancing, Level Design</span>
+          <span lang="pt">Combat Design, Balanceamento, Level Design</span>
+        </div>
         <div data-desc="">
           <span lang="en">I contributed directly to the evolution of mechanics and player experience, taking responsibility for features such as combat systems and dynamic gameplay. Working with senior designers throughout all phases of development deepened my understanding of how design decisions shape the overall project. My contributions supported the team's goals, and the project was also an important learning experience that accelerated my growth as a designer.</span>
           <span lang="pt">Contribuí diretamente para a evolução das mecânicas e da experiência do jogador, assumindo a responsabilidade por features como sistemas de combate e gameplay dinâmico. Trabalhar com designers sêniores em todas as fases do desenvolvimento aprofundou meu entendimento de como decisões de design moldam o projeto como um todo. Minhas contribuições apoiaram os objetivos do time, e o projeto também foi uma experiência de aprendizado importante, que acelerou meu crescimento como designer.</span>
@@ -1082,6 +1104,10 @@
         <div data-facts="">
           <span lang="en">Meta Horizon Worlds · ~15-person team · Released 2024</span>
           <span lang="pt">Meta Horizon Worlds · Time de ~15 · Lançado em 2024</span>
+        </div>
+        <div data-tags="">
+          <span lang="en">UX, Level Design, Live Ops</span>
+          <span lang="pt">UX, Level Design, Live Ops</span>
         </div>
         <div data-desc="">
           <span lang="en">The Office World needed flexible support across different areas of the project. I collaborated with both UX and Game Design teams to improve specific features and ensure smooth delivery during Live Ops. While my role was more complementary here, that flexibility let me add value where the team needed most: from achievements to UX improvements and new gameplay experiences.</span>
@@ -1138,6 +1164,10 @@
         <span lang="en">Unity · ~11-person team · Released Oct 2023</span>
         <span lang="pt">Unity · Time de ~11 · Lançado em Out 2023</span>
       </div>
+      <div data-tags="">
+        <span lang="en">Feature Design, Balancing, Unity</span>
+        <span lang="pt">Feature Design, Balanceamento, Unity</span>
+      </div>
       <div data-desc="">
         <span lang="en">In a small, focused team alongside a senior game designer, I built multiple core features hands-on, iterating constantly so the gameplay systems worked together cohesively and delivered a polished final result. That close collaboration deepened my understanding of balancing and its impact on the overall experience.</span>
         <span lang="pt">Em um time pequeno e focado, lado a lado com um game designer sênior, construí várias features centrais na prática, iterando constantemente para que os sistemas de gameplay funcionassem de forma coesa e entregassem um resultado final polido. Essa colaboração próxima aprofundou meu entendimento de balanceamento e seu impacto na experiência como um todo.</span>
@@ -1180,6 +1210,10 @@
       <div data-facts="">
         <span lang="en">Unity · ~10-person team · Released 2022</span>
         <span lang="pt">Unity · Time de ~10 · Lançado em 2022</span>
+      </div>
+      <div data-tags="">
+        <span lang="en">Level Design, Game Feel, Documentation</span>
+        <span lang="pt">Level Design, Game Feel, Documentação</span>
       </div>
       <div data-desc="">
         <span lang="en">This project was an important step in my transition from IT to Game Design, giving me the opportunity to apply my skills in a new discipline. My role involved refining level designs, improving overall juiciness and polish, and ensuring the experience was presentation-ready for Gamescom. I also supported the team by creating documentation that clarified design decisions and streamlined collaboration. These contributions demonstrated my ability to adapt quickly and add value across multiple areas of the development process.</span>
@@ -1247,6 +1281,10 @@
           <span lang="en">Game Designer / Producer</span>
           <span lang="pt">Game Designer / Produtor</span>
         </div>
+        <div data-tags="">
+          <span lang="en">Systems Design, Production, UX/UI, VFX</span>
+          <span lang="pt">Systems Design, Produção, UX/UI, VFX</span>
+        </div>
         <div data-desc="">
           <span lang="en">Magic Realm is a 3D RTS, with low poly graphics, where you control all strategies in your battle against magic. This game was produced as a project to conclude the Digital Games course for FATEC Americana.</span>
           <span lang="pt">Magic Realm é um RTS 3D com gráficos low poly, em que você controla todas as estratégias na sua batalha contra a magia. Este jogo foi produzido como projeto de conclusão do curso de Jogos Digitais da FATEC Americana.</span>
@@ -1304,6 +1342,10 @@
           <span lang="en">Game Designer / Tech Artist</span>
           <span lang="pt">Game Designer / Tech Artist</span>
         </div>
+        <div data-tags="">
+          <span lang="en">Level Design, UX/UI, Game Jam</span>
+          <span lang="pt">Level Design, UX/UI, Game Jam</span>
+        </div>
         <div data-desc="">
           <span lang="en">A mysterious infection is transforming the jellies into hideous creatures. Adventure through the universe of Jello Quest and save your gelatinous companions as you try to discover what is happening with the sweet kingdom.</span>
           <span lang="pt">Uma infecção misteriosa está transformando as gelatinas em criaturas horrendas. Aventure-se pelo universo de Jello Quest e salve seus companheiros gelatinosos enquanto tenta descobrir o que está acontecendo com o doce reino.</span>
@@ -1358,6 +1400,10 @@
           <span lang="en">Game Designer</span>
           <span lang="pt">Game Designer</span>
         </div>
+        <div data-tags="">
+          <span lang="en">Enemy Design, Balancing, Game Jam</span>
+          <span lang="pt">Design de Inimigos, Balanceamento, Game Jam</span>
+        </div>
         <div data-desc="">
           <span lang="en">Remember the time when you couldn't stop thinking about the good old bullet hells you played on a tamagotchi?... Well, neither did I. But what about being locked inside one while you try to keep yourself alive? This game was developed for Bullet Hell Jam 2022.</span>
           <span lang="pt">Lembra da época em que você não conseguia parar de pensar nos bons e velhos bullet hells que jogava num tamagotchi?... Pois é, nem eu. Mas que tal ficar preso dentro de um enquanto tenta se manter vivo? Este jogo foi desenvolvido para a Bullet Hell Jam 2022.</span>
@@ -1397,6 +1443,10 @@
         <div data-role="">
           <span lang="en">Game Designer</span>
           <span lang="pt">Game Designer</span>
+        </div>
+        <div data-tags="">
+          <span lang="en">Puzzle Design, Level Design, UX/UI</span>
+          <span lang="pt">Puzzle Design, Level Design, UX/UI</span>
         </div>
         <div data-desc="">
           <span lang="en">Help the cat to push his box into the right place and go to the next level. Take on these challenges in a simple and relaxing way. You can change the music and also choose the skin you prefer for your cat.</span>
@@ -1849,6 +1899,29 @@
       line.append(sep, where);
     }
     h3.after(line);
+  });
+
+  // Tags de competência: o data-tags guarda uma lista por idioma, separada por vírgula;
+  // aqui vira uma fileira de etiquetas por idioma, e o CSS de idioma esconde a outra.
+  document.querySelectorAll('.proj').forEach(article => {
+    const tpl = article.querySelector('template.proj-detail');
+    const tagsEl = tpl && tpl.content.querySelector('[data-tags]');
+    const desc = article.querySelector(':scope > div:not(.proj-img) > .desc');
+    if (!tagsEl || !desc) return;
+    tagsEl.querySelectorAll('span[lang]').forEach(src => {
+      const names = src.textContent.split(',').map(s => s.trim()).filter(Boolean);
+      if (!names.length) return;
+      const row = document.createElement('div');
+      row.className = 'chips';
+      row.setAttribute('lang', src.getAttribute('lang'));
+      names.forEach(n => {
+        const chip = document.createElement('span');
+        chip.className = 'chip';
+        chip.textContent = n;
+        row.appendChild(chip);
+      });
+      desc.after(row);
+    });
   });
 
   // Cards abrem por clique e por teclado (Tab até o card, Enter ou Espaço).
