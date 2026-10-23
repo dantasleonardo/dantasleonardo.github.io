@@ -101,12 +101,19 @@
   /* ───── Hero — portrait + intro side-by-side, same wrap as main page ───── */
   .hero {
     padding: 64px 0 48px;
-    display: grid; grid-template-columns: 220px 1fr;
-    gap: 44px; align-items: flex-start;
+    display: grid; grid-template-columns: 260px 1fr;
+    gap: 44px; align-items: center;
   }
-  .hero h1 { font-size: 44px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
-  .hero .role { margin-top: 10px; font-size: 17px; color: var(--accent); font-weight: 500; }
-  .hero .lede { margin-top: 22px; font-size: 15.5px; color: var(--dim); line-height: 1.7; }
+  /* Mesma escrita do hero da home: nome numa linha em caixa alta, cargo em roxo embaixo */
+  .hero h1 {
+    font-size: clamp(28px, 4.4vw, 44px); font-weight: 700; letter-spacing: -0.035em; line-height: 0.95;
+    text-transform: uppercase; white-space: nowrap;
+  }
+  .hero .role {
+    margin-top: 8px; font-size: clamp(19px, 2.4vw, 25px); font-weight: 700; letter-spacing: -0.01em; line-height: 1;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .hero .lede { margin-top: 18px; font-size: 15.5px; color: var(--dim); line-height: 1.7; }
   .hero .lede em { color: var(--ink); font-style: normal; font-weight: 500; }
 
   .portrait {
@@ -155,12 +162,20 @@
     background: rgba(183,128,255,0.06);
     color: var(--accent);
   }
+  /* Ícone no lugar do rótulo. O rótulo continua no HTML, escondido: serve pro leitor de tela
+     e pro campo "Label" da seção Contact strip do Editor. */
+  .contact-strip a .ico { width: 15px; height: 15px; flex-shrink: 0; color: var(--accent); transition: color 0.18s; }
+  /* Pílulas com cara de botão: mesma borda roxa do botão Contato */
+  .contact-strip a { border-color: rgba(183,128,255,0.4); }
+  .contact-strip a:hover .ico { color: var(--accent); }
   .contact-strip a .label {
-    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--quiet);
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
   }
-  .contact-strip a:hover .label { color: var(--accent); }
+
+  /* Faixa de contato + botão Contato na mesma linha (o botão fica fora da .contact-strip pro Editor não tratar ele como link de rede) */
+  .contact-row { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+  .contact-row .contact-strip, .contact-row .about-cta { margin-top: 0; }
 
   /* CTA pro Contact page (mesmo estilo do botão secundário do index) */
   .about-cta {
@@ -179,19 +194,18 @@
   }
 
   /* ───── Section heading — same as main page ───── */
+  /* Títulos de seção grandes (antes 17px com linha embaixo): dão peso de "capítulo" a cada parte */
   h2.sec {
-    font-size: 17px; font-weight: 700;
-    margin: 44px 0 18px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--rule);
+    font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
+    margin: 64px 0 22px;
     display: flex; align-items: baseline; gap: 12px;
   }
 
   /* ───── Bio prose — fills the same content column as main-page sections ───── */
   .bio-prose p {
-    color: var(--dim); font-size: 14.5px; line-height: 1.8;
+    color: var(--dim); font-size: 16px; line-height: 1.8;
   }
-  .bio-prose p + p { margin-top: 14px; }
+  .bio-prose p + p { margin-top: 16px; }
   .bio-prose b { color: var(--ink); font-weight: 500; }
   .bio-prose em { color: var(--accent); font-style: normal; font-weight: 500; }
 
@@ -204,12 +218,12 @@
   }
   .tl-item {
     position: relative;
-    padding: 16px 0;
+    padding: 20px 0;
   }
   .tl-item + .tl-item { border-top: 1px solid var(--rule); }
   .tl-item::before {
-    content: ''; position: absolute; left: -27px; top: 24px;
-    width: 8px; height: 8px; border-radius: 50%;
+    content: ''; position: absolute; left: -28px; top: 28px;
+    width: 10px; height: 10px; border-radius: 50%;
     background: var(--bg);
     border: 1px solid var(--accent);
   }
@@ -219,21 +233,21 @@
   }
   .tl-item .yr {
     font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-    font-size: 12px; color: var(--quiet); letter-spacing: 0.04em;
+    font-size: 13px; color: var(--quiet); letter-spacing: 0.04em;
   }
   .tl-item h3 {
-    margin-top: 4px;
-    font-size: 16px; font-weight: 600; letter-spacing: -0.01em;
+    margin-top: 6px;
+    font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
     display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
   }
   .tl-item h3 .at {
-    color: var(--accent); font-weight: 500; font-size: 14px;
+    color: var(--accent); font-weight: 500; font-size: 16px;
     border: none;
   }
   .tl-item h3 a.at { border-bottom: 1px dotted rgba(183,128,255,0.4); }
   .tl-item h3 a.at:hover { border-bottom-style: solid; }
   .tl-item p {
-    margin-top: 6px; color: var(--dim); font-size: 13.5px; line-height: 1.7;
+    margin-top: 8px; color: var(--dim); font-size: 15.5px; line-height: 1.7;
   }
   .tl-item p b { color: var(--ink); font-weight: 500; }
 
@@ -292,19 +306,19 @@
   }
   .edu-item:first-child { border-top: none; }
   .edu-school {
-    font-size: 16px; font-weight: 600; color: var(--ink);
+    font-size: 19px; font-weight: 700; color: var(--ink);
     letter-spacing: -0.01em;
   }
   .edu-yr {
     font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-    font-size: 12.5px; color: var(--quiet);
+    font-size: 13px; color: var(--quiet);
     letter-spacing: 0.02em;
     white-space: nowrap;
   }
   .edu-degree {
     grid-column: 1 / -1;
-    margin-top: 4px;
-    font-size: 14px; color: var(--dim);
+    margin-top: 6px;
+    font-size: 15.5px; color: var(--dim);
     line-height: 1.6;
   }
 
@@ -315,30 +329,30 @@
     padding-top: 4px;
   }
   .skills-col h3 {
-    font-size: 15px; font-weight: 600;
-    color: var(--ink); letter-spacing: -0.005em;
-    margin-bottom: 14px;
-    padding-bottom: 10px;
+    font-size: 19px; font-weight: 700;
+    color: var(--ink); letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--rule);
   }
   .skills-col ul {
     list-style: none;
     padding: 0; margin: 0;
     display: flex; flex-direction: column;
-    gap: 6px;
+    gap: 10px;
   }
   .skills-col li {
     color: var(--dim);
-    font-size: 13.5px;
-    line-height: 1.55;
-    padding-left: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    padding-left: 20px;
     position: relative;
   }
   .skills-col li::before {
     content: '•';
     position: absolute;
-    left: 2px;
-    color: var(--quiet);
+    left: 3px;
+    color: var(--accent);
   }
   @media (max-width: 600px) {
     .skills-cols { grid-template-columns: 1fr; gap: 24px; }
@@ -373,16 +387,14 @@
       grid-template-columns: 1fr;
       gap: 24px; padding: 36px 0 32px;
     }
-    .portrait { max-width: 180px; }
-    .hero h1 { font-size: 38px; }
-    .hero .role { font-size: 16px; }
-    h2.sec { margin: 36px 0 14px; }
+    .portrait { max-width: 200px; }
+    .hero h1 { white-space: normal; }
+    h2.sec { margin: 48px 0 16px; }
     .timeline { padding-left: 18px; margin-left: 4px; }
-    .tl-item::before { left: -23px; top: 22px; }
+    .tl-item::before { left: -24px; top: 27px; }
   }
   @media (max-width: 420px) {
     .wrap { padding: 0 18px; }
-    .hero h1 { font-size: 32px; letter-spacing: -0.02em; }
     .contact-strip { gap: 6px 8px; }
     .contact-strip a { padding: 5px 10px; font-size: 12px; }
   }
@@ -392,11 +404,24 @@
   @media (prefers-reduced-motion: no-preference) {
 
     /* Entrada do hero em cascata (uma vez, no load) */
-    .hero .portrait, .hero h1, .hero .role, .hero .lede, .contact-strip, .about-cta {
+    .hero h1, .hero .role, .hero .lede, .contact-strip, .about-cta {
       opacity: 0;
       transform: translateY(14px);
       animation: rise-in 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
+
+    /* Foto como "carta": pop na entrada e flutuação lenta (na caixinha); a foto em si inclina via JS */
+    .portrait-wrap { animation: pop-in 650ms cubic-bezier(0.34, 1.56, 0.64, 1) both, float 4.2s ease-in-out 900ms infinite; }
+    @keyframes pop-in {
+      from { opacity: 0; transform: scale(0.88) translateY(10px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+    .portrait-wrap .portrait { transition: box-shadow 220ms ease; }
+    .portrait-wrap:hover .portrait { box-shadow: 0 16px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(183,128,255,0.3); }
     .hero h1 { animation-delay: 80ms; }
     .hero .role { animation-delay: 180ms; }
     .hero .lede { animation-delay: 280ms; }
@@ -445,7 +470,9 @@
 
   <!-- ───── HERO ───── -->
   <section class="hero">
+    <div class="portrait-wrap">
     <img class="portrait" src="images/portrait-1.jpg" alt="Leonardo Dantas" style="width:100%;max-width:100%;height:auto;display:block;object-fit:cover;">
+    </div>
     <div>
     <h1>Leonardo Dantas</h1>
     <div class="role">Game Designer</div>
@@ -455,12 +482,15 @@
     </p>
 
     <!-- Inline contact strip — keeps contacts visible without a hidden footer section -->
+    <div class="contact-row">
     <div class="contact-strip">
       <a href="https://www.linkedin.com/in/leonardo-dantass/" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
         <span class="label">LinkedIn</span>
         <span>/in/leonardo-dantass</span>
       </a>
       <a href="https://leodantas.itch.io" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.137 2.41 2.466 2.41h.024c1.33 0 2.466-1.102 2.466-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.282 24 5.98V4.95c-.02-.62-2.082-2.99-3.13-3.612-3.253-.114-5.508-.134-8.87-.133-3.362 0-7.945.053-8.87.133zm6.376 6.477a2.74 2.74 0 0 1-.468.602c-.5.49-1.19.795-1.947.795a2.786 2.786 0 0 1-1.95-.795c-.182-.178-.32-.37-.446-.59-.127.222-.303.412-.486.59a2.788 2.788 0 0 1-1.95.795c-.092 0-.187-.025-.264-.052-.107 1.113-.152 2.176-.168 2.95v.005l-.006 1.167c.02 2.334-.23 7.564 1.03 8.85 1.952.454 5.545.662 9.15.663 3.605 0 7.198-.21 9.15-.664 1.26-1.284 1.01-6.514 1.03-8.848l-.006-1.167v-.004c-.016-.775-.06-1.838-.168-2.95-.077.026-.172.052-.263.052a2.788 2.788 0 0 1-1.95-.795c-.184-.178-.36-.368-.486-.59-.127.22-.265.412-.447.59a2.786 2.786 0 0 1-1.95.794c-.76 0-1.446-.303-1.948-.793a2.74 2.74 0 0 1-.468-.602 2.738 2.738 0 0 1-.463.602 2.787 2.787 0 0 1-1.95.794h-.16a2.787 2.787 0 0 1-1.95-.793 2.738 2.738 0 0 1-.464-.602zm-2.004 2.59v.002c.795.002 1.5 0 2.373.953.687-.072 1.406-.108 2.125-.107.72 0 1.438.035 2.125.107.873-.953 1.578-.95 2.372-.953.376 0 1.876 0 2.92 2.934l1.123 4.028c.832 2.995-.266 3.068-1.636 3.07-2.03-.075-3.156-1.55-3.156-3.025-1.124.184-2.436.276-3.748.277-1.312 0-2.624-.093-3.748-.277 0 1.475-1.125 2.95-3.156 3.026-1.37-.004-2.468-.077-1.636-3.072l1.122-4.027c1.045-2.934 2.545-2.934 2.92-2.934zM12 12.714c-.002.002-2.14 1.964-2.523 2.662l1.4-.056v1.22c0 .056.56.033 1.123.007.562.026 1.124.05 1.124-.008v-1.22l1.4.055C14.138 14.677 12 12.713 12 12.713z"/></svg>
         <span class="label">itch.io</span>
         <span>leodantas</span>
       </a>
@@ -469,6 +499,7 @@
       <span lang="en">Contact →</span>
       <span lang="pt">Contato →</span>
     </a>
+    </div>
     </div>
   </section>
 
@@ -549,33 +580,6 @@
 
   </div>
 
-  <!-- ───── Education ───── -->
-  <h2 class="sec">
-    <span lang="en">Education</span>
-    <span lang="pt">Educação</span>
-  </h2>
-  <div class="edu-list">
-
-    <div class="edu-item">
-      <span class="edu-school">FATEC Americana</span>
-      <span class="edu-yr">2017 – 2020</span>
-      <span class="edu-degree">
-        <span lang="en">Tech Degree in Digital Games · Scientific Initiation on Serious Games · Founder of GAMINP</span>
-        <span lang="pt">Tecnólogo em Jogos Digitais · Iniciação Científica em Serious Games · Fundador do GAMINP</span>
-      </span>
-    </div>
-
-    <div class="edu-item">
-      <span class="edu-school">ETEC</span>
-      <span class="edu-yr">2014 – 2016</span>
-      <span class="edu-degree">
-        <span lang="en">Secondary Technical Education in IT</span>
-        <span lang="pt">Ensino Técnico em Informática</span>
-      </span>
-    </div>
-
-  </div>
-
   <!-- ───── Skills (two columns) ───── -->
   <h2 class="sec">
     <span lang="en">Skills</span>
@@ -608,6 +612,33 @@
         <li><span lang="en">Documentation: GDD, LDD, Miro</span><span lang="pt">Documentação: GDD, LDD, Miro</span></li>
       </ul>
     </div>
+  </div>
+
+  <!-- ───── Education ───── -->
+  <h2 class="sec">
+    <span lang="en">Education</span>
+    <span lang="pt">Educação</span>
+  </h2>
+  <div class="edu-list">
+
+    <div class="edu-item">
+      <span class="edu-school">FATEC Americana</span>
+      <span class="edu-yr">2017 – 2020</span>
+      <span class="edu-degree">
+        <span lang="en">Tech Degree in Digital Games · Scientific Initiation on Serious Games · Founder of GAMINP</span>
+        <span lang="pt">Tecnólogo em Jogos Digitais · Iniciação Científica em Serious Games · Fundador do GAMINP</span>
+      </span>
+    </div>
+
+    <div class="edu-item">
+      <span class="edu-school">ETEC</span>
+      <span class="edu-yr">2014 – 2016</span>
+      <span class="edu-degree">
+        <span lang="en">Secondary Technical Education in IT</span>
+        <span lang="pt">Ensino Técnico em Informática</span>
+      </span>
+    </div>
+
   </div>
 
   <!-- ───── Talks & Writing ─────
@@ -677,6 +708,41 @@
     try { localStorage.setItem('lang', next); } catch (e) {}
     syncTitle();
   });
+
+  // ─── Foto como "carta": inclina na direção do mouse e dá um tremidinho ao entrar ───
+  // Mesma lógica dos cards da home. Só com mouse e sem "reduzir movimento".
+  if (window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
+    const wrap = document.querySelector('.portrait-wrap');
+    if (wrap) {
+      const s = { mx: 0, my: 0, tmx: 0, tmy: 0, hover: 0, h: 0, t0: 0, raf: 0 };
+      const photo = () => wrap.querySelector('.portrait');
+      const loop = now => {
+        const img = photo();
+        const k = 0.16;
+        s.h += (s.hover - s.h) * k;
+        s.mx += (s.tmx - s.mx) * k;
+        s.my += (s.tmy - s.my) * k;
+        if (!s.hover && s.h < 0.002 && Math.abs(s.mx) + Math.abs(s.my) < 0.01) {
+          img.style.transform = '';
+          s.raf = 0;
+          return;
+        }
+        const w = (now - s.t0) / 1000;
+        const wob = s.hover ? Math.sin(w * 20) * Math.exp(-w * 5) * 2 : 0;
+        img.style.transform = `perspective(800px) rotateX(${-s.my * 8}deg) rotateY(${s.mx * 9}deg) rotateZ(${wob}deg) scale(${1 + 0.04 * s.h})`;
+        s.raf = requestAnimationFrame(loop);
+      };
+      const start = () => { if (!s.raf) s.raf = requestAnimationFrame(loop); };
+      wrap.addEventListener('pointerenter', () => { s.hover = 1; s.t0 = performance.now(); start(); });
+      wrap.addEventListener('pointermove', e => {
+        const r = wrap.getBoundingClientRect();
+        s.tmx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1));
+        s.tmy = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1));
+        start();
+      });
+      wrap.addEventListener('pointerleave', () => { s.hover = 0; s.tmx = 0; s.tmy = 0; start(); });
+    }
+  }
 
   // ─── Scroll-reveal das seções ───
   // Mesmas regras do index: classes só via JS (sem JS nada some), observer
