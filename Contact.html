@@ -20,7 +20,7 @@
     d.lang = lang === 'pt' ? 'pt-BR' : 'en';
   })();
 </script>
-<meta name="description" content="Contact Leonardo Dantas · Game Designer. Always Open to Talk about games, design and ideas worth building.">
+<meta name="description" content="Contact Leonardo Dantas · Game Designer. Always open to talk about games, design and ideas worth building.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contact · Leonardo Dantas">
 <meta property="og:description" content="Game Designer · always open to talk about games, design and ideas worth building.">
@@ -270,6 +270,20 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Depois da entrada, o card "solta" a animação pra inclinação do JS poder agir (animação ganha de estilo inline) */
+    .connect-card.entered { opacity: 1; transform: none; animation: none; }
+    .connect-card { transition: box-shadow 220ms ease; }
+    .connect-card:hover { box-shadow: 0 18px 36px rgba(0,0,0,0.45); }
+
+    /* Canais (LinkedIn, CV): pulinho com tremidinho ao passar o mouse */
+    .channel:hover { animation: channel-hop 460ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+    @keyframes channel-hop {
+      0%   { transform: translateY(0) rotate(0deg); }
+      30%  { transform: translateY(-4px) rotate(-0.8deg); }
+      60%  { transform: translateY(-2px) rotate(0.6deg); }
+      100% { transform: translateY(-1px) rotate(0deg); }
+    }
+
     /* Glow do card respirando (eco do hero do index) */
     .connect-card::before { animation: glow-breathe 8s ease-in-out infinite; }
     @keyframes glow-breathe {
@@ -320,8 +334,8 @@
       </p>
       <div class="avail">
         <span class="live"></span>
-        <span lang="en"><b>Always Open to Talk</b></span>
-        <span lang="pt"><b>Sempre Aberto a Conversar</b></span>
+        <span lang="en"><b>Always open to talk</b></span>
+        <span lang="pt"><b>Sempre aberto a conversar</b></span>
       </div>
     </div>
 
@@ -410,6 +424,38 @@
 </div>
 
 <script>
+  // ─── Card "Vamos conversar" estilo carta (mesma lógica das linhas de projeto da home) ───
+  // Inclina de leve na direção do cursor, levanta um pouco e dá um tremidinho ao entrar.
+  // Só com mouse e sem "reduzir movimento".
+  (function () {
+    const card = document.querySelector('.connect-card');
+    if (!card || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+    card.addEventListener('animationend', e => { if (e.animationName === 'rise-in') card.classList.add('entered'); });
+    setTimeout(() => card.classList.add('entered'), 1200); // garantia, caso o evento da animação já tenha passado
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    const s = { mx: 0, my: 0, tmx: 0, tmy: 0, hover: 0, h: 0, t0: 0, raf: 0 };
+    const loop = now => {
+      const k = 0.16;
+      s.h += (s.hover - s.h) * k;
+      s.mx += (s.tmx - s.mx) * k;
+      s.my += (s.tmy - s.my) * k;
+      if (!s.hover && s.h < 0.002 && Math.abs(s.mx) + Math.abs(s.my) < 0.01) { card.style.transform = ''; s.raf = 0; return; }
+      const w = (now - s.t0) / 1000;
+      const wob = s.hover ? Math.sin(w * 20) * Math.exp(-w * 5) * 0.8 : 0;
+      card.style.transform = `perspective(1200px) rotateX(${-s.my * 4}deg) rotateY(${s.mx * 5}deg) rotateZ(${wob}deg) translateY(${-4 * s.h}px) scale(${1 + 0.015 * s.h})`;
+      s.raf = requestAnimationFrame(loop);
+    };
+    const start = () => { if (!s.raf && card.classList.contains('entered')) s.raf = requestAnimationFrame(loop); };
+    card.addEventListener('pointerenter', () => { s.hover = 1; s.t0 = performance.now(); start(); });
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      s.tmx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1));
+      s.tmy = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1));
+      start();
+    });
+    card.addEventListener('pointerleave', () => { s.hover = 0; s.tmx = 0; s.tmy = 0; start(); });
+  })();
+
   // Idioma: o <head> já aplicou a escolha salva; aqui só o título e o botão.
   const syncTitle = () => {
     document.title = document.documentElement.getAttribute('data-lang') === 'pt' ? 'Contato · Leonardo Dantas' : 'Contact · Leonardo Dantas';

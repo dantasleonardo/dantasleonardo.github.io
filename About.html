@@ -143,6 +143,16 @@
     font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   }
 
+  /* Monte de fotos estilo deckbuilder: cartas empilhadas, a da frente reta, as de trás tortas (o JS posiciona) */
+  .deck { position: relative; aspect-ratio: 4/5; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .deck:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 6px; }
+  .deck .deck-card {
+    position: absolute; inset: 0; width: 100% !important; height: 100% !important;
+    object-fit: cover; border-radius: 6px; border: 1px solid rgba(183,128,255,0.22);
+    background: var(--bg-2); user-select: none; -webkit-user-drag: none; will-change: transform;
+  }
+  @media (max-width: 680px) { .deck { width: 200px; max-width: 100%; } .deck .portrait { max-width: none; } }
+
   /* Inline contact strip (sits under intro, left-aligned with text) */
   .contact-strip {
     margin-top: 22px;
@@ -410,18 +420,13 @@
       animation: rise-in 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    /* Foto como "carta": pop na entrada e flutuação lenta (na caixinha); a foto em si inclina via JS */
-    .portrait-wrap { animation: pop-in 650ms cubic-bezier(0.34, 1.56, 0.64, 1) both, float 4.2s ease-in-out 900ms infinite; }
+    /* Monte de fotos: pop na entrada (na caixinha); as cartas se movem com a transição abaixo, comandadas pelo JS */
+    .portrait-wrap { animation: pop-in 650ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
     @keyframes pop-in {
       from { opacity: 0; transform: scale(0.88) translateY(10px); }
       to   { opacity: 1; transform: none; }
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-6px); }
-    }
-    .portrait-wrap .portrait { transition: box-shadow 220ms ease; }
-    .portrait-wrap:hover .portrait { box-shadow: 0 16px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(183,128,255,0.3); }
+    .deck .deck-card { transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 220ms ease; }
     .hero h1 { animation-delay: 80ms; }
     .hero .role { animation-delay: 180ms; }
     .hero .lede { animation-delay: 280ms; }
@@ -470,8 +475,13 @@
 
   <!-- ───── HERO ───── -->
   <section class="hero">
-    <div class="portrait-wrap">
-    <img class="portrait" src="images/portrait-1.jpg" alt="Leonardo Dantas" style="width:100%;max-width:100%;height:auto;display:block;object-fit:cover;">
+    <!-- Monte de fotos estilo deckbuilder: clique (ou Enter) manda a da frente pro fundo.
+         A primeira é a .portrait que o Editor troca na seção Hero; as outras são editadas aqui no HTML. -->
+    <div class="portrait-wrap deck" id="deck" role="button" tabindex="0" aria-label="Next photo">
+    <img class="portrait deck-card" src="images/about-unesp.jpg" alt="Leonardo Dantas" style="width:100%;max-width:100%;height:auto;display:block;object-fit:cover;">
+    <img class="deck-card" src="images/portrait-1.jpg" alt="">
+    <img class="deck-card" src="images/about-seccomp.jpg" alt="">
+    <img class="deck-card" src="images/about-fatec.jpg" alt="">
     </div>
     <div>
     <h1>Leonardo Dantas</h1>
@@ -709,40 +719,69 @@
     syncTitle();
   });
 
-  // ─── Foto como "carta": inclina na direção do mouse e dá um tremidinho ao entrar ───
-  // Mesma lógica dos cards da home. Só com mouse e sem "reduzir movimento".
-  if (window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
-    const wrap = document.querySelector('.portrait-wrap');
-    if (wrap) {
-      const s = { mx: 0, my: 0, tmx: 0, tmy: 0, hover: 0, h: 0, t0: 0, raf: 0 };
-      const photo = () => wrap.querySelector('.portrait');
-      const loop = now => {
-        const img = photo();
-        const k = 0.16;
-        s.h += (s.hover - s.h) * k;
-        s.mx += (s.tmx - s.mx) * k;
-        s.my += (s.tmy - s.my) * k;
-        if (!s.hover && s.h < 0.002 && Math.abs(s.mx) + Math.abs(s.my) < 0.01) {
-          img.style.transform = '';
-          s.raf = 0;
-          return;
+  // ─── Monte de fotos estilo deckbuilder ───
+  // A carta da frente reage ao mouse; clique (ou Enter) manda ela pro fundo do monte girando,
+  // as outras se ajeitam e a próxima vira a da frente com um tremidinho.
+  (function () {
+    const deck = document.getElementById('deck');
+    if (!deck) return;
+    const motion = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    const fine = motion && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let cards = [...deck.querySelectorAll('.deck-card')];
+    const rest = [[0, 0, 0], [-6, 8, -7], [7, 12, 7], [-3, 16, -2]]; // [giro°, desce px, lado px] de cada posição no monte
+    let mx = 0, my = 0, hover = 0, busy = false;
+    function layout() {
+      cards.forEach((c, i) => {
+        const [rz, ty, tx] = rest[i] || rest[rest.length - 1];
+        c.style.zIndex = cards.length - i;
+        if (i === 0) {
+          c.style.transform = `perspective(800px) rotateX(${-my * 8 * hover}deg) rotateY(${mx * 9 * hover}deg) translateY(${-6 * hover}px) scale(${1 + 0.04 * hover})`;
+          c.style.boxShadow = hover ? '0 18px 34px rgba(0,0,0,0.55), 0 0 0 1px rgba(183,128,255,0.45)' : '0 10px 24px rgba(0,0,0,0.35)';
+        } else {
+          c.style.transform = `translate(${tx}px, ${ty}px) rotate(${rz}deg) scale(${1 - i * 0.03})`;
+          c.style.boxShadow = '';
         }
-        const w = (now - s.t0) / 1000;
-        const wob = s.hover ? Math.sin(w * 20) * Math.exp(-w * 5) * 2 : 0;
-        img.style.transform = `perspective(800px) rotateX(${-s.my * 8}deg) rotateY(${s.mx * 9}deg) rotateZ(${wob}deg) scale(${1 + 0.04 * s.h})`;
-        s.raf = requestAnimationFrame(loop);
-      };
-      const start = () => { if (!s.raf) s.raf = requestAnimationFrame(loop); };
-      wrap.addEventListener('pointerenter', () => { s.hover = 1; s.t0 = performance.now(); start(); });
-      wrap.addEventListener('pointermove', e => {
-        const r = wrap.getBoundingClientRect();
-        s.tmx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1));
-        s.tmy = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1));
-        start();
       });
-      wrap.addEventListener('pointerleave', () => { s.hover = 0; s.tmx = 0; s.tmy = 0; start(); });
     }
-  }
+    layout();
+    if (fine) {
+      deck.addEventListener('pointermove', e => {
+        if (busy) return;
+        const r = deck.getBoundingClientRect();
+        mx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1));
+        my = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1));
+        hover = 1;
+        cards[0].style.transition = 'transform 120ms ease-out, box-shadow 220ms ease';
+        layout();
+      });
+      deck.addEventListener('pointerleave', () => { hover = 0; mx = my = 0; cards[0].style.transition = ''; layout(); });
+    }
+    function draw() {
+      if (busy || cards.length < 2) return;
+      const top = cards[0];
+      if (!motion) { cards = cards.slice(1).concat(top); layout(); return; }
+      busy = true;
+      top.style.transition = 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1)';
+      top.style.transform = 'translate(150px, -40px) rotate(24deg) scale(0.95)';
+      setTimeout(() => {
+        cards = cards.slice(1).concat(top);
+        top.style.transition = 'none';
+        top.style.zIndex = 0;
+        top.style.transform = 'translate(60px, 30px) rotate(14deg) scale(0.88)';
+        void top.offsetWidth;
+        top.style.transition = '';
+        hover = 0; mx = my = 0;
+        layout();
+        cards[0].animate(
+          [{ transform: 'rotate(0deg) scale(1)' }, { transform: 'rotate(-3deg) scale(1.04)' }, { transform: 'rotate(2deg) scale(1)' }, { transform: 'rotate(0deg) scale(1)' }],
+          { duration: 420, easing: 'ease-out', composite: 'add' }
+        );
+        setTimeout(() => { busy = false; }, 420);
+      }, 300);
+    }
+    deck.addEventListener('click', draw);
+    deck.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); draw(); } });
+  })();
 
   // ─── Scroll-reveal das seções ───
   // Mesmas regras do index: classes só via JS (sem JS nada some), observer
