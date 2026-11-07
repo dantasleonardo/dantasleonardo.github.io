@@ -15,6 +15,11 @@
       var saved = null;
       try { saved = localStorage.getItem('lang'); } catch (e) {}
       lang = (saved === 'en' || saved === 'pt') ? saved : (/^pt\b/i.test(navigator.language || '') ? 'pt' : 'en');
+      // Endereço limpo, também em links antigos e favoritos: /index.html vira / e /About.html vira /About
+      if (/^https?:$/.test(location.protocol)) {
+        var clean = location.pathname.replace(/\/index\.html$/i, '/').replace(/\.html$/i, '');
+        if (clean !== location.pathname) history.replaceState(null, '', clean + location.search + location.hash);
+      }
     }
     d.setAttribute('data-lang', lang);
     d.lang = lang === 'pt' ? 'pt-BR' : 'en';
@@ -298,17 +303,17 @@
 <div class="wrap">
 
   <header class="top">
-    <a href="index.html" class="home">
+    <a href="./" class="home">
       <span class="arrow">←</span>
       <span lang="en">Homepage</span>
       <span lang="pt">Início</span>
     </a>
     <nav class="top-nav">
-      <a href="About.html">
+      <a href="About">
         <span lang="en">About</span>
         <span lang="pt">Sobre</span>
       </a>
-      <a href="Contact.html" class="active">
+      <a href="Contact" class="active">
         <span lang="en">Contact</span>
         <span lang="pt">Contato</span>
       </a>

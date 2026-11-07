@@ -15,6 +15,11 @@
       var saved = null;
       try { saved = localStorage.getItem('lang'); } catch (e) {}
       lang = (saved === 'en' || saved === 'pt') ? saved : (/^pt\b/i.test(navigator.language || '') ? 'pt' : 'en');
+      // Endereço limpo, também em links antigos e favoritos: /index.html vira / e /About.html vira /About
+      if (/^https?:$/.test(location.protocol)) {
+        var clean = location.pathname.replace(/\/index\.html$/i, '/').replace(/\.html$/i, '');
+        if (clean !== location.pathname) history.replaceState(null, '', clean + location.search + location.hash);
+      }
     }
     d.setAttribute('data-lang', lang);
     d.lang = lang === 'pt' ? 'pt-BR' : 'en';
@@ -682,11 +687,11 @@
   <header class="top">
     <a href="#" class="home"><span lang="en">Homepage</span><span lang="pt">Início</span></a>
     <nav class="top-nav">
-      <a href="About.html">
+      <a href="About">
         <span lang="en">About</span>
         <span lang="pt">Sobre</span>
       </a>
-      <a href="Contact.html">
+      <a href="Contact">
         <span lang="en">Contact</span>
         <span lang="pt">Contato</span>
       </a>
@@ -713,11 +718,11 @@
       <span lang="pt"><em>Game Designer</em> criando jogos em <em>VR, MR, UGC e Mobile</em>, em que gameplay, sistemas e ambientação funcionam como uma coisa só.</span>
     </p>
     <div class="cta-row">
-      <a class="cta" href="About.html">
+      <a class="cta" href="About">
         <span lang="en">About me →</span>
         <span lang="pt">Sobre mim →</span>
       </a>
-      <a class="cta secondary" href="Contact.html">
+      <a class="cta secondary" href="Contact">
         <span lang="en">Contact →</span>
         <span lang="pt">Contato →</span>
       </a>
