@@ -27,19 +27,21 @@
 </script>
 <meta name="description" content="Leonardo Dantas · Game Designer creating games across VR, MR, UGC and Mobile.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="leonardodantasgd.com">
+<meta name="theme-color" content="#b780ff">
 <meta property="og:title" content="Leonardo Dantas · Game Designer">
-<meta property="og:description" content="Game Designer creating games across VR, MR, UGC and Mobile.">
+<meta property="og:description" content="Game Designer making games for PC and VR since 2022. Lead Game Designer and Co-Director on Cruzcredo (Steam), with shipped titles for Meta Quest, Horizon Worlds and Holoride, like Blumhouse Horrorverse and Coffee Fest.">
 <!-- Quando o site tiver domínio, descomente e troque pela URL absoluta de uma imagem 1200x630: -->
 <!-- Preview ao compartilhar o link (LinkedIn/WhatsApp/Discord). Para ativar:
      1) exporte images/og-cover.svg como og-cover.png (1200x630);
      2) troque SEU-SITE pela URL real do site no ar. -->
-<meta property="og:image" content="https://leonardodantasgd.com/images/og-cover.png?v=2">
+<meta property="og:image" content="https://leonardodantasgd.com/images/og-cover.png?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Leonardo Dantas · Game Designer">
-<meta name="twitter:description" content="Game Designer creating games across VR, MR, UGC and Mobile.">
-<meta name="twitter:image" content="https://leonardodantasgd.com/images/og-cover.png?v=2">
+<meta name="twitter:description" content="Game Designer making games for PC and VR since 2022. Lead Game Designer and Co-Director on Cruzcredo (Steam), with shipped titles for Meta Quest, Horizon Worlds and Holoride, like Blumhouse Horrorverse and Coffee Fest.">
+<meta name="twitter:image" content="https://leonardodantasgd.com/images/og-cover.png?v=3">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -558,6 +560,10 @@
   .show-more-btn:hover .count { color: var(--accent); }
   .proj.is-collapsed { display: none; }
 
+  /* GIF na capa ao passar o mouse: vem do data-hover da .proj-img e só é baixado no primeiro hover */
+  .hover-gif { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0; transition: opacity 160ms; pointer-events: none; }
+  .hover-gif.on { opacity: 1; }
+
   /* ───── "Ver todos os projetos": botão no fim da home (a home mostra até 6) ───── */
   .all-row { margin-top: 26px; display: flex; justify-content: center; }
   .all-btn {
@@ -808,7 +814,7 @@
   <div class="proj-list" id="proList">
 
     <article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/blumhouse-horrorverse-cover.jpg"><span class="ph">HORRORVERSE</span></div>
+      <div class="proj-img" data-hover="images/hover-blumhouse-horrorverse.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/blumhouse-horrorverse-cover.jpg"><span class="ph">HORRORVERSE</span></div>
       <div>
         <h3>Blumhouse Horrorverse <span class="yr">2025</span></h3>
         <div class="where">@ ARVORE Immersive Experiences</div>
@@ -870,7 +876,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/coffee-fest-cover.jpg"><span class="ph">COFFEE FEST</span></div>
+      <div class="proj-img" data-hover="images/hover-coffee-fest.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/coffee-fest-cover.jpg"><span class="ph">COFFEE FEST</span></div>
       <div>
         <h3>Coffee Fest <span class="yr">2026</span></h3>
         <div class="where">@ ARVORE Immersive Experiences</div>
@@ -929,7 +935,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/cruzcredo-cover.jpg"><span class="ph">CRUZCREDO</span></div>
+      <div class="proj-img" data-hover="images/hover-holyhex-become-a-legend.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/cruzcredo-cover.jpg"><span class="ph">CRUZCREDO</span></div>
       <div>
         <h3><span lang="en">HolyHex! Become a Legend</span><span lang="pt">Cruzcredo! Torne-se uma Lenda</span> <span class="yr">TBD</span></h3>
         <div class="where">@ Ginga Studios</div>
@@ -992,7 +998,7 @@
         </div>
       </template>
     </article><article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/universal-monsters-arena-cover.jpg"><span class="ph">MONSTERS</span></div>
+      <div class="proj-img" data-hover="images/hover-universal-monsters-arena.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/universal-monsters-arena-cover.jpg"><span class="ph">MONSTERS</span></div>
       <div>
         <h3>Universal Monsters Arena <span class="yr">2024</span></h3>
         <div class="where">@ ARVORE Immersive Experiences</div>
@@ -1047,7 +1053,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/the-office-world-cover.jpg"><span class="ph">OFFICE</span></div>
+      <div class="proj-img" data-hover="images/hover-the-office-world.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/the-office-world-cover.jpg"><span class="ph">OFFICE</span></div>
       <div>
         <h3>The Office World <span class="yr">2024</span></h3>
         <div class="where">@ ARVORE Immersive Experiences</div>
@@ -1106,7 +1112,7 @@
     
 
   <article class="proj">
-    <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/yuki-mrcade-cover.jpg"><span class="ph">YUKI</span></div>
+    <div class="proj-img" data-hover="images/hover-yuki-mrcade.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/yuki-mrcade-cover.jpg"><span class="ph">YUKI</span></div>
     <div>
       <h3>YUKI MRcade <span class="yr">2023</span></h3>
       <div class="where">@ ARVORE Immersive Experiences</div>
@@ -1153,7 +1159,7 @@
   </article>
 
   <article class="proj">
-    <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/pixel-ripped-1995-on-the-road-cover.jpg"><span class="ph">PIXEL RIPPED</span></div>
+    <div class="proj-img" data-hover="images/hover-pixel-ripped-1995-on-the-road.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/pixel-ripped-1995-on-the-road-cover.jpg"><span class="ph">PIXEL RIPPED</span></div>
     <div>
       <h3>Pixel Ripped 1995: On the Road <span class="yr">2022</span></h3>
       <div class="where">@ ARVORE Immersive Experiences</div>
@@ -1221,7 +1227,7 @@
   <div class="proj-list" id="perList">
 
     <article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:8% center;z-index:0;" src="images/guardiao-tupa-cover.jpg"><span class="ph">GUARDIÃO</span></div>
+      <div class="proj-img" data-hover="images/hover-guardiao-tupa.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:8% center;z-index:0;" src="images/guardiao-tupa-cover.jpg"><span class="ph">GUARDIÃO</span></div>
       <div>
         <h3>Guardião Tupã <span class="yr">TBD</span></h3>
         <div class="where">@ Beyond The Wall</div>
@@ -1281,7 +1287,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/magic-realm-cover-1.png"><span class="ph">MAGIC</span></div>
+      <div class="proj-img" data-hover="images/hover-magic-realm.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/magic-realm-cover-1.png"><span class="ph">MAGIC</span></div>
       <div>
         <h3><span lang="en">Magic Realm · Graduation Project</span><span lang="pt">Magic Realm · TCC</span> <span class="yr">2020</span></h3>
         <div class="desc">
@@ -1342,7 +1348,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/jello-quest-cover.jpg"><span class="ph">JELLO</span></div>
+      <div class="proj-img" data-hover="images/hover-jello-quest-blob-war.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/jello-quest-cover.jpg"><span class="ph">JELLO</span></div>
       <div>
         <h3>Jello Quest: Blob War <span class="yr">2023</span></h3>
         <div class="desc">
@@ -1400,7 +1406,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/tamagotchi-hell-cover-1.png"><span class="ph">TAMAGOTCHI</span></div>
+      <div class="proj-img" data-hover="images/hover-tamagotchi-hell.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/tamagotchi-hell-cover-1.png"><span class="ph">TAMAGOTCHI</span></div>
       <div>
         <h3>Tamagotchi Hell <span class="yr">2022</span></h3>
         <div class="desc">
@@ -1444,7 +1450,7 @@
     </article>
 
     <article class="proj">
-      <div class="proj-img"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/kitty-cubes-cover-1.png"><span class="ph">KITTY</span></div>
+      <div class="proj-img" data-hover="images/hover-kitty-cubes.gif"><img alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" src="images/kitty-cubes-cover-1.png"><span class="ph">KITTY</span></div>
       <div>
         <h3>Kitty Cubes <span class="yr">2022</span></h3>
         <div class="desc">
@@ -1663,6 +1669,22 @@
       return '<img alt="" loading="lazy" src="' + esc(img.getAttribute('src') || '') + '"' + pos + '>';
     };
 
+    // GIF na capa ao passar o mouse (home e tela "Todos"). Só em aparelho com mouse e sem "reduzir movimento";
+    // no celular a capa fica parada. O GIF só é baixado no primeiro hover e recomeça a cada vez.
+    const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function hoverGif(trigger, box, a) {
+      const src = canHover && box && a.querySelector('.proj-img[data-hover]') && a.querySelector('.proj-img').getAttribute('data-hover');
+      if (!src) return;
+      let gif = null;
+      trigger.addEventListener('mouseenter', () => {
+        if (!gif) { gif = document.createElement('img'); gif.className = 'hover-gif'; gif.alt = ''; box.appendChild(gif); }
+        gif.src = src;
+        requestAnimationFrame(() => gif.classList.add('on'));
+      });
+      trigger.addEventListener('mouseleave', () => { if (gif) gif.classList.remove('on'); });
+    }
+    allCards.forEach(a => hoverGif(a, a.querySelector('.proj-img'), a));
+
     // Home: no máximo 6 profissionais, e o botão "Ver todos os projetos" no fim
     const proPanel = document.querySelector('.tab-panel[data-panel="professional"]');
     proCards.forEach((p, i) => p.classList.toggle('is-collapsed', i >= MAX_HOME));
@@ -1719,6 +1741,7 @@
         '<button type="button" class="ag-card" data-i="' + i + '"><span class="ag-img">' + coverImg(a) +
         (label ? '<span class="ag-yr">' + esc(label) + '</span>' : '') + '</span>' +
         '<span class="ag-n">' + titleHTML(a) + '</span><span class="ag-r">' + roleHTML(a) + '</span></button>').join('');
+      grid.querySelectorAll('.ag-card').forEach(c => hoverGif(c, c.querySelector('.ag-img'), allCards[+c.dataset.i]));
     }
 
     // Linha do tempo: um ano por coluna, o mais recente à esquerda; no celular vira lista (CSS)
